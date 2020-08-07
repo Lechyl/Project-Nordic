@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Stone : Consumable
 {
-    public int repareamount; 
+    public int repairamount; 
 }
