@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     //public FloatReference maxHp;
     //public FloatReference moveSpeed;
 
-    public PlayerHealth playerHealth ; 
-
+    public PlayerHealth playerHealth ;
+    public TakeDamage takeDamage; 
     [SerializeField] private HealthBar healthBar;
 
     private void Start()
@@ -31,6 +31,15 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+    // must be on Enemy and player controller
+    private void OnTriggerEnter(Collider other)
+    {
+        
+        takeDamage.CheckDamage(other); 
+        
+    }
+
 
 
 }

@@ -106,5 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a053261b3fe5dd4dbc80a1e34b31642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 11400000, guid: e25d55f029872e44893ead6b73471e35, type: 2}
-  healthBar: {fileID: 0}
+  playerHealth: {fileID: 11400000, guid: 21f8b218f52dfbf48947e97acf77f740, type: 2}
+  healthBar: {fileID: 5801336250479264472, guid: ff7843af898b7174e8700157edc3a24d,
+    type: 3}
