@@ -13,7 +13,6 @@ public class TakeDamage : ScriptableObject
     {
       
             Wepons weapon = DamageTaken.GetComponent<Wepons>();
-            Debug.Log("DMG " + weapon.dmg);
 
             float test = weapon.dmg; 
 

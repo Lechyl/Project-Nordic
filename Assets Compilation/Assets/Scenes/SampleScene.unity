@@ -311,17 +311,17 @@ PrefabInstance:
     - target: {fileID: 5801336250479264473, guid: ff7843af898b7174e8700157edc3a24d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.03
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5801336250479264473, guid: ff7843af898b7174e8700157edc3a24d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.05
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5801336250479264473, guid: ff7843af898b7174e8700157edc3a24d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.4
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5801336250479264473, guid: ff7843af898b7174e8700157edc3a24d,
         type: 3}
@@ -545,6 +545,87 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6de5ede2124cf6d429b8b3ab76d8bc72, type: 3}
+--- !u!1001 &2758087653163604908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972884, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1093246361757972890, guid: 0ec96636a6a00374fa549b5c6dde6852,
+        type: 3}
+      propertyPath: m_Name
+      value: StaminaBar
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0ec96636a6a00374fa549b5c6dde6852, type: 3}
+--- !u!114 &2985129941284643383 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1093246361757972891, guid: 0ec96636a6a00374fa549b5c6dde6852,
+    type: 3}
+  m_PrefabInstance: {fileID: 2758087653163604908}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8bc95b21244aca439702053daec6869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3193620444071619782
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -617,6 +698,23 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1905019317}
+    - target: {fileID: 1745402843707785982, guid: 2dae8bbeaf3c633418741a486fc16fff,
+        type: 3}
+      propertyPath: playerHealth
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d899391cd97e7540b2565f94da7e196,
+        type: 2}
+    - target: {fileID: 1745402843707785982, guid: 2dae8bbeaf3c633418741a486fc16fff,
+        type: 3}
+      propertyPath: playerStamina
+      value: 
+      objectReference: {fileID: 11400000, guid: 0952dd060e2c25e42856845153002556,
+        type: 2}
+    - target: {fileID: 1745402843707785982, guid: 2dae8bbeaf3c633418741a486fc16fff,
+        type: 3}
+      propertyPath: staminaBar
+      value: 
+      objectReference: {fileID: 2985129941284643383}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dae8bbeaf3c633418741a486fc16fff, type: 3}
 --- !u!1001 &9061318632804358575
