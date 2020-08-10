@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d37d44ecfc25484d8ebd7c7eeb4d296, type: 3}
   m_Name: New Player Health
   m_EditorClassIdentifier: 
-  CurrentHp: 21
+  CurrentHp: -142
   MaxHp: 100

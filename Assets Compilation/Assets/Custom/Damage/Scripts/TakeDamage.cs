@@ -9,13 +9,15 @@ public class TakeDamage : ScriptableObject
 
 
 
-    public void CheckDamage(Collider DamageTaken)
+    public float CheckDamage(Collider DamageTaken)
     {
-        if (DamageTaken.tag == "Test")
-        {
+      
             Wepons weapon = DamageTaken.GetComponent<Wepons>();
             Debug.Log("DMG " + weapon.dmg);
 
-        }
+            float test = weapon.dmg; 
+
+            return test; 
+
     }
 }
