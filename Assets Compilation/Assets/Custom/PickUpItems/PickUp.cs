@@ -1,30 +1,74 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.PlayerLoop;
+using UnityEngine.UI;
 
 [CreateAssetMenu]
 public class PickUp : ScriptableObject
 {
 
-   
-        
 
-   public bool PickUpItem(Collider other)
+
+   public void PickUpItem(PickUpController pickUpController)
     {
-        Items item = other.GetComponent<Items>();
-        if (item != null)
-        {
-            Debug.Log("I am An item " + item.itemName);
+        //Pick up item and add to inventory
+       // pickUpController.inventory.addItem(targetItem);
 
-          //  Destroy(item);
-            return true;
+        if(pickUpController.targetItem != null)
+        {
+            Debug.Log("Picked up " + pickUpController.targetItem.itemName);
+
+            Destroy(pickUpController.targetItem.gameObject);
+            DeactivatePickUpUI(pickUpController);
+
+        }
+        else{
+            Debug.Log("doesnt exist " + pickUpController.targetItem.itemName);
+
+        }
+
+    }
+
+    public void DeactivatePickUpUI(PickUpController pickUpController)
+    {
+        pickUpController.pickUpUIState = false;
+        pickUpController.targetItem = null;
+        pickUpController.pickUpUI.gameObject.SetActive(false);
+
+
+        //    UI.gameObject.par(false);
+
+    }
+
+    public void ActivatePickUpUI(Collider other, PickUpController pickUpController)
+    {
+        //Activate Pick up UI if trigger an item from the ground
+       
+
+        if (other.CompareTag("Item"))
+        {
+            
+
+            Items item = other.GetComponent<Items>();
+
+            pickUpController.pickUpUIState = true;
+            pickUpController.targetItem = item;
+            pickUpController.pickUpUI.gameObject.SetActive(true);
+
+            Debug.Log(item.itemName);
+
+            //  Destroy(item);
+            
 
         }
         else
         {
-            return false;
-        }
-    }
+            DeactivatePickUpUI(pickUpController);
 
+        }
+
+        //  UI.gameObject.SetActive(true);
+
+    }
 }

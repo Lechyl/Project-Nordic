@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DummyInventory : MonoBehaviour
+[CreateAssetMenu]
+public class DummyInventory : ScriptableObject
 {
 
-    void addItem(Items item)
+    public void addItem(Items item)
     {
 
     }
