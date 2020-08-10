@@ -7,16 +7,16 @@ using UnityEngine;
 public class TakeDamage : ScriptableObject
 {
 
-
-
-    public float CheckDamage(Collider DamageTaken)
+    public void CheckDamage(Collider DamageTaken, Health health )
     {
-      
+        
             Wepons weapon = DamageTaken.GetComponent<Wepons>();
 
-            float test = weapon.dmg; 
+            float damage = weapon.dmg;
 
-            return test; 
+            health.CurrentHp -= damage;
 
+        
+ 
     }
 }
