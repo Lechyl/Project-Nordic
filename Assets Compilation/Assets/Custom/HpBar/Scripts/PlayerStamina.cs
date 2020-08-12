@@ -12,6 +12,8 @@ public class PlayerStamina : ScriptableObject
     public float MaxStamina;
     public float StaminaRegen;
 
+  
+
 
 
 
@@ -21,11 +23,14 @@ public class PlayerStamina : ScriptableObject
         if (other.tag == "Stamina")
         {
 
-            player.getHp.Heal(other, player.playerHealth);
+            player.getStamina.StaminaRegain(other, player.playerStamina);
 
-            player.healthBar.SetSize(player.playerHealth.CurrentHp / player.playerHealth.MaxHp);
+            player.staminaBar.SetSize(player.playerStamina.CurrentStamina / player.playerStamina.MaxStamina);
 
         }
 
     }
+
+   
+
 }

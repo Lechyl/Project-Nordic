@@ -20,20 +20,17 @@ public class Player : MonoBehaviour
     private void Start()
     {
         healthBar.SetSize(playerHealth.CurrentHp / playerHealth.MaxHp);
-        staminaBar.SetSize(playerStamina.CurrentStamina/ playerStamina.MaxStamina);
+        //staminaBar.SetSize(playerStamina.CurrentStamina/ playerStamina.MaxStamina);
 
     }
 
     private void Update()
     {
         // test for staminaBar
-        if (Input.GetMouseButtonDown(0))
+        if (playerStamina.CurrentStamina > 0)
         {
-            if (playerStamina.CurrentStamina > 0)
-            {
-                playerStamina.CurrentStamina--;
-                staminaBar.SetSize(playerStamina.CurrentStamina / playerStamina.MaxStamina); 
-            }
+            playerStamina.CurrentStamina -= playerStamina.StaminaRegen * Time.deltaTime;
+            staminaBar.SetSize(playerStamina.CurrentStamina / playerStamina.MaxStamina);
         }
     }
 
@@ -58,7 +55,7 @@ public class Player : MonoBehaviour
         // For healing
         playerHealth.HpRestore(other,this);
 
-        playerHealth.StaminaRestore(other, this); 
+        playerStamina.StaminaRestore(other, this); 
     }
 
 
