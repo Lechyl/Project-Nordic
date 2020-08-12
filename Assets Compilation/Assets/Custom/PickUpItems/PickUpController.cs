@@ -1,4 +1,5 @@
 ﻿
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,22 +10,22 @@ public class PickUpController : MonoBehaviour
     public PickUp pickUp;
     public Button pickUpUI;
     public DummyInventory inventory;
-
-
+    public Transform rightHand;
 
     public Items targetItem;
-
+    public int counter = 0;
     public bool pickUpUIState = false;
 
     void Start()
     {
-        
+       // itemInstantiate.items = new System.Collections.Generic.List<GameObject>();
+       // itemInstantiate = new ItemInstantiate();
     }
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKey(KeyCode.F) && pickUpUIState)
+        
+        if (Input.GetKeyDown(KeyCode.F) && pickUpUIState)
         {
             pickUp.PickUpItem(this);
         }
@@ -32,6 +33,7 @@ public class PickUpController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        
         pickUp.ActivatePickUpUI(other, this);
 
     }
