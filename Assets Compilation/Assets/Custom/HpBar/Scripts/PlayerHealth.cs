@@ -9,7 +9,7 @@ using UnityEngine;
 public class PlayerHealth : Health
 {
 
-    public void HpLostByWeapon(Collider other, Player player)
+    public void HpLostByWeapon(Collider other, PlayerController player)
     {
         if (other.tag == "Weapon")
         {
@@ -19,7 +19,7 @@ public class PlayerHealth : Health
         }
     }
 
-    public void HpRestore(Collider other, Player player)
+    public void HpRestore(Collider other, PlayerController player)
     {
 
         if (other.tag == "Healing")

@@ -17,7 +17,7 @@ public class PlayerStamina : ScriptableObject
 
 
 
-    public void StaminaRestore(Collider other, Player player)
+    public void StaminaRestore(Collider other, PlayerController player)
     {
 
         if (other.tag == "Stamina")

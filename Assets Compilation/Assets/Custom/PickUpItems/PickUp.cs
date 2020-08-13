@@ -34,9 +34,15 @@ public class PickUp : ScriptableObject
 
                     }
 
-                    //Attach Weapon on Players right hand
-                    pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
+                //Attach Weapon on Players right hand
+                    MeshCollider[] mc = pickUpController.targetItem.gameObject.GetComponents<MeshCollider>();
+                    foreach(MeshCollider mcs in mc)
+                    {
+                        mcs.isTrigger = false;
 
+                }
+                pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
+                    
                     pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
              //   }
 
@@ -73,11 +79,11 @@ public class PickUp : ScriptableObject
     public void ActivatePickUpUI(Collider other, PickUpController pickUpController)
     {
         //Activate Pick up UI if trigger an item from the ground
-       
 
+        Debug.Log(other.tag);
         if (other.CompareTag("Item"))
         {
-            
+            Debug.Log("item");
 
             Items item = other.GetComponent<Items>();
 
