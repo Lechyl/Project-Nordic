@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0279bd8473cf46d4e8c9a1a49759f55c, type: 3}
+  m_Name: Chase Scanner
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 1b2b215dd02761e4cb10346c94e6f9ea, type: 2}
+  - {fileID: 11400000, guid: 86c30770ee1de474f9c25c9acb1b58f0, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: a7df6610dc4c0854582027eca6d81737, type: 2}
+    trueState: {fileID: 11400000, guid: 53915ef0ef200204bbda5e9ea2f651bd, type: 2}
+    falseState: {fileID: 11400000, guid: 5b978c46d84549f459c78868843fb30f, type: 2}
+  sceneGizmoColor: {r: 1, g: 0, b: 0, a: 1}
