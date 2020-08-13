@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Stamina : Consumable
 {
-    public int RestoreStamina; 
+    public int increasedStamina; 
 }

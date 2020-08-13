@@ -5,51 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    //public FloatReference currentHp;
-    //public FloatReference maxHp;
-    //public FloatReference moveSpeed;
 
-    public PlayerHealth playerHealth;
-    public PlayerStamina playerStamina;
-    public TakeDamage takeDamage;
-    public GetHp getHp;
-    public GetStamina getStamina;
-    [SerializeField] public HealthBar healthBar;
-    [SerializeField] public StaminaBar staminaBar;
+    public PlayerHealth playerHealth; 
 
-    private void Start()
+  
+    // Update is called once per frame
+    void Update()
     {
-        healthBar.SetSize(playerHealth.CurrentHp / playerHealth.MaxHp);
-       
+        
+        if (Input.GetMouseButtonDown(0))
+            playerHealth.CurrentHp--; 
+        
 
     }
-
-    private void Update()
-    {
-        // test for staminaBar
-        if (playerStamina.CurrentStamina < 100)
-        {
-            playerStamina.CurrentStamina += playerStamina.StaminaRegen * Time.deltaTime;
-            staminaBar.SetSize(playerStamina.CurrentStamina / playerStamina.MaxStamina);
-        }
-    }
-
-
-
-
-
-
-    // must be on Enemy and player controller
-    private void OnTriggerEnter(Collider other)
-    {
-        // For taking dmg 
-        playerHealth.HpLostByWeapon(other,this);
-        // For healing
-        playerHealth.HpRestore(other,this);
-
-        playerStamina.StaminaRestore(other, this); 
-    }
-
-
-
 }
