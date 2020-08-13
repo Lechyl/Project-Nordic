@@ -20,29 +20,21 @@ public class Player : MonoBehaviour
     private void Start()
     {
         healthBar.SetSize(playerHealth.CurrentHp / playerHealth.MaxHp);
-        //staminaBar.SetSize(playerStamina.CurrentStamina/ playerStamina.MaxStamina);
+       
 
     }
 
     private void Update()
     {
         // test for staminaBar
-        if (playerStamina.CurrentStamina > 0)
+        if (playerStamina.CurrentStamina < 100)
         {
-            playerStamina.CurrentStamina -= playerStamina.StaminaRegen * Time.deltaTime;
+            playerStamina.CurrentStamina += playerStamina.StaminaRegen * Time.deltaTime;
             staminaBar.SetSize(playerStamina.CurrentStamina / playerStamina.MaxStamina);
         }
     }
 
 
-
-
-    //private void HpLostByWeapon(Collider other)
-    //{
-    //    takeDamage.CheckDamage(other, health); 
-
-    //    healthBar.SetSize(health.CurrentHp / health.MaxHp);
-    //}
 
 
 
