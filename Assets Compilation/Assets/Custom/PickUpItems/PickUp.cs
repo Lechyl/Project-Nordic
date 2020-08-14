@@ -41,10 +41,14 @@ public class PickUp : ScriptableObject
                         mcs.isTrigger = false;
 
                 }
-                pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
-                    
+                     pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
+                   
+
                     pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
-             //   }
+
+                pickUpController.targetItem.gameObject.transform.localRotation = Quaternion.identity;
+
+                //   }
 
             }
             else
