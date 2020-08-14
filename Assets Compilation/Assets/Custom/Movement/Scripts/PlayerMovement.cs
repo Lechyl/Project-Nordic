@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject ip;
 
     public PlayerStats playerStats;
 
@@ -20,7 +22,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1;
         controller = GetComponent<CharacterController>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     // Update is called once per frame
@@ -66,8 +72,39 @@ public class PlayerMovement : MonoBehaviour
         velocity.y += playerStats.gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
+
+        
+
+        Menu();
         
     }
+
+    //InventoryToggle ON/OFF
+      public void Menu()
+      {
+            if (Input.GetKeyDown(KeyCode.Tab))
+          {
+              GameObject ip = Inventory.instance.InventoryPanel;
+              if (!ip.activeSelf)
+              {
+                  ip.SetActive(true);
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                Time.timeScale = 0;
+            }
+              else
+              {
+                  ip.SetActive(false);
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+                Time.timeScale = 1;
+            }
+          }
+
+      }
+      
+
+
 }
 
 
