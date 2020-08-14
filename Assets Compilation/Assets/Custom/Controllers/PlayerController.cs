@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        healthBar.SetSize(playerHealth.CurrentHp / playerHealth.MaxHp);
+        healthBar.SetSize();
        
 
     }
@@ -27,10 +27,10 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // test for staminaBar
-        if (playerStamina.CurrentStamina < 100)
+        if (playerStamina.CurrentStamina > 0)
         {
-            playerStamina.CurrentStamina += playerStamina.StaminaRegen * Time.deltaTime;
-            staminaBar.SetSize(playerStamina.CurrentStamina / playerStamina.MaxStamina);
+            playerStamina.CurrentStamina -= playerStamina.StaminaRegen * Time.deltaTime;
+            staminaBar.SetSize();
         }
     }
 

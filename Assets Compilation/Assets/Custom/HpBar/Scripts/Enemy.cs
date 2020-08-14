@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        healthBar.SetSize(playerHealth.CurrentHp / playerHealth.MaxHp);
+        healthBar.SetSize();
         Debug.Log("SetSize"); 
 
     }
@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
             if (playerHealth.CurrentHp > 0)
             {
                 playerHealth.CurrentHp--;
-                healthBar.SetSize(playerHealth.CurrentHp / playerHealth.MaxHp); 
+                healthBar.SetSize(); 
             }
         }
     }

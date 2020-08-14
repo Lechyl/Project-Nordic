@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e7b9ab034a651e479d0e86b6e4e26b3, type: 3}
   m_Name: PlayerStamina
   m_EditorClassIdentifier: 
-  CurrentStamina: 100
+  CurrentStamina: -0.010319282
   MaxStamina: 100
   StaminaRegen: 1

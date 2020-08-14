@@ -15,7 +15,7 @@ public class PlayerHealth : Health
         {
             player.takeDamage.CheckDamage(other, player.playerHealth);
 
-            player.healthBar.SetSize(player.playerHealth.CurrentHp / player.playerHealth.MaxHp);
+            player.healthBar.SetSize();
         }
     }
 
@@ -26,7 +26,7 @@ public class PlayerHealth : Health
         {
             player.getHp.Heal(other, player.playerHealth); 
 
-            player.healthBar.SetSize(player.playerHealth.CurrentHp / player.playerHealth.MaxHp);
+            player.healthBar.SetSize();
 
         }
     }

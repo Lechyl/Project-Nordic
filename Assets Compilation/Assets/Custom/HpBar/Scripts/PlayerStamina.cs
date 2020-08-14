@@ -25,7 +25,7 @@ public class PlayerStamina : ScriptableObject
 
             player.getStamina.StaminaRegain(other, player.playerStamina);
 
-            player.staminaBar.SetSize(player.playerStamina.CurrentStamina / player.playerStamina.MaxStamina);
+            player.staminaBar.SetSize();
 
         }
 
