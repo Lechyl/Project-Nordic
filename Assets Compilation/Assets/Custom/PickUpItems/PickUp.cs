@@ -23,32 +23,36 @@ public class PickUp : ScriptableObject
             if (pickUpController.targetItem.GetComponent<Wepons>())
             {
 
-           //     if (gameObject != null)
-           //     {
 
-                    if(pickUpController.rightHand.childCount > 0)
+                //set trigger of weapon to true and false
+                MeshCollider mc = pickUpController.targetItem.gameObject.GetComponent<MeshCollider>();
+                mc.isTrigger = false;
+
+                if (pickUpController.rightHand.childCount > 0)
                     {
-                        //Detatch item under Player
+                        //Detatch item in Players right hand and reset items values to gamemode
                         pickUpController.rightHand.GetChild(0).position = new Vector3(pickUpController.rightHand.position.x,1, pickUpController.rightHand.position.z);
-                        pickUpController.rightHand.DetachChildren();
+                    pickUpController.rightHand.GetChild(0).tag = "Item";
+
+
+                    pickUpController.rightHand.GetChild(0).GetComponent<MeshCollider>().isTrigger = true;
+                    pickUpController.rightHand.DetachChildren();
 
                     }
 
+
+
                 //Attach Weapon on Players right hand
-                    MeshCollider[] mc = pickUpController.targetItem.gameObject.GetComponents<MeshCollider>();
-                    foreach(MeshCollider mcs in mc)
-                    {
-                        mcs.isTrigger = false;
 
-                }
+                pickUpController.targetItem.gameObject.tag = "Weapon";
+                    // Set Position for Item  to be equal to Righthand
                      pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
-                   
-
+                // equip Weapon to Player righthand
                     pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
+                    //Rotate Weapon
+                    pickUpController.targetItem.gameObject.transform.localRotation = Quaternion.identity;
 
-                pickUpController.targetItem.gameObject.transform.localRotation = Quaternion.identity;
-
-                //   }
+       
 
             }
             else

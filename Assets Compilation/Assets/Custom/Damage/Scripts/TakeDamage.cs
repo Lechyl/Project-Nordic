@@ -9,10 +9,10 @@ public class TakeDamage : ScriptableObject
 
     public void CheckDamage(Collider DamageTaken, Health health )
     {
-        
             Wepons weapon = DamageTaken.GetComponent<Wepons>();
 
             float damage = weapon.dmg;
+            Debug.Log(damage);
 
             health.CurrentHp -= damage;
 
