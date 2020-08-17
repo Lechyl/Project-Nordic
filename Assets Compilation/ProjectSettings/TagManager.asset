@@ -8,6 +8,8 @@ TagManager:
   - Weapon
   - Healing
   - Stamina
+  - Item
+  - Interact
   layers:
   - Default
   - TransparentFX
