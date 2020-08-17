@@ -6,15 +6,31 @@ using UnityEngine.UI;
 public class Interactable : MonoBehaviour
 {
 
-    public Button inventoryUI;
+    public GameObject inventoryUI;
     public Button interactUI;
-
+    
     //check if object is interactable
     private bool interactable = false;
     private GameObject currentInteractableObject;
-
+    private bool inventoryState = false;
     [SerializeField]
     private List<Items> droppedItems;
+
+
+
+    public void InventoryModeOn()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+    }
+
+    public void InventoryModeOff()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+    }
 
     public void Interact(List<Items> items)
     {
@@ -22,18 +38,28 @@ public class Interactable : MonoBehaviour
         droppedItems = items;
         interactUI.gameObject.SetActive(false);
 
-        inventoryUI.gameObject.SetActive(true);
-        interactable = false;
+        inventoryUI.SetActive(true);
+        // interactable = false;
+        inventoryState = true;
 
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && interactable)
+        if (Input.GetKeyDown(KeyCode.G) && interactable && !inventoryState)
         {
             //Convert object class to Drops because it's there where you can see the droppeditems generated from the chest/Enemy
             Drops drop = currentInteractableObject.GetComponent<Drops>();
             Interact(drop.droppedItems);
+            InventoryModeOn();
+
+}
+        else if(Input.GetKeyDown(KeyCode.G) && inventoryState)
+        {
+            InventoryModeOff();
+            inventoryUI.SetActive(false);
+            inventoryState = false;
+            
         }
     }
 
@@ -54,7 +80,8 @@ public class Interactable : MonoBehaviour
         if(other.tag == "Interact")
         {
             interactable = false;
-            inventoryUI.gameObject.SetActive(false);
+            inventoryState = false;
+            inventoryUI.SetActive(false);
             interactUI.gameObject.SetActive(false);
         }
 
