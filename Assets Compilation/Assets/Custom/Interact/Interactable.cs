@@ -7,6 +7,8 @@ public class Interactable : MonoBehaviour
 {
 
     public GameObject inventoryUI;
+    public GameObject PlayerInventoryUI;
+
     public Button interactUI;
     
     //check if object is interactable
@@ -20,6 +22,10 @@ public class Interactable : MonoBehaviour
 
     public void InventoryModeOn()
     {
+        PlayerInventoryUI.SetActive(true);
+        inventoryUI.SetActive(true);
+        inventoryState = true;
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;
@@ -27,6 +33,10 @@ public class Interactable : MonoBehaviour
 
     public void InventoryModeOff()
     {
+        PlayerInventoryUI.SetActive(false);
+
+        inventoryUI.SetActive(false);
+        inventoryState = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1;
@@ -38,15 +48,13 @@ public class Interactable : MonoBehaviour
         droppedItems = items;
         interactUI.gameObject.SetActive(false);
 
-        inventoryUI.SetActive(true);
         // interactable = false;
-        inventoryState = true;
 
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.G) && interactable && !inventoryState)
+        if (Input.GetKeyDown(KeyCode.F) && interactable && !inventoryState)
         {
             //Convert object class to Drops because it's there where you can see the droppeditems generated from the chest/Enemy
             Drops drop = currentInteractableObject.GetComponent<Drops>();
@@ -54,11 +62,10 @@ public class Interactable : MonoBehaviour
             InventoryModeOn();
 
 }
-        else if(Input.GetKeyDown(KeyCode.G) && inventoryState)
+        else if(Input.GetKeyDown(KeyCode.F) && inventoryState)
         {
             InventoryModeOff();
-            inventoryUI.SetActive(false);
-            inventoryState = false;
+
             
         }
     }
