@@ -83,17 +83,17 @@ public class PlayerMovement : MonoBehaviour
       public void Menu()
       {
             if (Input.GetKeyDown(KeyCode.Tab))
-          {
+            {
               GameObject ip = Inventory.instance.InventoryPanel;
               if (!ip.activeSelf)
               {
-                  ip.SetActive(true);
+                ip.SetActive(true);
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0;
             }
-              else
-              {
+                else
+                {
                   ip.SetActive(false);
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
