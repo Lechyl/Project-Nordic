@@ -11,14 +11,14 @@ public class PlayerMovement : MonoBehaviour
 
     public CharacterController controller;
     
-    public Transform groundCheck;
+    public Transform feetIsOnGround;
 
     public LayerMask groundMask;
 
 
     Vector3 velocity;
 
-    bool isGrounded;
+    public bool isGrounded;
 
     void Start()
     {
@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //Check if player is on ground
-        isGrounded = Physics.CheckSphere(groundCheck.position, playerStats.groundDistance, groundMask);
+        isGrounded = Physics.CheckSphere(feetIsOnGround.position, playerStats.groundDistance, groundMask);
 
         if(isGrounded && velocity.y < 0)
         {

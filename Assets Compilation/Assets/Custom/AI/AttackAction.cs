@@ -14,6 +14,7 @@ public class AttackAction : Action
     {
         RaycastHit hit;
 
+
         //draw Eyes look range
         Debug.DrawRay(controller.eyes.position, controller.eyes.forward.normalized * controller.enemyStats.attackRange, Color.red);
 
@@ -27,6 +28,13 @@ public class AttackAction : Action
               
             }
             
+        }
+        else
+        {
+            //If still in Chase state but can't see Player, rotate toward player position.
+
+            Vector3 rotateTo = new Vector3(controller.chaseTarget.position.x, controller.transform.position.y, controller.chaseTarget.position.z);
+            controller.transform.LookAt(rotateTo);
         }
     }
 }
