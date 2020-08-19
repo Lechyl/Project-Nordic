@@ -16,5 +16,5 @@ MonoBehaviour:
   SprintSpeed: 12
   gravity: -9.81
   jumpHeight: 3
-  groundDistance: 1
+  groundDistance: 0.2
   mouseSentitivity: 200
