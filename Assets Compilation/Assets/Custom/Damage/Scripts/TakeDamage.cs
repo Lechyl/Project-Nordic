@@ -16,7 +16,10 @@ public class TakeDamage : ScriptableObject
 
             health.CurrentHp -= damage;
 
-        
+            if (health.CurrentHp <= 0 )
+            {
+            health.death(); 
+            }
  
     }
 }
