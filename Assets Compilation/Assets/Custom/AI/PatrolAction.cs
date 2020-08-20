@@ -17,7 +17,7 @@ public class PatrolAction : Action
         //walk toward position
        
         controller.agent.isStopped = false;
-
+        controller.canDespawn = true;
 
         if (controller.agent.remainingDistance <= controller.agent.stoppingDistance && !controller.agent.pathPending)
         {

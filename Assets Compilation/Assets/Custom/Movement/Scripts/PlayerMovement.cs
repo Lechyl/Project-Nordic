@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
@@ -45,14 +46,14 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-        //Sprinting
+            //Sprinting
         if(Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
         }
         else
         {
-        //Walking
+            //Walking
             controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
         }
 
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         Menu();
         
     }
-
+    
     //InventoryToggle ON/OFF
       public void Menu()
       {

@@ -4481,6 +4481,7 @@ GameObject:
   - component: {fileID: 1403997304}
   - component: {fileID: 1403997303}
   - component: {fileID: 1403997302}
+  - component: {fileID: 1403997305}
   m_Layer: 0
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -4497,7 +4498,7 @@ BoxCollider:
   m_GameObject: {fileID: 1403997301}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -4523,6 +4524,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1403997305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403997301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 672197e06bedad54ebb9b5bf21cff05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerPosition: {fileID: 1725406666}
+  spawnLimit: 6
+  spawnUnits:
+  - unit: {fileID: 2083647007540648125, guid: 49cb0df4150ad454299d97cef7155fe9, type: 3}
+    spawnRate: 100
+  spawnRadius: 5
+  spawnState: 0
 --- !u!1001 &1425915123
 PrefabInstance:
   m_ObjectHideFlags: 0

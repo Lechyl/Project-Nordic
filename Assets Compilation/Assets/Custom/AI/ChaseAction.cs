@@ -17,6 +17,7 @@ public class ChaseAction : Action
         controller.agent.isStopped = false;
 
         controller.agent.destination = controller.chaseTarget.position;
+        controller.canDespawn = false;
         FaceTarget(controller);
     }
 

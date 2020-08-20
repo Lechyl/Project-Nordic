@@ -12,6 +12,7 @@ public class EnemyController : MonoBehaviour
     public Transform eyes;
     public List<Transform> wayPointList;
     public State remainState;
+    public bool canDespawn;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform chaseTarget;
@@ -21,6 +22,7 @@ public class EnemyController : MonoBehaviour
     
     void Awake()
     {
+        
         agent = GetComponent<NavMeshAgent>();
         SetupAI(true);
     }
@@ -42,6 +44,7 @@ public class EnemyController : MonoBehaviour
         if (aiActive)
         {
             agent.enabled = true;
+            canDespawn = true;
         }
         else
         {
