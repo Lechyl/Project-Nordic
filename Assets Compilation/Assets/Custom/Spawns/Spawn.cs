@@ -26,12 +26,13 @@ public class Spawn : MonoBehaviour
     private void Update()
     {
 
-
+        //Check if player is withhin distance of spawnpoint
         if ((Vector3.Distance(playerPosition.position, transform.position) <= spawnPointDistance))
         {
+            //check if spawnpoint haven't spawned yet
             if (!spawnState)
             {
-
+                //spawn
                 Debug.Log("Spawning");
                 spawnState = true;
                 Spawning();
@@ -41,14 +42,16 @@ public class Spawn : MonoBehaviour
         }
         else
         {
+            //check if units are alive
             if (unitsCounter > 0)
             {
+                //Timer
                 if (CheckIfCountDownElapsed(despawnTimer))
                 {
 
                     spawnState = false;
 
-
+                    //Destroy each Enemy if they can despawn. They can only despawn if they're not chasing Player or doing other things which require it dosn't despawn.
                     foreach (var item in spawnedUnits.ToList())
                     {
                         if (item.gameObject.GetComponent<EnemyController>().canDespawn)
@@ -81,6 +84,7 @@ public class Spawn : MonoBehaviour
             return false;
         }
     }
+
     private void Spawning()
     {
 
@@ -100,10 +104,10 @@ public class Spawn : MonoBehaviour
                     if (chance <= spawnUnits[i].spawnRate)
                     {
                         //Spawn units here
-                        Debug.Log("unit is spawning");
+                       
 
                         var spawning = (Vector3)Random.insideUnitSphere * spawnRadius;
-                        Debug.Log(spawning);
+                      
                         spawning += transform.position;
                         unitsCounter++;
 
@@ -112,7 +116,6 @@ public class Spawn : MonoBehaviour
                 }
             }
 
-            Debug.Log("spawned units " + unitsCounter);
         }
 
     }
