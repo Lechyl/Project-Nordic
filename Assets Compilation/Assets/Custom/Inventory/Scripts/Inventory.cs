@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using Assets.Custom.items.scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[CreateAssetMenu]
 public class Inventory : MonoBehaviour
 {
 
@@ -10,28 +12,43 @@ public class Inventory : MonoBehaviour
 
     public static Inventory instance;
 
-    public List<Items> list = new List<Items>();
+    public InventoryList inventoryList;
 
-    void updatePanelSlots()
+    public  int index = 0;
+
+    public void updatePanelSlots()
     {
-        int index = 0;
+        
         foreach (Transform child in InventoryPanel.transform)
         {
 
             InventorySlotController slot = child.GetComponent<InventorySlotController>();
-            if (index < list.Count)
+
+            if (index < inventoryList.inventoryItems.Count)
             {
-                slot.item = list[index];
-            }
+                //Debug.Log("slot "+index);
+                slot.stackItem = inventoryList.inventoryItems[index];
+                //Debug.Log("asd " + slot.item.itemName);
+
+                }
             else
             {
-                slot.item = null;
+                //  Debug.Log("slet slot " + index);
+                NoItem item = new NoItem();
+                InventoryStackItems inventoryStackItem = new InventoryStackItems()
+                {
+                    item = item,
+                    stack = 0
+                };
+                slot.stackItem = inventoryStackItem;
             }
 
             slot.updateInfo();
             //Update slot[index]'s name and icon
             index++;
         }
+        index = 0;
+      
     }
     void Start()
     {
@@ -39,17 +56,38 @@ public class Inventory : MonoBehaviour
         updatePanelSlots();
     }
 
-    public void Add(Items item)
+    public bool Add(Items item)
     {
-        if (list.Count < 20)
+        
+        if (inventoryList.inventoryItems.Count < 20)
         {
-            list.Add(item);
+            if(inventoryList.inventoryItems.Exists(x => x.item.itemName == item.itemName && x.item.stackLimit > x.stack))
+            {
+                inventoryList.inventoryItems.Find(x => x.item.itemName == item.itemName && x.item.stackLimit > x.stack).stack++;
+
+            }
+            else
+            {
+                InventoryStackItems inventoryStackItem = new InventoryStackItems()
+                {
+                    item = item,
+                    stack = 1
+                };
+                inventoryList.inventoryItems.Add(inventoryStackItem);
+
+            }
+            updatePanelSlots();
+
+            return true;
         }
-        updatePanelSlots();
+        else
+        {
+            return false;
+        }
     }
     public void Remove(Items item)
     {
-        list.Remove(item);
+      //  inventoryList.inventoryItems.Remove(item);
         updatePanelSlots();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Armor : Equiptment
 {
 
-    public int lvl;
-    public int armorHP;
+    public float lvl;
+    public float armorHP;
 
 }

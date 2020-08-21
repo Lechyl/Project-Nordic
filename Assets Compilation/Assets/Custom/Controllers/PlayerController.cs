@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public TakeDamage takeDamage;
     public GetHp getHp;
     public GetStamina getStamina;
+    public PlayerStats playerStats;
     [SerializeField] public HealthBar healthBar;
     [SerializeField] public StaminaBar staminaBar;
 

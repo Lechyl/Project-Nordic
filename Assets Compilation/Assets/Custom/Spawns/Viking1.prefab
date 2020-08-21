@@ -920,11 +920,16 @@ MonoBehaviour:
   wayPointList:
   - {fileID: 0}
   remainState: {fileID: 11400000, guid: 53915ef0ef200204bbda5e9ea2f651bd, type: 2}
+  aiHealth: {fileID: 11400000, guid: d372cda1a33661c4c9280f56a78e5cf9, type: 2}
+  takeDamage: {fileID: 11400000, guid: afdef3825fe7b7047bedbdf4d0ab8ec8, type: 2}
+  playerStats: {fileID: 11400000, guid: d88287f66da6d824c8899462bf02e90e, type: 2}
   canDespawn: 0
   agent: {fileID: 0}
   nextWayPoint: 0
   chaseTarget: {fileID: 0}
   stateTimeElapsed: 0
+  CurrentHp: 0
+  MaxHp: 0
 --- !u!195 &3066503359718276187
 NavMeshAgent:
   m_ObjectHideFlags: 0

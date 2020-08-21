@@ -12,19 +12,27 @@ public class EnemyController : MonoBehaviour
     public Transform eyes;
     public List<Transform> wayPointList;
     public State remainState;
+    public AiHealth aiHealth;
+    public TakeDamage takeDamage;
+    public PlayerStats playerStats;
     public bool canDespawn;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform chaseTarget;
     [HideInInspector] public float stateTimeElapsed;
     private bool aiActive;
+    public float CurrentHp;
+    public float MaxHp;
 
-    
     void Awake()
     {
-        
         agent = GetComponent<NavMeshAgent>();
         SetupAI(true);
+
+
+
+        // set weapon stats scaling with player level 
+
     }
     // Update is called once per frame
     void Update()
@@ -43,8 +51,13 @@ public class EnemyController : MonoBehaviour
         aiActive = aiActivationFromTankManager;
         if (aiActive)
         {
-            agent.enabled = true;
+
             canDespawn = true;
+            agent.enabled = true;
+            eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.Level;
+            eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.Level * 10;
+            MaxHp = MaxHp * playerStats.Level / 2;
+            CurrentHp = MaxHp;
         }
         else
         {
@@ -81,4 +94,12 @@ public class EnemyController : MonoBehaviour
     {
         stateTimeElapsed = 0;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        // For taking dmg 
+        // playerHealth.HpLostByWeapon(other, this);
+       aiHealth.HpLostByWeapon(other,this);
+    }
+
 }

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Wepons : Equiptment
 {
-    public int lvl;
+    public float lvl;
 
-    public int durability; 
-    public int maxDurability;
-    public int dmg;
-
+    public float durability; 
+    public float maxDurability;
+    public float dmg;
+    
 
 
 }

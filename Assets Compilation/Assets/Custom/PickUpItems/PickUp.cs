@@ -25,8 +25,7 @@ public class PickUp : ScriptableObject
 
 
                 //set trigger of weapon to true and false
-                MeshCollider mc = pickUpController.targetItem.gameObject.GetComponent<MeshCollider>();
-                mc.isTrigger = false;
+
 
                 if (pickUpController.rightHand.childCount > 0)
                     {
@@ -35,19 +34,18 @@ public class PickUp : ScriptableObject
                     pickUpController.rightHand.GetChild(0).tag = "Item";
 
 
-                    pickUpController.rightHand.GetChild(0).GetComponent<MeshCollider>().isTrigger = true;
                     pickUpController.rightHand.DetachChildren();
 
                     }
 
 
 
-                //Attach Weapon on Players right hand
+                    //Attach Weapon on Players right hand
 
-                pickUpController.targetItem.gameObject.tag = "Weapon";
+                    pickUpController.targetItem.gameObject.tag = "Weapon";
                     // Set Position for Item  to be equal to Righthand
                      pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
-                // equip Weapon to Player righthand
+                    // equip Weapon to Player righthand
                     pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
                     //Rotate Weapon
                     pickUpController.targetItem.gameObject.transform.localRotation = Quaternion.identity;
@@ -57,9 +55,11 @@ public class PickUp : ScriptableObject
             }
             else
             {
+               
                 //Item is not an Weapon, Destroy and add to inventory
-                pickUpController.inventory.addItem(pickUpController.targetItem);
-                Destroy(pickUpController.targetItem.gameObject);
+                if(Inventory.instance.Add(pickUpController.targetItem))
+                    pickUpController.targetItem.gameObject.SetActive(false);
+                //Destroy(pickUpController.targetItem.gameObject);
             }
 
 

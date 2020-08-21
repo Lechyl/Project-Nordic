@@ -5,7 +5,7 @@ using UnityEngine;
 public class Healing : Consumable
 {
     
-    public int hpRestore; 
+    public float hpRestore; 
 
 
 }
