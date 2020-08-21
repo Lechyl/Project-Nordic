@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0279bd8473cf46d4e8c9a1a49759f55c, type: 3}
+  m_Name: Alert Scanner
+  m_EditorClassIdentifier: 
+  actions: []
+  transitions:
+  - decision: {fileID: 11400000, guid: ffc78483a61be79409a17425f6bc4781, type: 2}
+    trueState: {fileID: 11400000, guid: 281b2fe0fb8bb0047acdec4d3ba076a1, type: 2}
+    falseState: {fileID: 11400000, guid: 53915ef0ef200204bbda5e9ea2f651bd, type: 2}
+  - decision: {fileID: 11400000, guid: a7df6610dc4c0854582027eca6d81737, type: 2}
+    trueState: {fileID: 11400000, guid: 1b90c58ec6b347d4fa7121c07ac470a5, type: 2}
+    falseState: {fileID: 11400000, guid: 53915ef0ef200204bbda5e9ea2f651bd, type: 2}
+  sceneGizmoColor: {r: 0.2265997, g: 0, b: 1, a: 1}
