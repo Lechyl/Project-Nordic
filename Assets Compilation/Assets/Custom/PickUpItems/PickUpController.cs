@@ -12,7 +12,7 @@ public class PickUpController : MonoBehaviour
     public DummyInventory inventory;
     public Transform rightHand;
 
-    public Items targetItem;
+    public GameObject targetItem;
     public int counter = 0;
     public bool pickUpUIState = false;
 

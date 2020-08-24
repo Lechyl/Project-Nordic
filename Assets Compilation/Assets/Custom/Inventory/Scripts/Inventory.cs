@@ -1,6 +1,7 @@
 ﻿using Assets.Custom.items.scripts;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,8 @@ public class Inventory : MonoBehaviour
 {
 
     public GameObject InventoryPanel;
+
+    public GameObject EquipmentUI;
 
     public static Inventory instance;
 
@@ -73,9 +76,11 @@ public class Inventory : MonoBehaviour
                     item = item,
                     stack = 1
                 };
+                Undo.RecordObject(inventoryList, "new item");
                 inventoryList.inventoryItems.Add(inventoryStackItem);
 
             }
+
             updatePanelSlots();
 
             return true;

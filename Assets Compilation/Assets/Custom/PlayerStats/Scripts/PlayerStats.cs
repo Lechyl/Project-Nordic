@@ -13,6 +13,9 @@ public class PlayerStats : ScriptableObject
 
 
     //Player stats
+    public float CurrentStamina;
+    public float MaxStamina;
+    public float StaminaRegen;
 
     //PlayerMovement
     public float WalkSpeed = 12f;

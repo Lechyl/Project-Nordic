@@ -28,9 +28,9 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // test for staminaBar
-        if (playerStamina.CurrentStamina > 0)
+        if (playerStats.CurrentStamina <= playerStats.MaxStamina)
         {
-            playerStamina.CurrentStamina -= playerStamina.StaminaRegen * Time.deltaTime;
+            playerStats.CurrentStamina += playerStats.StaminaRegen * Time.deltaTime;
             staminaBar.SetSize();
         }
     }

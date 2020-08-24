@@ -14,10 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryItems:
   - item: {fileID: 0}
-    stack: 10
-  - item: {fileID: 0}
-    stack: 10
-  - item: {fileID: 0}
-    stack: 10
-  - item: {fileID: 0}
-    stack: 1
+    stack: 4

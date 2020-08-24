@@ -18,9 +18,10 @@ public class PickUp : ScriptableObject
 
         if (pickUpController.targetItem != null)
         {
+            Items targetItem = pickUpController.targetItem.GetComponent<Items>();
 
             //I might waant to change GetComponent<Wepons>() to conparetag instead because It uses less ressources
-            if (pickUpController.targetItem.GetComponent<Wepons>())
+            if (targetItem is Wepons)
             {
 
 
@@ -57,7 +58,7 @@ public class PickUp : ScriptableObject
             {
                
                 //Item is not an Weapon, Destroy and add to inventory
-                if(Inventory.instance.Add(pickUpController.targetItem))
+                if(Inventory.instance.Add(targetItem))
                     pickUpController.targetItem.gameObject.SetActive(false);
                 //Destroy(pickUpController.targetItem.gameObject);
             }
@@ -93,13 +94,13 @@ public class PickUp : ScriptableObject
         {
             Debug.Log("item");
 
-            Items item = other.GetComponent<Items>();
+
 
             pickUpController.pickUpUIState = true;
-            pickUpController.targetItem = item;
+            pickUpController.targetItem = other.gameObject;
             pickUpController.pickUpUI.gameObject.SetActive(true);
 
-            Debug.Log(item.itemName);
+            //Debug.Log(item.itemName);
 
             //  Destroy(item);
             

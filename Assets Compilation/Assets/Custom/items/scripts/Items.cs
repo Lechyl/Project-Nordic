@@ -1,8 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu]
+
+[Serializable]
 public abstract class Items : MonoBehaviour
 {
     public string itemName;

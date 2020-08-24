@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
     public GameObject ip;
+
+    public GameObject ep;
 
     public PlayerStats playerStats;
 
@@ -15,6 +16,8 @@ public class PlayerMovement : MonoBehaviour
     public Transform feetIsOnGround;
 
     public LayerMask groundMask;
+
+    [SerializeField] public StaminaBar staminaBar;
 
 
     Vector3 velocity;
@@ -46,14 +49,29 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-            //Sprinting
+        //Sprinting
         if(Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
-            controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
+            if (playerStats.CurrentStamina > 1)
+            {
+                controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    playerStats.CurrentStamina = playerStats.CurrentStamina - 0.3f;
+                    staminaBar.SetSize();
+
+                }
+            }
+            else
+            {
+                //Walking
+                controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
+            }
         }
         else
         {
-            //Walking
+        //Walking
             controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
         }
 
@@ -79,33 +97,35 @@ public class PlayerMovement : MonoBehaviour
         Menu();
         
     }
-    
+
     //InventoryToggle ON/OFF
-      public void Menu()
-      {
-            if (Input.GetKeyDown(KeyCode.Tab))
+    public void Menu()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+             ip = Inventory.instance.InventoryPanel;
+             ep = Inventory.instance.EquipmentUI;
+                
+            if (!ip.activeSelf || !ep.activeSelf)
             {
-              GameObject ip = Inventory.instance.InventoryPanel;
-              if (!ip.activeSelf)
-              {
                 ip.SetActive(true);
+                ep.SetActive(true);
+
                 Cursor.lockState = CursorLockMode.None;
                 Cursor.visible = true;
                 Time.timeScale = 0;
             }
-                else
-                {
-                  ip.SetActive(false);
+            else
+            {
+                ip.SetActive(false);
+                ep.SetActive(false);
+
                 Cursor.lockState = CursorLockMode.Locked;
                 Cursor.visible = false;
                 Time.timeScale = 1;
             }
-          }
-
-      }
-      
-
-
+        }
+    }
 }
 
 
