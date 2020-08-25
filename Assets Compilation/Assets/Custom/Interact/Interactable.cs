@@ -57,7 +57,7 @@ public class Interactable : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && interactable && !inventoryState)
         {
             //Convert object class to Drops because it's there where you can see the droppeditems generated from the chest/Enemy
-            Drops drop = currentInteractableObject.GetComponent<Drops>();
+            Drops drop = currentInteractableObject.GetComponentInParent<Drops>();
             Interact(drop.droppedItems);
             InventoryModeOn();
 

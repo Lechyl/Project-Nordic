@@ -51,7 +51,8 @@ public class EnemyController : MonoBehaviour
         aiActive = aiActivationFromTankManager;
         if (aiActive)
         {
-
+            setRagdollRigidbodyState(true);
+            setRagdollColliderState(false);
             canDespawn = true;
             agent.enabled = true;
             eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.Level;
@@ -102,4 +103,39 @@ public class EnemyController : MonoBehaviour
        aiHealth.HpLostByWeapon(other,this);
     }
 
+
+    public void setRagdollRigidbodyState(bool state)
+    {
+        Rigidbody[] rigidbodies = transform.GetChild(1).GetComponentsInChildren<Rigidbody>();
+
+        foreach (var rigidbody in rigidbodies)
+        {
+            rigidbody.isKinematic = state;
+        }
+
+    }
+
+    public void setRagdollColliderState(bool state)
+    {
+        Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
+
+        foreach (var collider in colliders)
+        {
+            collider.enabled = state;
+           // collider.isTrigger = state;
+        }
+    }
+
+
+    public void setEnemyAsDeadState()
+    {
+        Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
+
+        foreach (var collider in colliders)
+        {
+             collider.enabled = true;
+            collider.isTrigger = true;
+            collider.tag = "Interact";
+        }
+    }
 }
