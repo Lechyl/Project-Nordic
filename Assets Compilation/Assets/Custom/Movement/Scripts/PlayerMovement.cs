@@ -106,7 +106,7 @@ public class PlayerMovement : MonoBehaviour
              ip = Inventory.instance.InventoryPanel;
              ep = Inventory.instance.EquipmentUI;
                 
-            if (!ip.activeSelf || !ep.activeSelf)
+            if (!ip.activeSelf && !ep.activeSelf)
             {
                 ip.SetActive(true);
                 ep.SetActive(true);
@@ -115,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
                 Cursor.visible = true;
                 Time.timeScale = 0;
             }
-            else
+            else if(ip.activeSelf && ep.activeSelf)
             {
                 ip.SetActive(false);
                 ep.SetActive(false);

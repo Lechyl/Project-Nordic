@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e88409087d07d43946f3531d41d0f5, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
-  Level: 12
+  Level: 1
   Exp: 1
   ExpToLevel: 1
-  CurrentStamina: 61.269592
+  CurrentStamina: 57.142624
   MaxStamina: 100
   StaminaRegen: 1
   WalkSpeed: 6

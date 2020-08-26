@@ -7,7 +7,7 @@ using UnityEngine;
 [Serializable]
 public abstract class Items : MonoBehaviour
 {
-    public string itemName;
+    public string itemName = "";
     public string discription;
     public Sprite icon;
     public bool hotbariable;

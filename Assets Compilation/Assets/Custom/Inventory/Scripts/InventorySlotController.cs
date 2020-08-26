@@ -13,10 +13,10 @@ public class InventorySlotController : MonoBehaviour
     }
 
 
-    public void updateInfo()
+    public void UpdateInfo()
     {
-        Text displayText = transform.GetChild(0).GetComponent<Text>();
-        Image displayImage = transform.GetChild(2).GetComponent<Image>();
+        Text displayText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
+        Image displayImage = transform.GetChild(0).GetChild(1).GetComponent<Image>();
        // Text displayText = transform.Find("Text").GetComponent<Text>();
        // Image displayImage = transform.Find("Image").GetComponent<Image>();
         if(!string.IsNullOrEmpty(stackItem.item.itemName))
@@ -28,6 +28,7 @@ public class InventorySlotController : MonoBehaviour
         }
         else
         {
+            Debug.Log("asd");
             displayText.text = "";
             displayImage.sprite = null;
             displayImage.color = Color.clear;

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0279bd8473cf46d4e8c9a1a49759f55c, type: 3}
   m_Name: DeadState
   m_EditorClassIdentifier: 
-  actions: []
+  actions:
+  - {fileID: 11400000, guid: 191f0d20ada79a64aa95da923a935f4e, type: 2}
   transitions: []
   sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

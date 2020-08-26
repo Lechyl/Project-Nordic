@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Interactable : MonoBehaviour
 {
 
-    public GameObject inventoryUI;
+    public GameObject EnemyinventoryUI;
     public GameObject PlayerInventoryUI;
 
     public Button interactUI;
@@ -23,7 +23,7 @@ public class Interactable : MonoBehaviour
     public void InventoryModeOn()
     {
         PlayerInventoryUI.SetActive(true);
-        inventoryUI.SetActive(true);
+        EnemyinventoryUI.SetActive(true);
         inventoryState = true;
 
         Cursor.lockState = CursorLockMode.None;
@@ -35,7 +35,7 @@ public class Interactable : MonoBehaviour
     {
         PlayerInventoryUI.SetActive(false);
 
-        inventoryUI.SetActive(false);
+        EnemyinventoryUI.SetActive(false);
         inventoryState = false;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -73,7 +73,7 @@ public class Interactable : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Interact")
+        if (other.CompareTag("Interact"))
         {
             currentInteractableObject = other.gameObject;
             interactUI.gameObject.SetActive(true);
@@ -84,11 +84,11 @@ public class Interactable : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
 
-        if(other.tag == "Interact")
+        if(other.CompareTag("Interact"))
         {
             interactable = false;
             inventoryState = false;
-            inventoryUI.SetActive(false);
+            EnemyinventoryUI.SetActive(false);
             interactUI.gameObject.SetActive(false);
         }
 

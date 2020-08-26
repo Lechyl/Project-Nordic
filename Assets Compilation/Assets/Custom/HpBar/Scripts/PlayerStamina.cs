@@ -11,7 +11,7 @@ public class PlayerStamina : ScriptableObject
     public void StaminaRestore(Collider other, PlayerController player)
     {
 
-        if (other.tag == "Stamina")
+        if (other.CompareTag("Stamina") )
         {
 
             player.getStamina.StaminaRegain(other, player.playerStats);

@@ -19,7 +19,7 @@ public class Inventory : MonoBehaviour
 
     public  int index = 0;
 
-    public void updatePanelSlots()
+    public void UpdatePanelSlots()
     {
         
         foreach (Transform child in InventoryPanel.transform)
@@ -37,32 +37,51 @@ public class Inventory : MonoBehaviour
             else
             {
                 //  Debug.Log("slet slot " + index);
-                NoItem item = new NoItem();
-                InventoryStackItems inventoryStackItem = new InventoryStackItems()
-                {
-                    item = item,
-                    stack = 0
-                };
-                slot.stackItem = inventoryStackItem;
+
+              //  slot.stackItem = inventoryStackItem;
             }
 
-            slot.updateInfo();
+            slot.UpdateInfo();
             //Update slot[index]'s name and icon
             index++;
         }
         index = 0;
       
     }
+
+    //here we instantiate inventory with saved data
+    //but for Demo we recreate inventory
+    void InstantiateInventory()
+    {
+        inventoryList.inventoryItems.Clear();
+
+
+        NoItem item = gameObject.AddComponent<NoItem>();
+        InventoryStackItems inventoryStackItem = new InventoryStackItems()
+        {
+            item = item,
+            stack = 0
+        };
+        for (int i = 0; i < 20; i++)
+        {
+            inventoryList.inventoryItems.Add(inventoryStackItem);
+
+        }
+        
+
+
+    }
     void Start()
     {
         instance = this;
-        updatePanelSlots();
+        InstantiateInventory();
+        UpdatePanelSlots();
     }
 
     public bool Add(Items item)
     {
         
-        if (inventoryList.inventoryItems.Count < 20)
+        if (inventoryList.inventoryItems.Count == 20)
         {
             if(inventoryList.inventoryItems.Exists(x => x.item.itemName == item.itemName && x.item.stackLimit > x.stack))
             {
@@ -77,11 +96,11 @@ public class Inventory : MonoBehaviour
                     stack = 1
                 };
                 Undo.RecordObject(inventoryList, "new item");
-                inventoryList.inventoryItems.Add(inventoryStackItem);
+                inventoryList.inventoryItems[inventoryList.inventoryItems.FindIndex(x => x.stack == 0)] = inventoryStackItem;
 
             }
 
-            updatePanelSlots();
+            UpdatePanelSlots();
 
             return true;
         }
@@ -92,7 +111,7 @@ public class Inventory : MonoBehaviour
     }
     public void Remove(Items item)
     {
-      //  inventoryList.inventoryItems.Remove(item);
-        updatePanelSlots();
+        //  inventoryList.inventoryItems.Remove(item);
+        UpdatePanelSlots();
     }
 }

@@ -16,6 +16,7 @@ public class EnemyController : MonoBehaviour
     public TakeDamage takeDamage;
     public PlayerStats playerStats;
     public bool canDespawn;
+    public float DespawnAfterDeathTime;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform chaseTarget;
@@ -51,8 +52,8 @@ public class EnemyController : MonoBehaviour
         aiActive = aiActivationFromTankManager;
         if (aiActive)
         {
-            setRagdollRigidbodyState(true);
-            setRagdollColliderState(false);
+            SetRagdollRigidbodyState(true);
+            SetRagdollColliderState(false);
             canDespawn = true;
             agent.enabled = true;
             eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.Level;
@@ -104,7 +105,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    public void setRagdollRigidbodyState(bool state)
+    public void SetRagdollRigidbodyState(bool state)
     {
         Rigidbody[] rigidbodies = transform.GetChild(1).GetComponentsInChildren<Rigidbody>();
 
@@ -115,7 +116,7 @@ public class EnemyController : MonoBehaviour
 
     }
 
-    public void setRagdollColliderState(bool state)
+    public void SetRagdollColliderState(bool state)
     {
         Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
 
@@ -127,7 +128,7 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    public void setEnemyAsDeadState()
+    public void SetEnemyAsDeadState()
     {
         Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
 

@@ -22,14 +22,15 @@ public class DeadAction : Action
         {
             controller.currentState = deadState;
 
+            controller.canDespawn = true;
+            controller.SetupAI(false);
 
             controller.eyes.GetChild(0).gameObject.SetActive(false);
             controller.gameObject.GetComponent<BoxCollider>().enabled = false;
-            controller.setRagdollRigidbodyState(false);
-            controller.setRagdollColliderState(true);
-            controller.SetupAI(false);
+            controller.SetRagdollRigidbodyState(false);
+            controller.SetRagdollColliderState(true);
 
-            Coroutine.instance.StartCoroutine(waiter(controller));
+            Coroutine.instance.StartCoroutine(Waiter(controller));
 
 
 
@@ -37,12 +38,20 @@ public class DeadAction : Action
 
     }
 
-    private IEnumerator  waiter(EnemyController controller)
+    private IEnumerator  Waiter(EnemyController controller)
     {
         yield return new WaitForSecondsRealtime(2);
 
-        controller.canDespawn = true;
-        controller.setRagdollRigidbodyState(true);
-        controller.setEnemyAsDeadState();
+        controller.SetRagdollRigidbodyState(true);
+        controller.SetEnemyAsDeadState();
+
+        DespawnAfterdeath(controller);
+    }
+
+
+    private void DespawnAfterdeath(EnemyController controller)
+    {
+
+        Destroy(controller.gameObject, controller.DespawnAfterDeathTime);
     }
 }
