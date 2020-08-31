@@ -54,13 +54,18 @@ public class PlayerMovement : MonoBehaviour
         {
             if (playerStats.CurrentStamina > 1)
             {
-                controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
 
                 if (Input.GetKey(KeyCode.W))
                 {
+                    controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
                     playerStats.CurrentStamina = playerStats.CurrentStamina - 0.3f;
                     staminaBar.SetSize();
 
+                }
+                else
+                {
+                    //Walking
+                    controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
                 }
             }
             else

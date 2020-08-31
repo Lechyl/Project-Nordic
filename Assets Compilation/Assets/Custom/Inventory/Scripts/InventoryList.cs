@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using Assets.Custom.items.scripts;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
@@ -8,11 +10,17 @@ public class InventoryList : ScriptableObject
 {
     public List<InventoryStackItems> inventoryItems;
 
-    public void Replace(ReplaceItem target, ReplaceItem you)
+    public void Replace(ReplaceItem to, ReplaceItem from)
     {
-        inventoryItems[you.slot] = target.item;
-        inventoryItems[target.slot] = you.item;
+        inventoryItems[from.slot] = to.item;
+        inventoryItems[to.slot] = from.item;
 
     }
+
+    public int CountItemsInInventory()
+    {
+        return inventoryItems.Count(x => x.item.GetType() != typeof(NoItem));
+    }
+
 
 }

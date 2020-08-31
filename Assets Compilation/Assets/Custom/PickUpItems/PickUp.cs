@@ -89,10 +89,8 @@ public class PickUp : ScriptableObject
     {
         //Activate Pick up UI if trigger an item from the ground
 
-        Debug.Log(other.tag);
         if (other.CompareTag("Item"))
         {
-            Debug.Log("item");
 
 
 

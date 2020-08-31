@@ -8,7 +8,7 @@ public class Interactable : MonoBehaviour
 
     public GameObject EnemyinventoryUI;
     public GameObject PlayerInventoryUI;
-
+    public EnemyInventoryList enemyInventoryList;
     public Button interactUI;
     
     //check if object is interactable
@@ -46,6 +46,11 @@ public class Interactable : MonoBehaviour
     {
         //here we have to put the items from chest/npc to an Inventory where we can take items from to our inventory #Not Implenmented
         droppedItems = items;
+        foreach (var item in droppedItems)
+        {
+            EnemyInventory.instance.Add(item);
+
+        }
         interactUI.gameObject.SetActive(false);
 
         // interactable = false;

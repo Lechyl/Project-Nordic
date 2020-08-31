@@ -23,7 +23,6 @@ public class DeadAction : Action
             controller.currentState = deadState;
 
             controller.canDespawn = true;
-            controller.SetupAI(false);
 
             controller.eyes.GetChild(0).gameObject.SetActive(false);
             controller.gameObject.GetComponent<BoxCollider>().enabled = false;
@@ -40,7 +39,10 @@ public class DeadAction : Action
 
     private IEnumerator  Waiter(EnemyController controller)
     {
-        yield return new WaitForSecondsRealtime(2);
+        controller.SetupAI(false);
+
+        yield return new WaitForSecondsRealtime(5);
+
 
         controller.SetRagdollRigidbodyState(true);
         controller.SetEnemyAsDeadState();

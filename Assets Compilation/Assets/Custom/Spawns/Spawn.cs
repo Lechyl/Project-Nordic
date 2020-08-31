@@ -33,7 +33,6 @@ public class Spawn : MonoBehaviour
             if (!spawnState)
             {
                 //spawn
-                Debug.Log("Spawning");
                 spawnState = true;
                 Spawning();
             }
@@ -109,9 +108,10 @@ public class Spawn : MonoBehaviour
                         var spawning = (Vector3)Random.insideUnitSphere * spawnRadius;
                       
                         spawning += transform.position;
+                        spawning.y = 1;
                         unitsCounter++;
 
-                        spawnedUnits.Add(Instantiate(spawnUnits[i].unit, spawning, transform.rotation));
+                        spawnedUnits.Add(Instantiate(spawnUnits[i].unit, spawning, transform.rotation,transform));
                     }
                 }
             }

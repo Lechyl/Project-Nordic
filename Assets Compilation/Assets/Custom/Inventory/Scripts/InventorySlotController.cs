@@ -28,7 +28,6 @@ public class InventorySlotController : MonoBehaviour
         }
         else
         {
-            Debug.Log("asd");
             displayText.text = "";
             displayImage.sprite = null;
             displayImage.color = Color.clear;

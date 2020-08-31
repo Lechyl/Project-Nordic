@@ -81,7 +81,7 @@ public class Inventory : MonoBehaviour
     public bool Add(Items item)
     {
         
-        if (inventoryList.inventoryItems.Count == 20)
+        if (inventoryList.inventoryItems.Count == 20 && item.GetType() != typeof(NoItem))
         {
             if(inventoryList.inventoryItems.Exists(x => x.item.itemName == item.itemName && x.item.stackLimit > x.stack))
             {
@@ -99,15 +99,16 @@ public class Inventory : MonoBehaviour
                 inventoryList.inventoryItems[inventoryList.inventoryItems.FindIndex(x => x.stack == 0)] = inventoryStackItem;
 
             }
-
+            
             UpdatePanelSlots();
-
+            Debug.Log("items in slot "+inventoryList.CountItemsInInventory());
             return true;
         }
         else
         {
             return false;
         }
+        
     }
     public void Remove(Items item)
     {

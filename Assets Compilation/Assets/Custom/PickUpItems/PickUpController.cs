@@ -33,13 +33,11 @@ public class PickUpController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter");
         pickUp.ActivatePickUpUI(other, this);
 
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
 
         //Debug.Log("no " +other.gameObject);
         pickUp.DeactivatePickUpUI(this);

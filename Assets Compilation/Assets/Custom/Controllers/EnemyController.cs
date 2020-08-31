@@ -17,6 +17,8 @@ public class EnemyController : MonoBehaviour
     public PlayerStats playerStats;
     public bool canDespawn;
     public float DespawnAfterDeathTime;
+    public float timeForNewPath;
+    public bool inCoRoutine = false;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform chaseTarget;

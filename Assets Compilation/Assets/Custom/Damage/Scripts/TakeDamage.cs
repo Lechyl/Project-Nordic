@@ -12,7 +12,6 @@ public class TakeDamage : ScriptableObject
             Wepons weapon = DamageTaken.GetComponent<Wepons>();
 
             float damage = weapon.dmg;
-            Debug.Log(damage);
 
             health.CurrentHp -= damage;
 
@@ -27,7 +26,6 @@ public class TakeDamage : ScriptableObject
         Wepons weapon = DamageTaken.GetComponent<Wepons>();
 
         float damage = weapon.dmg;
-        Debug.Log(damage);
 
         enemyController.CurrentHp -= damage;
 
