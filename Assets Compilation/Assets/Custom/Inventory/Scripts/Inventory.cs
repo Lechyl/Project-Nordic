@@ -106,7 +106,6 @@ public class Inventory : MonoBehaviour
             }
             
             UpdatePanelSlots();
-            Debug.Log("items in slot "+inventoryList.CountItemsInInventory());
             return true;
         }
         else
@@ -117,61 +116,14 @@ public class Inventory : MonoBehaviour
     }
     public void Remove(Items item)
     {
-        //  inventoryList.inventoryItems.Remove(item);
         UpdatePanelSlots();
     }
 
     //################################################################################################### EQUIPMENT ####################################################################################
 
-    public void UpdateEquiptmentSlot()
-    {
-        // equipmentUI.transform.GetChild(0); 
-        Debug.Log("Osd " + inventoryList.inventoryItems[0].item.GetType());
 
-         equipmentUI.transform.GetChild(0).GetChild(0).GetComponent<InventorySlotController>().stackItem.item = equipmentList.head;
-         Debug.Log("O1 " + inventoryList.inventoryItems[0].item.GetType());
-
-         equipmentUI.transform.GetChild(0).GetChild(0).GetComponent<InventorySlotController>().UpdateInfo();
-
-         Debug.Log("O2 " + inventoryList.inventoryItems[0].item.GetType());
-
-         equipmentUI.transform.GetChild(0).GetChild(1).GetComponent<InventorySlotController>().stackItem.item = equipmentList.breastplate;
-         equipmentUI.transform.GetChild(0).GetChild(1).GetComponent<InventorySlotController>().UpdateInfo();
-
-         equipmentUI.transform.GetChild(0).GetChild(2).GetComponent<InventorySlotController>().stackItem.item = equipmentList.legs;
-         equipmentUI.transform.GetChild(0).GetChild(2).GetComponent<InventorySlotController>().UpdateInfo();
-
-         equipmentUI.transform.GetChild(0).GetChild(3).GetComponent<InventorySlotController>().stackItem.item = equipmentList.boots;
-         equipmentUI.transform.GetChild(0).GetChild(3).GetComponent<InventorySlotController>().UpdateInfo();
-
-         equipmentUI.transform.GetChild(0).GetChild(4).GetComponent<InventorySlotController>().stackItem.item = equipmentList.Wepons;
-         equipmentUI.transform.GetChild(0).GetChild(4).GetComponent<InventorySlotController>().UpdateInfo();
-         
-    }
         public void UpdateEquiptmentSlot(System.Type type)
     {
-        // equipmentUI.transform.GetChild(0); 
-        Debug.Log("Osd " + inventoryList.inventoryItems[0].item.GetType());
-
-        /* equipmentUI.transform.GetChild(0).GetChild(0).GetComponent<InventorySlotController>().stackItem.item = equipmentList.head;
-         Debug.Log("O1 " + inventoryList.inventoryItems[0].item.GetType());
-
-         equipmentUI.transform.GetChild(0).GetChild(0).GetComponent<InventorySlotController>().UpdateInfo();
-
-         Debug.Log("O2 " + inventoryList.inventoryItems[0].item.GetType());
-
-         equipmentUI.transform.GetChild(0).GetChild(1).GetComponent<InventorySlotController>().stackItem.item = equipmentList.breastplate;
-         equipmentUI.transform.GetChild(0).GetChild(1).GetComponent<InventorySlotController>().UpdateInfo();
-
-         equipmentUI.transform.GetChild(0).GetChild(2).GetComponent<InventorySlotController>().stackItem.item = equipmentList.legs;
-         equipmentUI.transform.GetChild(0).GetChild(2).GetComponent<InventorySlotController>().UpdateInfo();
-
-         equipmentUI.transform.GetChild(0).GetChild(3).GetComponent<InventorySlotController>().stackItem.item = equipmentList.boots;
-         equipmentUI.transform.GetChild(0).GetChild(3).GetComponent<InventorySlotController>().UpdateInfo();
-
-         equipmentUI.transform.GetChild(0).GetChild(4).GetComponent<InventorySlotController>().stackItem.item = equipmentList.Wepons;
-         equipmentUI.transform.GetChild(0).GetChild(4).GetComponent<InventorySlotController>().UpdateInfo();
-         */
 
 
         foreach (Transform child in equipmentUI.transform.GetChild(0))
@@ -234,7 +186,6 @@ public class Inventory : MonoBehaviour
 
             slot.UpdateInfo();
         }
-        Debug.Log("O "+inventoryList.inventoryItems[0].item.GetType());
     }
 
     void InstantiateEquipment()
@@ -258,7 +209,6 @@ public class Inventory : MonoBehaviour
 
     public void ReplaceEquiptment(ReplaceEquiptment to, ReplaceItem from)
     {
-        Debug.Log("Whatsup " + from.item.item.GetType());
 
         inventoryList.inventoryItems[from.slot] = to.item;
 
@@ -271,52 +221,30 @@ public class Inventory : MonoBehaviour
         if (to.type == typeof(Head))
         {
             equipmentList.head = from.item.item;
-            //equipmentUI.transform.GetChild(0).GetChild(0).GetComponent<InventorySlotController>().stackItem.item = equipmentList.head;
-            //equipmentUI.transform.GetChild(0).GetChild(0).GetComponent<InventorySlotController>().UpdateInfo();
-            Debug.Log("s " + equipmentList.breastplate.itemName);
-            Debug.Log("a " + equipmentList.legs.itemName);
-            Debug.Log("d " + equipmentList.boots.itemName);
-            Debug.Log("l " + equipmentList.Wepons.itemName);
+
+
 
 
         }
         else if (to.type == typeof(Breastplate))
         {
-            Debug.Log("NOT HERE !!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             equipmentList.breastplate = from.item.item;
-           // equipmentUI.transform.GetChild(0).GetChild(1).GetComponent<InventorySlotController>().stackItem.item = equipmentList.breastplate;
-           // equipmentUI.transform.GetChild(0).GetChild(1).GetComponent<InventorySlotController>().UpdateInfo();
         }
         else if (to.type == typeof(Legs))
         {
             equipmentList.legs = from.item.item;
-           // equipmentUI.transform.GetChild(0).GetChild(2).GetComponent<InventorySlotController>().stackItem.item = equipmentList.legs;
-           // equipmentUI.transform.GetChild(0).GetChild(2).GetComponent<InventorySlotController>().UpdateInfo();
+
         }
         else if (to.type == typeof(Boots))
         {
             equipmentList.boots = from.item.item;
-           // equipmentUI.transform.GetChild(0).GetChild(3).GetComponent<InventorySlotController>().stackItem.item = equipmentList.boots;
-            //equipmentUI.transform.GetChild(0).GetChild(3).GetComponent<InventorySlotController>().UpdateInfo();
+
         }
         else if (to.type == typeof(Wepons))
         {
             equipmentList.Wepons = from.item.item;
-            //equipmentUI.transform.GetChild(0).GetChild(4).GetComponent<InventorySlotController>().stackItem.item = equipmentList.Wepons;
-          //  equipmentUI.transform.GetChild(0).GetChild(4).GetComponent<InventorySlotController>().UpdateInfo();
+
         }
-
-
-
-
-        Debug.Log("" + inventoryList.inventoryItems[0].item.GetType());
-
-
-
-
-
-
-        Debug.Log("L " + inventoryList.inventoryItems[0].item.GetType());
 
         UpdateEquiptmentSlot(from.item.item.GetType());
         UpdatePanelSlots();
