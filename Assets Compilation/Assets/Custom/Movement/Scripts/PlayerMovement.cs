@@ -109,7 +109,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
              ip = Inventory.instance.InventoryPanel;
-             ep = Inventory.instance.EquipmentUI;
+             ep = Inventory.instance.equipmentUI;
                 
             if (!ip.activeSelf && !ep.activeSelf)
             {

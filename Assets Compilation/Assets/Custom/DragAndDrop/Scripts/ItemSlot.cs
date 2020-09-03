@@ -16,7 +16,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
         if (eventData.pointerDrag != null)
         {
-        Debug.Log("and his name was : " + this.gameObject.GetComponent<InventorySlotController>().stackItem.item.itemName);
+            //eventData.pointerDrag.
+            Debug.Log("and his name was : " + this.gameObject.GetComponent<InventorySlotController>().stackItem.item.itemName);
             ReplaceItem first = new ReplaceItem()
             {
 
@@ -32,6 +33,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 slot = int.Parse(eventData.pointerDrag.transform.parent.name)
 
             };
+           
 
             Inventory.instance.inventoryList.Replace(first, second);
 
@@ -41,6 +43,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler
             Sprite oldImg = transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite;
             Color oldColor = transform.GetChild(0).GetChild(1).GetComponent<Image>().color;
             InventoryStackItems stackitem = this.gameObject.GetComponent<InventorySlotController>().stackItem;
+
+            //Inventory.instance.inventoryList.inventoryItems[Inventory.instance.inventoryList.inventoryItems.FindIndex(x => x.item)]; 
+            //Inventory.instance.inventoryList.inventoryItems[InventoryList]; 
 
             //Override this Gameobject StackItem
             transform.GetChild(0).GetChild(0).GetComponent<Text>().text = eventData.pointerDrag.GetComponentInChildren<Text>().text;
@@ -63,4 +68,6 @@ public class ItemSlot : MonoBehaviour, IDropHandler
 
         }
     }
+
+   
 }
