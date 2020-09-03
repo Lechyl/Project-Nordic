@@ -79,7 +79,7 @@ public class Inventory : MonoBehaviour
         InstantiateInventory();
         UpdatePanelSlots();
         InstantiateEquipment();
-        UpdateEquiptmentSlot();
+        UpdateEquiptmentSlot(typeof(NoItem));
 
     }
 
@@ -148,7 +148,7 @@ public class Inventory : MonoBehaviour
          equipmentUI.transform.GetChild(0).GetChild(4).GetComponent<InventorySlotController>().UpdateInfo();
          
     }
-        public void UpdateEquiptmentSlot(int i,InventoryStackItems item, System.Type type)
+        public void UpdateEquiptmentSlot(System.Type type)
     {
         // equipmentUI.transform.GetChild(0); 
         Debug.Log("Osd " + inventoryList.inventoryItems[0].item.GetType());
@@ -176,45 +176,64 @@ public class Inventory : MonoBehaviour
 
         foreach (Transform child in equipmentUI.transform.GetChild(0))
         {
-         
+
             InventorySlotController slot = child.GetComponent<InventorySlotController>();
 
-            if (index < inventoryList.inventoryItems.Count)
+            if (slot.name == "HeadSlot" && type == typeof(Head))
             {
-
-
-                if ( slot.name == "HeadSlot" && type == typeof(Head))
+                InventoryStackItems newItem = new InventoryStackItems()
                 {
-
-                    slot.stackItem = item;
-                    slot.UpdateInfo();
-
-                    break;
-                }
-                else if (slot.name == "BreastplateSlot" && type == typeof(Breastplate))
-                {
-                    slot.stackItem = item;
-                    slot.UpdateInfo();
-                    break;
-                }
-          
-
-                //Debug.Log("slot "+index);
+                    item = equipmentList.head,
+                    stack = 1
+                };
+                slot.stackItem = newItem;
 
 
             }
-            else
+            else if (slot.name == "BreastplateSlot" && type == typeof(Breastplate))
             {
-                //  Debug.Log("slet slot " + index);
+                InventoryStackItems newItem = new InventoryStackItems()
+                {
+                    item = equipmentList.breastplate,
+                    stack = 1
+                };
+                slot.stackItem = newItem;
 
-                //  slot.stackItem = inventoryStackItem;
+            }
+            else if (slot.name == "LegsSlot" && type == typeof(Legs))
+            {
+
+                slot.stackItem.item = equipmentList.legs;
+
+            }
+            else if (slot.name == "BootsSlot" && type == typeof(Boots))
+            {
+
+                slot.stackItem.item = equipmentList.boots;
+                slot.stackItem.stack = 1;
+            }
+            else if (slot.name == "WeaponsSlot" && type == typeof(Wepons))
+            {
+
+                slot.stackItem.item = equipmentList.Wepons;
+                slot.stackItem.stack = 1;
+            }
+            else if (slot.name == "SheldSlot" && type == typeof(Wepons))
+            {
+
+                slot.stackItem.item = equipmentList.Wepons;
+                slot.stackItem.stack = 1;
+            }
+            else if (type == typeof(NoItem))
+            {
+                Items item = gameObject.AddComponent<NoItem>();
+                slot.stackItem.item = item;
+                slot.stackItem.stack = 0;
+
             }
 
-            //Update slot[index]'s name and icon
-
+            slot.UpdateInfo();
         }
-        
-
         Debug.Log("O "+inventoryList.inventoryItems[0].item.GetType());
     }
 
@@ -299,7 +318,7 @@ public class Inventory : MonoBehaviour
 
         Debug.Log("L " + inventoryList.inventoryItems[0].item.GetType());
 
-        UpdateEquiptmentSlot(from.slot,from.item,from.item.item.GetType());
+        UpdateEquiptmentSlot(from.item.item.GetType());
         UpdatePanelSlots();
 
 
