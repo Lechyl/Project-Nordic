@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Custom.items.scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,7 @@ public class Interactable : MonoBehaviour
     private GameObject currentInteractableObject;
     private bool inventoryState = false;
     [SerializeField]
-    private List<Items> droppedItems;
+    //private List<Items> droppedItems;
 
 
 
@@ -33,8 +34,9 @@ public class Interactable : MonoBehaviour
 
     public void InventoryModeOff()
     {
+        List<Items> remainingItems = EnemyInventory.instance.inventoryList.inventory.FindAll(x => x.GetType() != typeof(NoItem));
+        currentInteractableObject.GetComponentInParent<Drops>().droppedItems = remainingItems;
         PlayerInventoryUI.SetActive(false);
-
         EnemyinventoryUI.SetActive(false);
         inventoryState = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -45,12 +47,13 @@ public class Interactable : MonoBehaviour
     public void Interact(List<Items> items)
     {
         //here we have to put the items from chest/npc to an Inventory where we can take items from to our inventory #Not Implenmented
-        droppedItems = items;
-        foreach (var item in droppedItems)
-        {
-            EnemyInventory.instance.Add(item);
+           // droppedItems = items;
+       // foreach (var item in droppedItems)
+     //   {
+             EnemyInventory.instance.ReplaceInventory(items);
+          //enemyInventoryList.inventory = droppedItems;
 
-        }
+     //   }
         interactUI.gameObject.SetActive(false);
 
         // interactable = false;
@@ -66,7 +69,7 @@ public class Interactable : MonoBehaviour
             Interact(drop.droppedItems);
             InventoryModeOn();
 
-}
+        }
         else if(Input.GetKeyDown(KeyCode.F) && inventoryState)
         {
             InventoryModeOff();

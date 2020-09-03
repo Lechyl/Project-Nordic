@@ -41,7 +41,7 @@ public class DeadAction : Action
     {
         controller.SetupAI(false);
 
-        yield return new WaitForSecondsRealtime(5);
+        yield return new WaitForSecondsRealtime(3);
 
 
         controller.SetRagdollRigidbodyState(true);

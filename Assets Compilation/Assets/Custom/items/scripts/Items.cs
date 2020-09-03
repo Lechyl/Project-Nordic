@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[Serializable]
 public abstract class Items : MonoBehaviour
 {
     public string itemName = "";

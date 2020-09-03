@@ -13,9 +13,31 @@ public class ChaseAction : Action
 
     private void Chase( EnemyController controller)
     {
-       // Debug.Log(controller.chaseTarget.position);
-        controller.agent.isStopped = false;
+        //Call close Allies
+        if (!controller.callCloseAllies)
+        {
+            controller.callCloseAllies = true;
 
+            Debug.Log("call firneds");
+
+            //Get Layer 9
+            int d = 1 << 9;
+            //Check for Friends inside a radius by using Layer
+            Collider[] collides = Physics.OverlapSphere(controller.transform.position, controller.callAlliesRadius, d, QueryTriggerInteraction.Collide);
+            if (collides.Length > 0)
+            {
+                foreach (var obj in collides)
+                {
+                    obj.gameObject.GetComponent<EnemyController>().chaseTarget = controller.chaseTarget;
+
+                    obj.gameObject.GetComponent<EnemyController>().currentState = controller.currentState;
+
+                }
+            }
+
+        }
+
+        controller.agent.isStopped = false;
         controller.agent.destination = controller.chaseTarget.position;
         controller.canDespawn = false;
         FaceTarget(controller);

@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     public float DespawnAfterDeathTime;
     public float timeForNewPath;
     public bool inCoRoutine = false;
+    public float callAlliesRadius;
+    [HideInInspector] public bool callCloseAllies = false;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public int nextWayPoint;
     [HideInInspector] public Transform chaseTarget;
@@ -82,6 +84,8 @@ public class EnemyController : MonoBehaviour
     {
         if(nextState != remainState)
         {
+            callCloseAllies = false;
+
             currentState = nextState;
             OnExitState();
 
@@ -109,36 +113,46 @@ public class EnemyController : MonoBehaviour
 
     public void SetRagdollRigidbodyState(bool state)
     {
-        Rigidbody[] rigidbodies = transform.GetChild(1).GetComponentsInChildren<Rigidbody>();
-
-        foreach (var rigidbody in rigidbodies)
+        if (agent != null)
         {
-            rigidbody.isKinematic = state;
+
+            Rigidbody[] rigidbodies = transform.GetChild(1).GetComponentsInChildren<Rigidbody>();
+
+            foreach (var rigidbody in rigidbodies)
+            {
+                rigidbody.isKinematic = state;
+            }
         }
 
     }
 
     public void SetRagdollColliderState(bool state)
     {
-        Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
-
-        foreach (var collider in colliders)
+        if (agent != null)
         {
-            collider.enabled = state;
-           // collider.isTrigger = state;
+            Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
+
+            foreach (var collider in colliders)
+            {
+                collider.enabled = state;
+                // collider.isTrigger = state;
+            }
         }
     }
 
 
     public void SetEnemyAsDeadState()
     {
-        Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
-
-        foreach (var collider in colliders)
+        if (agent != null)
         {
-             collider.enabled = true;
-            collider.isTrigger = true;
-            collider.tag = "Interact";
+            Collider[] colliders = transform.GetChild(1).GetComponentsInChildren<Collider>();
+
+            foreach (var collider in colliders)
+            {
+                collider.enabled = true;
+                collider.isTrigger = true;
+                collider.tag = "Interact";
+            }
         }
     }
 }

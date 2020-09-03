@@ -55,11 +55,11 @@ public class EnemyInventory : MonoBehaviour
 
     //here we instantiate inventory with saved data
     //but for Demo we recreate inventory
-    void InstantiateInventory()
+    void ResetInventoryPanel()
     {
         inventoryList.inventory.Clear();
 
-
+gameObject.AddComponent<NoItem>();
         NoItem item = gameObject.AddComponent<NoItem>();
 
         for (int i = 0; i < 20; i++)
@@ -74,14 +74,14 @@ public class EnemyInventory : MonoBehaviour
     void Start()
     {
         instance = this;
-        InstantiateInventory();
+        ResetInventoryPanel();
         UpdatePanelSlots();
     }
 
-    public bool Add(Items item)
+    public bool ReplaceInventory(List<Items> newInventory)
     {
-
-        if (inventoryList.inventory.Count == 20)
+        ResetInventoryPanel();
+        if (inventoryList.inventory.Count == 20 && inventoryList.CountItemsInInventory() <= 20)
         {
             //if (inventoryList.inventory.Exists(x => x.itemName == item.itemName && x.item.stackLimit > x.stack))
            // {
@@ -95,8 +95,15 @@ public class EnemyInventory : MonoBehaviour
                   //  item = item,
                    // stack = 1
                // };
-                Undo.RecordObject(inventoryList, "new item");
+
+            foreach(var item in newInventory)
+            {
+                Undo.RecordObject(item, "new item");
+
                 inventoryList.inventory[inventoryList.inventory.FindIndex(x => x.itemName == "")] = item;
+
+            }
+            //inventoryList.inventory = newInventory;
 
             //}
 
@@ -112,6 +119,20 @@ public class EnemyInventory : MonoBehaviour
     public void Remove(Items item)
     {
         //  inventoryList.inventoryItems.Remove(item);
+        UpdatePanelSlots();
+    }
+
+    public Items GetItemFromInventory(int id)
+    {
+        return inventoryList.inventory[id];
+
+ 
+    }
+    public void DeleteItemFromInventory(int id)
+    {
+        NoItem noitem = gameObject.AddComponent<NoItem>();
+        inventoryList.inventory[id] = noitem;
+
         UpdatePanelSlots();
     }
 }

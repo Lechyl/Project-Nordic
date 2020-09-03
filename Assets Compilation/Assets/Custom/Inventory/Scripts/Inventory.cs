@@ -80,8 +80,9 @@ public class Inventory : MonoBehaviour
 
     public bool Add(Items item)
     {
-        
-        if (inventoryList.inventoryItems.Count == 20 && item.GetType() != typeof(NoItem))
+        EditorUtility.SetDirty(item);
+
+        if (inventoryList.inventoryItems.Count == 20 && inventoryList.CountItemsInInventory() < 20 && item.GetType() != typeof(NoItem))
         {
             if(inventoryList.inventoryItems.Exists(x => x.item.itemName == item.itemName && x.item.stackLimit > x.stack))
             {
@@ -95,7 +96,6 @@ public class Inventory : MonoBehaviour
                     item = item,
                     stack = 1
                 };
-                Undo.RecordObject(inventoryList, "new item");
                 inventoryList.inventoryItems[inventoryList.inventoryItems.FindIndex(x => x.stack == 0)] = inventoryStackItem;
 
             }

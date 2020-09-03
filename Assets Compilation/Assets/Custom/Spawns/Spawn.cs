@@ -14,14 +14,19 @@ public class Spawn : MonoBehaviour
     public float spawnRadius;
     public bool spawnState = false;
     public float despawnTimer;
+    public int spawnHeight;
     public int unitsCounter = 0;
 
     public float stateTimeElapsed;
     public List<GameObject> spawnedUnits;
 
+
+    private float checkSpawnCollisionRadius;
+
     private void Awake()
     {
         spawnedUnits = new List<GameObject>();
+        checkSpawnCollisionRadius = spawnHeight - 1;
     }
     private void Update()
     {
@@ -105,13 +110,19 @@ public class Spawn : MonoBehaviour
                         //Spawn units here
                        
 
-                        var spawning = (Vector3)Random.insideUnitSphere * spawnRadius;
-                      
-                        spawning += transform.position;
-                        spawning.y = 1;
-                        unitsCounter++;
+                        var spawnLocation = (Vector3)Random.insideUnitSphere * spawnRadius;
 
-                        spawnedUnits.Add(Instantiate(spawnUnits[i].unit, spawning, transform.rotation,transform));
+                        spawnLocation += transform.position;
+                        spawnLocation.y = spawnHeight;
+
+                        LayerMask mask = LayerMask.GetMask("Default");
+                      
+                        if (!Physics.CheckSphere(spawnLocation, checkSpawnCollisionRadius,mask))
+                        {
+                            spawnedUnits.Add(Instantiate(spawnUnits[i].unit, spawnLocation, transform.rotation, transform));
+                            unitsCounter++;
+
+                        }
                     }
                 }
             }

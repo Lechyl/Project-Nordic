@@ -49,7 +49,7 @@ public class RandomMovementAction : Action
 
     private void GetNewPath(EnemyController controller)
     {
-        if (controller.agent.enabled)
+        if (controller.agent != null && controller.agent.enabled)
             controller.agent.SetDestination(GetnewrandomPosition(controller));
 
     }
