@@ -163,3 +163,15 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     }
 }
+
+
+
+/*
+if(eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType() == typeof(Healing))
+{
+    if(!eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.name == "healingpotivf")
+    {
+
+    }
+}
+*/

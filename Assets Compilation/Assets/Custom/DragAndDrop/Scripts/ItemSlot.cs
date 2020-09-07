@@ -9,15 +9,11 @@ public class ItemSlot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
 
-        Debug.Log("gamer " + this.gameObject.GetComponent<InventorySlotController>().stackItem.item.itemName); 
-        Debug.Log("test test"+eventData.pointerDrag.GetComponentInChildren<Text>().text);
-        Debug.Log("and the name is : " + this.transform.name);
 
 
         if (eventData.pointerDrag != null)
         {
             //eventData.pointerDrag.
-            Debug.Log("and his name was : " + this.gameObject.GetComponent<InventorySlotController>().stackItem.item.itemName);
             ReplaceItem first = new ReplaceItem()
             {
 
