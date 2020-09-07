@@ -10,6 +10,8 @@ TagManager:
   - Stamina
   - Item
   - Interact
+  - PlayerWeapon
+  - EnemyWeapon
   layers:
   - Default
   - TransparentFX

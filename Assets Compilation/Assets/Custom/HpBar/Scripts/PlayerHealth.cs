@@ -11,7 +11,7 @@ public class PlayerHealth : Health
 
     public void HpLostByWeapon(Collider other, PlayerController player)
     {
-        if (other.CompareTag("Weapon"))
+        if (other.CompareTag("EnemyWeapon"))
         {
             player.takeDamage.CheckDamage(other, player.playerHealth);
 
