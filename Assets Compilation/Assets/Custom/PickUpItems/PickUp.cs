@@ -43,15 +43,16 @@ public class PickUp : ScriptableObject
 
                     //Attach Weapon on Players right hand
 
-                    pickUpController.targetItem.gameObject.tag = "Weapon";
+                    pickUpController.targetItem.gameObject.tag = "PlayerWeapon";
                     // Set Position for Item  to be equal to Righthand
                      pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
                     // equip Weapon to Player righthand
                     pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
                     //Rotate Weapon
-                    pickUpController.targetItem.gameObject.transform.localRotation = Quaternion.identity;
+                    pickUpController.targetItem.gameObject.transform.localEulerAngles = new Vector3(90, 0, 0);
+                    pickUpController.targetItem.gameObject.transform.localPosition = new Vector3(0, 0, 1);
 
-       
+
 
             }
             else
