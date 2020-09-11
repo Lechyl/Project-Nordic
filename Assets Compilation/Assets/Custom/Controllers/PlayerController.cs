@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     //public FloatReference currentHp;
     //public FloatReference maxHp;
     //public FloatReference moveSpeed;
-
     public PlayerHealth playerHealth;
     public PlayerStamina playerStamina;
     public TakeDamage takeDamage;
