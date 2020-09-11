@@ -58,7 +58,7 @@ public class Inventory : MonoBehaviour
         inventoryList.inventoryItems.Clear();
 
 
-        NoItem item = gameObject.AddComponent<NoItem>();
+        NoItem item = new NoItem();
         InventoryStackItems inventoryStackItem = new InventoryStackItems()
         {
             item = item,
@@ -178,7 +178,7 @@ public class Inventory : MonoBehaviour
             }
             else if (type == typeof(NoItem))
             {
-                Items item = gameObject.AddComponent<NoItem>();
+                Items item = new NoItem();
                 slot.stackItem.item = item;
                 slot.stackItem.stack = 0;
 
@@ -190,7 +190,7 @@ public class Inventory : MonoBehaviour
 
     void InstantiateEquipment()
     {
-        NoItem item = gameObject.AddComponent<NoItem>();
+        NoItem item = new NoItem();
         InventoryStackItems inventoryStackItems = new InventoryStackItems()
         {
             item = item,

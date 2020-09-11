@@ -32,10 +32,10 @@ public class PickUp : ScriptableObject
                     {
                         //Detatch item in Players right hand and reset items values to gamemode
                         pickUpController.rightHand.GetChild(0).position = new Vector3(pickUpController.rightHand.position.x,1, pickUpController.rightHand.position.z);
-                    pickUpController.rightHand.GetChild(0).tag = "Item";
+                        pickUpController.rightHand.GetChild(0).tag = "Item";
 
 
-                    pickUpController.rightHand.DetachChildren();
+                        pickUpController.rightHand.DetachChildren();
 
                     }
 
@@ -45,7 +45,7 @@ public class PickUp : ScriptableObject
 
                     pickUpController.targetItem.gameObject.tag = "PlayerWeapon";
                     // Set Position for Item  to be equal to Righthand
-                     pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
+                    pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
                     // equip Weapon to Player righthand
                     pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
                     //Rotate Weapon

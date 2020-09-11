@@ -59,8 +59,8 @@ public class EnemyInventory : MonoBehaviour
     {
         inventoryList.inventory.Clear();
 
-gameObject.AddComponent<NoItem>();
-        NoItem item = gameObject.AddComponent<NoItem>();
+        
+        NoItem item = new NoItem();
 
         for (int i = 0; i < 20; i++)
         {
@@ -130,7 +130,7 @@ gameObject.AddComponent<NoItem>();
     }
     public void DeleteItemFromInventory(int id)
     {
-        NoItem noitem = gameObject.AddComponent<NoItem>();
+        NoItem noitem = new NoItem();
         inventoryList.inventory[id] = noitem;
 
         UpdatePanelSlots();

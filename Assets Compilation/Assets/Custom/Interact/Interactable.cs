@@ -87,6 +87,13 @@ public class Interactable : MonoBehaviour
             interactUI.gameObject.SetActive(true);
             interactable = true;
         }
+        // Work in progress 
+        if (other.CompareTag("NPC"))
+        {
+            currentInteractableObject = other.gameObject; 
+            //NpcPanel
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
@@ -99,7 +106,12 @@ public class Interactable : MonoBehaviour
             EnemyinventoryUI.SetActive(false);
             interactUI.gameObject.SetActive(false);
         }
+        // Work in progress 
 
+        if (other.CompareTag("NPC"))
+        {
+
+        }
     }
 
 

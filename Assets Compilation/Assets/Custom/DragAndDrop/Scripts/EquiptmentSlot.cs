@@ -29,7 +29,7 @@ public class EquiptmentSlot : MonoBehaviour, IPointerClickHandler, IPointerDownH
                 //eventData.pointerPress.transform.GetChild(0).GetComponent<Text>().text = "";
                 transform.GetChild(0).GetComponent<Text>().text = "";
                 transform.GetChild(1).GetComponent<Image>().sprite = null;
-                transform.parent.GetChild(1).GetComponent<Image>().color = Color.clear;
+                transform.GetChild(1).GetComponent<Image>().color = Color.clear;
 
 
             }
