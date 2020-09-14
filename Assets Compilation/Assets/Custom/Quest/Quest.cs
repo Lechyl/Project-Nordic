@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Quest : MonoBehaviour
 {
-
-    string description;
-
+    string Name; 
+    string Description;
+    string Reward;
+    int Exp; 
+    
 }

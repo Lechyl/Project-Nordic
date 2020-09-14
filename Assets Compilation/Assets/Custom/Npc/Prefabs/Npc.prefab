@@ -996,9 +996,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1730333260662899616}
   - component: {fileID: 1730333260653764216}
+  - component: {fileID: 4495476061486483585}
+  - component: {fileID: 4495476061486483588}
+  - component: {fileID: 4495476061486483589}
   m_Layer: 0
   m_Name: Npc
-  m_TagString: Untagged
+  m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1010,7 +1013,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1730333260662991686}
-  m_LocalRotation: {x: -0, y: 0.9897064, z: -0, w: 0.14311284}
+  m_LocalRotation: {x: 0, y: 0.9897064, z: 0, w: 0.14311267}
   m_LocalPosition: {x: 10.937819, y: 0.57, z: 21.146755}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -1043,6 +1046,50 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!65 &4495476061486483585
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730333260662991686}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.8849759, z: 1}
+  m_Center: {x: 0, y: 0.94963, z: 0}
+--- !u!114 &4495476061486483588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730333260662991686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2de4aaf6224ce449bbd96650694938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4495476061486483589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1730333260662991686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae129d6f684b8b34682c3fe715bd8aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mustDropItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  chanceToDropItems:
+  - item: {fileID: 0}
+    percentage: 89
+  droppedItems: []
 --- !u!1 &1730333260662993178
 GameObject:
   m_ObjectHideFlags: 0

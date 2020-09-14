@@ -1,34 +1,8 @@
 Base path: 'C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data', plugins path 'C:/Program Files/Unity/Hub/Editor/2019.4.7f1/Editor/Data/PlaybackEngines'
 Cmd: initializeCompiler
-Cmd: preprocess
-  insize=10447 outsize=5892 ok=1
-Cmd: preprocess
-  insize=7605 outsize=2406 ok=1
-Cmd: preprocess
-  insize=3466 outsize=1210 ok=1
-Cmd: preprocess
-  insize=8957 outsize=4914 ok=1
-Cmd: preprocess
-  insize=3478 outsize=2592 ok=1
-Cmd: preprocess
-  insize=8810 outsize=4917 ok=1
-Cmd: preprocess
-  insize=4297 outsize=3592 ok=1
-Cmd: preprocess
-  insize=3464 outsize=1257 ok=1
-Cmd: preprocess
-  insize=10559 outsize=3882 ok=1
-Cmd: preprocess
-  insize=7773 outsize=2674 ok=1
-Cmd: preprocess
-  insize=10599 outsize=5892 ok=1
-Cmd: preprocess
-  insize=10548 outsize=3873 ok=1
-Cmd: preprocess
-  insize=3508 outsize=1607 ok=1
-Cmd: preprocess
-  insize=3207 outsize=1205 ok=1
-Cmd: preprocess
-  insize=7631 outsize=2417 ok=1
-Cmd: preprocess
-  insize=2307 outsize=1077 ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=5657 outsize=3702 kw=UNDERLAY_ON pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=0 insize=93427 outsize=2010 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL LIGHTPROBE_SH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1
+Cmd: compileSnippet
+  api=4 type=1 insize=93427 outsize=2730 kw=UNITY_PASS_FORWARDBASE DIRECTIONAL LIGHTPROBE_SH pd=UNITY_ENABLE_REFLECTION_BUFFERS UNITY_USE_DITHER_MASK_FOR_ALPHABLENDED_SHADOWS UNITY_PBS_USE_BRDF1 UNITY_SPECCUBE_BOX_PROJECTION UNITY_SPECCUBE_BLENDING UNITY_ENABLE_DETAIL_NORMALMAP SHADER_API_DESKTOP UNITY_COLORSPACE_GAMMA UNITY_LIGHT_PROBE_PROXY_VOLUME UNITY_LIGHTMAP_FULL_HDR ok=1

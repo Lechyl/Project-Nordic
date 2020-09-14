@@ -9,6 +9,7 @@ public class Interactable : MonoBehaviour
 
     public GameObject EnemyinventoryUI;
     public GameObject PlayerInventoryUI;
+    public GameObject NpcPanel;
     public EnemyInventoryList enemyInventoryList;
     public Button interactUI;
     
@@ -16,6 +17,11 @@ public class Interactable : MonoBehaviour
     private bool interactable = false;
     private GameObject currentInteractableObject;
     private bool inventoryState = false;
+
+    // check if npc is interactable
+    private bool NpcActive = false;
+    private bool NpcState = false; 
+
     [SerializeField]
     //private List<Items> droppedItems;
 
@@ -70,12 +76,23 @@ public class Interactable : MonoBehaviour
             InventoryModeOn();
 
         }
-        else if(Input.GetKeyDown(KeyCode.F) && inventoryState)
+        else if(Input.GetKeyDown(KeyCode.F) && inventoryState  )
         {
             InventoryModeOff();
 
             
         }
+        else if (Input.GetKeyDown(KeyCode.F) && NpcActive && !NpcState)
+        {
+            Drops drop = currentInteractableObject.GetComponentInParent<Drops>();
+            Interact(drop.droppedItems);
+            NpcModeOn(); 
+        }
+        else if (Input.GetKeyDown(KeyCode.F) && NpcState)
+        {
+            NpcModeOff(); 
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -90,8 +107,10 @@ public class Interactable : MonoBehaviour
         // Work in progress 
         if (other.CompareTag("NPC"))
         {
-            currentInteractableObject = other.gameObject; 
-            //NpcPanel
+            currentInteractableObject = other.gameObject;
+            interactUI.gameObject.SetActive(true);
+
+            NpcActive = true; 
         }
 
     }
@@ -110,9 +129,35 @@ public class Interactable : MonoBehaviour
 
         if (other.CompareTag("NPC"))
         {
+            NpcActive = false;
+            //NpcState = false; 
+            interactUI.gameObject.SetActive(false);
 
         }
     }
 
+    public void NpcModeOn()
+    {
+        NpcPanel.gameObject.SetActive(true);
+        NpcState = true; 
 
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        Time.timeScale = 0;
+
+    }
+    public void NpcModeOff()
+    {
+        NpcPanel.gameObject.SetActive(false);  
+
+
+        PlayerInventoryUI.SetActive(false);
+        EnemyinventoryUI.SetActive(false);
+        NpcState = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1;
+
+    }
 }

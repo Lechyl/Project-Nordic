@@ -24,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded;
 
+    private bool InventoryOpen = false; 
+
     void Start()
     {
         Time.timeScale = 1;
@@ -106,28 +108,35 @@ public class PlayerMovement : MonoBehaviour
     //InventoryToggle ON/OFF
     public void Menu()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
+
+        if (Cursor.lockState == CursorLockMode.Locked || InventoryOpen == true)
         {
-             ip = Inventory.instance.InventoryPanel;
-             ep = Inventory.instance.equipmentUI;
-                
-            if (!ip.activeSelf && !ep.activeSelf)
-            {
-                ip.SetActive(true);
-                ep.SetActive(true);
 
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                Time.timeScale = 0;
-            }
-            else if(ip.activeSelf && ep.activeSelf)
-            {
-                ip.SetActive(false);
-                ep.SetActive(false);
 
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1;
+            if (Input.GetKeyDown(KeyCode.Tab))
+            {
+                ip = Inventory.instance.InventoryPanel;
+                ep = Inventory.instance.equipmentUI;
+
+                if (!ip.activeSelf && !ep.activeSelf)
+                {
+                    ip.SetActive(true);
+                    ep.SetActive(true);
+                    InventoryOpen = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    Time.timeScale = 0;
+                }
+                else if (ip.activeSelf && ep.activeSelf)
+                {
+                    ip.SetActive(false);
+                    ep.SetActive(false);
+                    InventoryOpen = false;
+
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    Time.timeScale = 1;
+                }
             }
         }
     }
