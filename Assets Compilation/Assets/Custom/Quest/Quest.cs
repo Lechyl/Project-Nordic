@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Quest : MonoBehaviour
+
+//[System.Serializable]
+public abstract class Quest : MonoBehaviour
 {
-    string Name; 
-    string Description;
-    string Reward;
-    int Exp; 
-    
+
+    public bool IsActive; 
+
+    public string Name;
+    public string Description;
+    public string Reward;
+    public int Exp; 
+    public int Gold;
+
 }

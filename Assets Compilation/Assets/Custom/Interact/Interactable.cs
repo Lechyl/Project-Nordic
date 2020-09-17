@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     public GameObject EnemyinventoryUI;
     public GameObject PlayerInventoryUI;
     public GameObject NpcPanel;
+    public GameObject Questpanel;
     public EnemyInventoryList enemyInventoryList;
     public Button interactUI;
     
@@ -110,6 +111,9 @@ public class Interactable : MonoBehaviour
             currentInteractableObject = other.gameObject;
             interactUI.gameObject.SetActive(true);
 
+            NpcPanel.transform.Find("Quest").GetComponent<NpcmenuSlotControler>().Npc = currentInteractableObject;
+
+            //Debug.Log(" this is a test : " + currentInteractableObject.name); 
             NpcActive = true; 
         }
 
@@ -139,8 +143,7 @@ public class Interactable : MonoBehaviour
     public void NpcModeOn()
     {
         NpcPanel.gameObject.SetActive(true);
-        NpcState = true; 
-
+        NpcState = true;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         Time.timeScale = 0;
@@ -148,10 +151,10 @@ public class Interactable : MonoBehaviour
     }
     public void NpcModeOff()
     {
-        NpcPanel.gameObject.SetActive(false);  
+        NpcPanel.gameObject.SetActive(false);
+        Questpanel.gameObject.SetActive(false); 
 
-
-        PlayerInventoryUI.SetActive(false);
+        //PlayerInventoryUI.SetActive(false);
         EnemyinventoryUI.SetActive(false);
         NpcState = false;
 

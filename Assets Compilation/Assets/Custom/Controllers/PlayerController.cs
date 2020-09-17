@@ -14,6 +14,9 @@ public class PlayerController : MonoBehaviour
     public GetHp getHp;
     public GetStamina getStamina;
     public PlayerStats playerStats;
+    public List<Quest> quest;
+
+
     [SerializeField] public HealthBar healthBar;
     [SerializeField] public StaminaBar staminaBar;
 

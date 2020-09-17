@@ -15,9 +15,9 @@ MonoBehaviour:
   Level: 1
   Exp: 1
   ExpToLevel: 1
-  CurrentStamina: 57.142624
-  MaxStamina: 100
-  StaminaRegen: 1
+  CurrentStamina: 192.07079
+  MaxStamina: 1000
+  StaminaRegen: 4
   WalkSpeed: 6
   SprintSpeed: 12
   gravity: -9.81

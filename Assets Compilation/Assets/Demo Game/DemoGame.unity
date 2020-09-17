@@ -599,6 +599,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8db355106553014c92347dbc62c1739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Npc: {fileID: 0}
 --- !u!1 &80428100
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,6 +4921,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 172976844}
   m_CullTransparentMesh: 0
+--- !u!1 &174996324 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1730333260662991686, guid: a7b881f76ae98b94ab45ceb23ea65479,
+    type: 3}
+  m_PrefabInstance: {fileID: 2765284140171453382}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &174996330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174996324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e23198fbe1335d24ca208120baa95310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  quest: {fileID: 1206781308}
+  player: {fileID: 954244591}
 --- !u!1001 &195266855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5701,6 +5722,11 @@ PrefabInstance:
       propertyPath: NpcPanel
       value: 
       objectReference: {fileID: 1555471753}
+    - target: {fileID: 2977120052581192091, guid: a7f98d99a2c7f9c498ead04ccf0901c3,
+        type: 3}
+      propertyPath: Questpanel
+      value: 
+      objectReference: {fileID: 640954213}
     - target: {fileID: 2977120052604043068, guid: a7f98d99a2c7f9c498ead04ccf0901c3,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -5784,7 +5810,7 @@ PrefabInstance:
     - target: {fileID: 2977120053971472568, guid: a7f98d99a2c7f9c498ead04ccf0901c3,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2977120053971472570, guid: a7f98d99a2c7f9c498ead04ccf0901c3,
         type: 3}
@@ -6097,6 +6123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8db355106553014c92347dbc62c1739, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Npc: {fileID: 0}
 --- !u!1001 &293916096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6225,6 +6252,7 @@ MonoBehaviour:
   EnemyinventoryUI: {fileID: 3997025634511016272}
   PlayerInventoryUI: {fileID: 937499756}
   NpcPanel: {fileID: 0}
+  Questpanel: {fileID: 0}
   enemyInventoryList: {fileID: 11400000, guid: dc9a99c07fdaa6e4681b588815f8d47c, type: 2}
   interactUI: {fileID: 172976846}
 --- !u!114 &330669287
@@ -7088,6 +7116,37 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!1 &422353136
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 422353137}
+  m_Layer: 0
+  m_Name: Questhandeler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422353137
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422353136}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 353.25616, y: 30.752052, z: 43.296844}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1206781307}
+  m_Father: {fileID: 0}
+  m_RootOrder: 40
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &433044206
 GameObject:
   m_ObjectHideFlags: 0
@@ -12080,6 +12139,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 10
   m_TargetDisplay: 0
+--- !u!114 &954244591 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2977120053971472571, guid: a7f98d99a2c7f9c498ead04ccf0901c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 273642036}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27f2bf7483e8532448229dcce1cc0249, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &959229125
 GameObject:
   m_ObjectHideFlags: 0
@@ -13176,7 +13247,7 @@ GameObject:
   - component: {fileID: 1067498511}
   - component: {fileID: 1067498510}
   m_Layer: 5
-  m_Name: Button
+  m_Name: acceptBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13244,7 +13315,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1067498511}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 174996330}
+        m_MethodName: GiveQuest
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1067498511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14408,6 +14490,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1190917009}
   m_CullTransparentMesh: 0
+--- !u!1 &1206781306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1206781307}
+  - component: {fileID: 1206781308}
+  m_Layer: 0
+  m_Name: Quest1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1206781307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206781306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 422353137}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1206781308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1206781306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f3b0b89654a0ba49b7965aca938aa5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsActive: 0
+  Name: 'Quest part 1 '
+  Description: 'This is the fist quest you will go on. '
+  Reward: '20 smekels '
+  Exp: 420
+  Gold: 69
+  ItemTofind:
+    item: {fileID: 0}
+    stack: 0
+  RequiredAmount: 2
+  CurrentAmount: 0
 --- !u!1 &1207836263
 GameObject:
   m_ObjectHideFlags: 0
@@ -19603,6 +19739,7 @@ MonoBehaviour:
   getHp: {fileID: 11400000, guid: dbace0530711846498a10d3b36917741, type: 2}
   getStamina: {fileID: 11400000, guid: 63b6133214d262b469908725a9aace75, type: 2}
   playerStats: {fileID: 11400000, guid: d88287f66da6d824c8899462bf02e90e, type: 2}
+  quest: []
   healthBar: {fileID: 1011428376}
   staminaBar: {fileID: 1048961193}
 --- !u!114 &1725406663

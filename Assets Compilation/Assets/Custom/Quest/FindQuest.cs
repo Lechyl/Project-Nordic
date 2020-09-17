@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class FindQuest : Quest
 {
+    //public Transform location;
 
-    InventoryStackItems ItemTofind;
-    Transform location; 
+    public InventoryStackItems ItemTofind;
+    public int RequiredAmount; 
+    public int CurrentAmount;
+
+    public bool isReached()
+    {
+        return (CurrentAmount >= RequiredAmount); 
+    }
+
+
 }
