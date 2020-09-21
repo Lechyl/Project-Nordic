@@ -10,14 +10,14 @@ public class QuestGiver : MonoBehaviour
  
 
     [SerializeField]
-    public Quest quest; 
+    public List<Quest> quest; 
 
  
     public PlayerController player; 
 
-    public void GiveQuest()
+    public void GiveQuest(Quest questToGive)
     {
-        player.quest.Add(quest); 
+        player.quest.Add(questToGive); 
     }
 
 }

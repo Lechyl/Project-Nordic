@@ -43,9 +43,12 @@ public class NpcmenuSlotControler : MonoBehaviour, IPointerClickHandler, IPointe
                     enemyInventory.gameObject.SetActive(false);
                     questpanel.gameObject.SetActive(true);
                     
-                    questpanel.Find("TextBoxContainer").Find("Name").GetChild(0).GetComponent<Text>().text = Npc.GetComponent<QuestGiver>().quest.Name; 
-                    questpanel.Find("TextBoxContainer").Find("Description").GetChild(0).GetComponent<Text>().text = Npc.GetComponent<QuestGiver>().quest.Description;
-                    questpanel.Find("TextBoxContainer").Find("Reward").GetChild(0).GetComponent<Text>().text = "Reward: " + Npc.GetComponent<QuestGiver>().quest.Gold.ToString();
+                    questpanel.Find("TextBoxContainer").Find("Name").GetChild(0).GetComponent<Text>().text = Npc.GetComponent<QuestGiver>().quest[0].Name; 
+                    questpanel.Find("TextBoxContainer").Find("Description").GetChild(0).GetComponent<Text>().text = Npc.GetComponent<QuestGiver>().quest[0].Description;
+                    questpanel.Find("TextBoxContainer").Find("Reward").GetChild(0).GetComponent<Text>().text = "Reward: " + Npc.GetComponent<QuestGiver>().quest[0].Gold.ToString();
+
+                    //questpanel.Find("acceptBtn").GetComponent<Button>().onClick.AddListener(Npc.GetComponent<QuestGiver>().GiveQuest); 
+
 
                 }
                 else
