@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Assets.Custom.items.scripts;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,7 +24,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         healthBar.SetSize();
-       
+
 
     }
 
@@ -35,22 +36,65 @@ public class PlayerController : MonoBehaviour
             playerStats.CurrentStamina += playerStats.StaminaRegen * Time.deltaTime;
             staminaBar.SetSize();
         }
+
+        HotbarPress();
+
     }
 
 
+    void HotbarPress()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            HotBarActions(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            HotBarActions(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            HotBarActions(2);
+        }
 
+    }
+    void HotBarActions(int slot)
+    {
+        InventoryStackItems stackItem = Inventory.instance.hotbarList.hotbarList[slot];
 
+        if (stackItem.item.GetType() != typeof(NoItem))
+        {
+
+            if (stackItem.item.GetType() == typeof(Healing))
+            {
+
+                playerHealth.HpRestore(stackItem, this);
+
+            }
+            else if (stackItem.item.GetType() == typeof(Stamina))
+            {
+                playerStamina.StaminaRestore(stackItem, this);
+
+            }
+            else if (stackItem.item.GetType() == typeof(Stone))
+            {
+                // stone function
+
+            }
+            Inventory.instance.hotbarList.UseConsumableItem(slot);
+            Inventory.instance.UpdateHotbarSlots();
+        }
+
+    }
 
 
     // must be on Enemy and player controller
     private void OnTriggerEnter(Collider other)
     {
         // For taking dmg 
-        playerHealth.HpLostByWeapon(other,this);
-        // For healing
-        playerHealth.HpRestore(other,this);
+        playerHealth.HpLostByWeapon(other, this);
 
-        playerStamina.StaminaRestore(other, this); 
+
     }
 
 

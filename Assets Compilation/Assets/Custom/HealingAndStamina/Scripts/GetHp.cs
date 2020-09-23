@@ -8,10 +8,10 @@ using UnityEngine;
 public class GetHp : ScriptableObject
 {
 
-    public void Heal (Collider HpRestore, Health health)
+    public void Heal (InventoryStackItems HpRestore, Health health)
     {
        
-        Healing healing = HpRestore.GetComponent<Healing>();
+        Healing healing = HpRestore.item.GetComponent<Healing>();
 
         float hpRestoreAmount = healing.hpRestore;
             

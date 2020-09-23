@@ -13,6 +13,8 @@ public class Inventory : MonoBehaviour
 
     public GameObject equipmentUI;
 
+    public GameObject hotbarUI;
+
     public static Inventory instance;
 
     public InventoryList inventoryList;
@@ -21,9 +23,12 @@ public class Inventory : MonoBehaviour
 
     public EquipmentList equipmentList;
 
+    public HotbarList hotbarList;
+
     public void UpdatePanelSlots()
     {
-        
+        index = 0;
+
         foreach (Transform child in InventoryPanel.transform)
         {
 
@@ -47,7 +52,6 @@ public class Inventory : MonoBehaviour
             //Update slot[index]'s name and icon
             index++;
         }
-        index = 0;
       
     }
 
@@ -69,23 +73,74 @@ public class Inventory : MonoBehaviour
             inventoryList.inventoryItems.Add(inventoryStackItem);
 
         }
-        
+
+    }
+
+    void InstantiateHotbar()
+    {
+        hotbarList.hotbarList.Clear();
 
 
+        NoItem item = new NoItem();
+        InventoryStackItems inventoryStackItem = new InventoryStackItems()
+        {
+            item = item,
+            stack = 0
+        };
+        for (int i = 0; i < 3; i++)
+        {
+
+            hotbarList.hotbarList.Add(inventoryStackItem);
+
+        }
+    }
+   public void UpdateHotbarSlots()
+    {
+        index = 0;
+
+        foreach (Transform child in hotbarUI.transform)
+        {
+
+            InventorySlotController slot = child.GetComponent<InventorySlotController>();
+
+            if (index < hotbarList.hotbarList.Count)
+            {
+                //Debug.Log("slot "+index);
+                slot.stackItem = hotbarList.hotbarList[index];
+                //Debug.Log("asd " + slot.item.itemName);
+
+            }
+            else
+            {
+                //  Debug.Log("slet slot " + index);
+
+                //  slot.stackItem = inventoryStackItem;
+            }
+
+            slot.UpdateInfo();
+            //Update slot[index]'s name and icon
+            index++;
+        }
     }
     void Start()
     {
         instance = this;
+        
         InstantiateInventory();
         UpdatePanelSlots();
+        
+        InstantiateHotbar();
+        UpdateHotbarSlots();
+
         InstantiateEquipment();
         UpdateEquiptmentSlot(typeof(NoItem));
 
     }
 
+
     public bool Add(Items item)
     {
-        EditorUtility.SetDirty(item);
+        //EditorUtility.SetDirty(item);
 
         if (inventoryList.inventoryItems.Count == 20 && inventoryList.CountItemsInInventory() < 20 && item.GetType() != typeof(NoItem))
         {

@@ -17,6 +17,11 @@ public class InventoryList : ScriptableObject
 
     }
 
+    public void AddItemFromHotbbar(ReplaceItem invItem, ReplaceItem hotbarItem)
+    {
+        inventoryItems[invItem.slot] = hotbarItem.item;
+    }
+
     public int CountItemsInInventory()
     {
         return inventoryItems.Count(x => x.item.GetType() != typeof(NoItem));

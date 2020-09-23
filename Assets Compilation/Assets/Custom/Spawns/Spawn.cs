@@ -58,13 +58,16 @@ public class Spawn : MonoBehaviour
                     //Destroy each Enemy if they can despawn. They can only despawn if they're not chasing Player or doing other things which require it dosn't despawn.
                     foreach (var item in spawnedUnits.ToList())
                     {
-                        if (item.gameObject.GetComponent<EnemyController>().canDespawn)
+                       
+
+                        if (item.gameObject == null || item.gameObject.GetComponent<EnemyController>().canDespawn || item.gameObject.GetComponent<EnemyController>().CurrentHp < 0)
                         {
                             Destroy(item.gameObject);
                             spawnedUnits.Remove(item);
                             unitsCounter--;
 
                         }
+
                     }
 
                 }

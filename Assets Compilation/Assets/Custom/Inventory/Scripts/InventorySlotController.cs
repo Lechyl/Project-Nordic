@@ -17,8 +17,8 @@ public class InventorySlotController : MonoBehaviour
     {
         Text displayText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
         Image displayImage = transform.GetChild(0).GetChild(1).GetComponent<Image>();
-       // Text displayText = transform.Find("Text").GetComponent<Text>();
-       // Image displayImage = transform.Find("Image").GetComponent<Image>();
+        // Text displayText = transform.Find("Text").GetComponent<Text>();
+        // Image displayImage = transform.Find("Image").GetComponent<Image>();
         if(!string.IsNullOrEmpty(stackItem.item.itemName))
         {
 
