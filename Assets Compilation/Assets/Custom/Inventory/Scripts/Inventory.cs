@@ -184,7 +184,7 @@ public class Inventory : MonoBehaviour
         foreach (Transform child in equipmentUI.transform.GetChild(0))
         {
 
-            InventorySlotController slot = child.GetComponent<InventorySlotController>();
+            EquipmentSlotController slot = child.GetComponent<EquipmentSlotController>();
 
             if (slot.name == "HeadSlot" && type == typeof(Head))
             {

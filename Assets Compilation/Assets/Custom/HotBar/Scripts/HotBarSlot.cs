@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Reflection;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -40,6 +41,11 @@ public class HotBarSlot : MonoBehaviour, IDropHandler
                 Inventory.instance.hotbarList.ReplaceHotbarItems(hotbarItem, hotbarItem2);
 
                 Inventory.instance.UpdateHotbarSlots();
+
+
+                eventData.pointerDrag.transform.rotation = this.transform.rotation;
+                eventData.pointerDrag.transform.localPosition = Vector3.zero;
+                eventData.pointerDrag.transform.localScale = Vector3.one;
             }
             else
             {
@@ -53,9 +59,14 @@ public class HotBarSlot : MonoBehaviour, IDropHandler
                     slot = int.Parse(eventData.pointerDrag.transform.parent.name)
 
                 };
+                //
+                 TextMeshProUGUI displayText = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+                 displayText.text = invItem.item.stack.ToString();
+
+
                 //replace item in inventorylist
                 Inventory.instance.inventoryList.AddItemFromHotbbar(invItem, hotbarItem);
-                //replace item in hotbarlist
+                //replace item in hotbarlist    
                 Inventory.instance.hotbarList.AddItemFromInventory(hotbarItem, invItem);
 
                 Inventory.instance.UpdatePanelSlots();

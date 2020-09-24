@@ -10,7 +10,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
-    private EquipmentList equipmentList; 
+   // private EquipmentList equipmentList; 
 
 
 
@@ -19,8 +19,10 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         canvas = this.GetComponentInParent<Canvas>();
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
-        equipmentList = Inventory.instance.equipmentList; 
+        //equipmentList = Inventory.instance.equipmentList; 
     }
+
+
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -62,8 +64,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             {
 
                 ReplaceEquiptment firstInventoryItem = new ReplaceEquiptment()
-                {
-                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(0).gameObject.GetComponent<InventorySlotController>().stackItem,
+                { 
+                    //equiptment 
+                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(0).gameObject.GetComponent<EquipmentSlotController>().stackItem,
                     type = eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType()
                 };
                 // get equiptment text 
@@ -83,7 +86,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             {
                 ReplaceEquiptment firstInventoryItem = new ReplaceEquiptment()
                 {
-                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(1).gameObject.GetComponent<InventorySlotController>().stackItem,
+                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(1).gameObject.GetComponent<EquipmentSlotController>().stackItem,
                     type = eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType()
                 };
 
@@ -102,7 +105,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
             {
                 ReplaceEquiptment firstInventoryItem = new ReplaceEquiptment()
                 {
-                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(2).gameObject.GetComponent<InventorySlotController>().stackItem,
+                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(2).gameObject.GetComponent<EquipmentSlotController>().stackItem,
                     type = eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType()
                 };
                 // get equipment text 
@@ -121,7 +124,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
                 ReplaceEquiptment firstInventoryItem = new ReplaceEquiptment()
                 {
-                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(3).gameObject.GetComponent<InventorySlotController>().stackItem,
+                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(3).gameObject.GetComponent<EquipmentSlotController>().stackItem,
                     type = eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType()
                 };
                 // get equipment text 
@@ -140,7 +143,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
                 ReplaceEquiptment firstInventoryItem = new ReplaceEquiptment()
                 {
-                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(4).gameObject.GetComponent<InventorySlotController>().stackItem,
+                    item = eventData.pointerPress.transform.root.GetChild(7).GetChild(0).GetChild(4).gameObject.GetComponent<EquipmentSlotController>().stackItem,
                     type = eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType()
                 };
                 // get equipment text 

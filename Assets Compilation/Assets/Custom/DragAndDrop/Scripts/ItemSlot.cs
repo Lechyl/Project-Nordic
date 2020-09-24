@@ -1,6 +1,7 @@
 ﻿using Assets.Custom.items.scripts;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -44,6 +45,11 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                     //Update UI
                     Inventory.instance.UpdatePanelSlots();
                     Inventory.instance.UpdateHotbarSlots();
+
+
+                    eventData.pointerDrag.transform.rotation = this.transform.rotation;
+                    eventData.pointerDrag.transform.localPosition = Vector3.zero;
+                    eventData.pointerDrag.transform.localScale = Vector3.one;
                 }
             }
             else
@@ -60,6 +66,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 string oldtext = transform.GetChild(0).GetChild(0).GetComponent<Text>().text;
                 Sprite oldImg = transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite;
                 Color oldColor = transform.GetChild(0).GetChild(1).GetComponent<Image>().color;
+                string oldstack = transform.GetChild(2).GetComponent<TextMeshProUGUI>().text;
                 InventoryStackItems stackitem = this.gameObject.GetComponent<InventorySlotController>().stackItem;
 
 
@@ -67,6 +74,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 transform.GetChild(0).GetChild(0).GetComponent<Text>().text = eventData.pointerDrag.GetComponentInChildren<Text>().text;
                 transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = eventData.pointerDrag.GetComponentInChildren<Image>().sprite;
                 transform.GetChild(0).GetChild(1).GetComponent<Image>().color = eventData.pointerDrag.GetComponentInChildren<Image>().color;
+                transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = eventData.pointerDrag.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text;
                 this.gameObject.GetComponent<InventorySlotController>().stackItem = eventData.pointerDrag.transform.parent.GetComponent<InventorySlotController>().stackItem;
 
                 //Override The drag gameobject
@@ -74,6 +82,8 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 eventData.pointerDrag.GetComponentInChildren<Image>().sprite = oldImg;
                 eventData.pointerDrag.GetComponentInChildren<Image>().color = oldColor;
                 eventData.pointerDrag.transform.parent.GetComponent<InventorySlotController>().stackItem = stackitem;
+                eventData.pointerDrag.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text = oldstack;
+
 
                 eventData.pointerDrag.transform.rotation = this.transform.rotation;
                 eventData.pointerDrag.transform.localPosition = Vector3.zero;

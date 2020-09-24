@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class HotBarDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler,IDragHandler
+public class HotBarDragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerClickHandler
 {
     private CanvasGroup canvasGroup;
     private RectTransform rectTransform;
@@ -40,5 +40,12 @@ public class HotBarDragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler,
         rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
     }
 
-    
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+    }
 }
