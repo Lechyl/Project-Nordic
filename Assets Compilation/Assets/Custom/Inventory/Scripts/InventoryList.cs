@@ -22,5 +22,10 @@ public class InventoryList : ScriptableObject
         return inventoryItems.Count(x => x.item.GetType() != typeof(NoItem));
     }
 
+    public int CountSpecifikItemInInventory(string ItemName)
+    {
+        return inventoryItems.Count(x => x.item.itemName == ItemName); 
+    }
+
 
 }

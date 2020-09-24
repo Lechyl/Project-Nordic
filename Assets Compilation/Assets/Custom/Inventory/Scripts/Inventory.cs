@@ -17,6 +17,8 @@ public class Inventory : MonoBehaviour
 
     public InventoryList inventoryList;
 
+    public int gold = 0; 
+
     public  int index = 0;
 
     public EquipmentList equipmentList;
@@ -251,4 +253,11 @@ public class Inventory : MonoBehaviour
 
 
     }
+
+
+    public int QuestItemsIninventory(string ItemToFind)
+    {
+        return inventoryList.CountSpecifikItemInInventory(ItemToFind); 
+    }
+
 }

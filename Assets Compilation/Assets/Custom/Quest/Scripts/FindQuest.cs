@@ -10,10 +10,17 @@ public class FindQuest : Quest
     public int RequiredAmount; 
     public int CurrentAmount;
 
-    public bool isReached()
+ 
+
+    
+    public void CheckIfDone()
     {
-        return (CurrentAmount >= RequiredAmount); 
+        if (CurrentAmount >= RequiredAmount)
+        {
+            Iscomplete = true;
+        }
     }
+
 
 
 }

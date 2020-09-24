@@ -62,6 +62,32 @@ public class PickUp : ScriptableObject
                 if(Inventory.instance.Add(targetItem))
                     pickUpController.targetItem.gameObject.SetActive(false);
                 //Destroy(pickUpController.targetItem.gameObject);
+
+
+                if(targetItem.GetComponent<PartOfQuest>() != null)
+                {
+
+                    int QuestItemsIninventorySum; 
+
+                    foreach (FindQuest quest in targetItem.GetComponent<PartOfQuest>().partOfQuest)
+                    {
+                        if (quest.IsActive == true && quest.Iscomplete == false)
+                        {
+
+                            QuestItemsIninventorySum = Inventory.instance.QuestItemsIninventory(targetItem.itemName);
+                            Debug.Log("Items in inventory: " + QuestItemsIninventorySum); 
+                            quest.CurrentAmount = QuestItemsIninventorySum;
+                            quest.CheckIfDone(); 
+                            
+
+                        
+                        }
+
+
+                    }
+
+                }
+
             }
 
 
@@ -115,3 +141,5 @@ public class PickUp : ScriptableObject
 
     }
 }
+
+

@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 //[System.Serializable]
-public abstract class Quest : MonoBehaviour
+public class Quest : MonoBehaviour
 {
 
     public bool IsActive;
@@ -17,4 +17,12 @@ public abstract class Quest : MonoBehaviour
     public int Gold;
 
 
+
+    public void GiveReward()
+    {
+        GameObject player =  this.transform.parent.GetComponent<QuestHandeler>().Player;
+        Inventory.instance.gold += Gold;  
+        player.GetComponent<PlayerController>().playerStats.Exp += Exp; 
+
+    }
 }

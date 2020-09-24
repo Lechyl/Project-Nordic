@@ -20,7 +20,10 @@ public class QuestGiver : MonoBehaviour
         if(questToGive.IsActive == false && questToGive.Iscomplete == false)
         {
 
-            player.quest.Add(questToGive); 
+            player.quest.Add(questToGive);
+            questToGive.IsActive = true; 
+
+
     
         }
     
