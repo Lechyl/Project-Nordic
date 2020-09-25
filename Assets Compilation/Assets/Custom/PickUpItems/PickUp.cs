@@ -75,11 +75,8 @@ public class PickUp : ScriptableObject
                         {
 
                             QuestItemsIninventorySum = Inventory.instance.QuestItemsIninventory(targetItem.itemName);
-                            Debug.Log("Items in inventory: " + QuestItemsIninventorySum); 
                             quest.CurrentAmount = QuestItemsIninventorySum;
                             quest.CheckIfDone(); 
-                            
-
                         
                         }
 
