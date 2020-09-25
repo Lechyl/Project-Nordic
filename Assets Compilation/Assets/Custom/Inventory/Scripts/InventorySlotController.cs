@@ -5,13 +5,23 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class InventorySlotController : MonoBehaviour
+public class InventorySlotController : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public InventoryStackItems stackItem;
     
     void Start()
     {
       //  updateInfo();
+    }
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        Inventory.instance.ShowTooltip();
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        Inventory.instance.HideTooltip();
+
     }
 
     public void UpdateInfo()

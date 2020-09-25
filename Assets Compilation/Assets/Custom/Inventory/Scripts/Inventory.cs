@@ -25,6 +25,8 @@ public class Inventory : MonoBehaviour
 
     public HotbarList hotbarList;
 
+    public GameObject tooltip;
+
     public void UpdatePanelSlots()
     {
         index = 0;
@@ -305,5 +307,16 @@ public class Inventory : MonoBehaviour
         UpdatePanelSlots();
 
 
+    }
+
+
+    public void ShowTooltip()
+    {
+        tooltip.SetActive(true);
+    }
+
+    public void HideTooltip()
+    {
+        tooltip.SetActive(false);
     }
 }

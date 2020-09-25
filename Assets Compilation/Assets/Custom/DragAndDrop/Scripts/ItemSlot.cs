@@ -69,16 +69,16 @@ public class ItemSlot : MonoBehaviour, IDropHandler
                 string oldstack = transform.GetChild(2).GetComponent<TextMeshProUGUI>().text;
                 InventoryStackItems stackitem = this.gameObject.GetComponent<InventorySlotController>().stackItem;
 
-
+                Debug.Log(eventData.pointerDrag.name);
                 //Override this Gameobject StackItem
-                transform.GetChild(0).GetChild(0).GetComponent<Text>().text = eventData.pointerDrag.GetComponentInChildren<Text>().text;
+                transform.GetChild(0).GetChild(0).GetComponent<Text>().text = eventData.pointerDrag.transform.GetChild(0).GetComponent<Text>().text;
                 transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = eventData.pointerDrag.GetComponentInChildren<Image>().sprite;
                 transform.GetChild(0).GetChild(1).GetComponent<Image>().color = eventData.pointerDrag.GetComponentInChildren<Image>().color;
                 transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = eventData.pointerDrag.transform.parent.GetChild(2).GetComponent<TextMeshProUGUI>().text;
                 this.gameObject.GetComponent<InventorySlotController>().stackItem = eventData.pointerDrag.transform.parent.GetComponent<InventorySlotController>().stackItem;
 
                 //Override The drag gameobject
-                eventData.pointerDrag.GetComponentInChildren<Text>().text = oldtext;
+                eventData.pointerDrag.transform.GetChild(0).GetComponent<Text>().text = oldtext;
                 eventData.pointerDrag.GetComponentInChildren<Image>().sprite = oldImg;
                 eventData.pointerDrag.GetComponentInChildren<Image>().color = oldColor;
                 eventData.pointerDrag.transform.parent.GetComponent<InventorySlotController>().stackItem = stackitem;
