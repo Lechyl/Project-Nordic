@@ -5,14 +5,15 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject ip;
+    public GameObject playerInventory;
 
-    public GameObject ep;
+    public GameObject equiptmentUI;
 
+    public GameObject tooltipUI;
     public PlayerStats playerStats;
 
     public CharacterController controller;
-    
+
     public Transform feetIsOnGround;
 
     public LayerMask groundMask;
@@ -24,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isGrounded;
 
-    private bool InventoryOpen = false; 
+    private bool InventoryOpen = false;
 
     void Start()
     {
@@ -41,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         //Check if player is on ground
         isGrounded = Physics.CheckSphere(feetIsOnGround.position, playerStats.groundDistance, groundMask);
 
-        if(isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -52,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 move = transform.right * x + transform.forward * z;
 
         //Sprinting
-        if(Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
             if (playerStats.CurrentStamina > 1)
             {
@@ -78,31 +79,31 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-        //Walking
+            //Walking
             controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
         }
 
         //Jumping
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(playerStats.jumpHeight * -1f * playerStats.gravity);
         }
 
-       /* //Crouching/Sneaking
-        if(Input.GetKey(KeyCode.LeftControl))
-        {
-            controller.Height = 5.0f;
-        }
-        */
+        /* //Crouching/Sneaking
+         if(Input.GetKey(KeyCode.LeftControl))
+         {
+             controller.Height = 5.0f;
+         }
+         */
 
         velocity.y += playerStats.gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
-        
+
 
         Menu();
-        
+
     }
 
     //InventoryToggle ON/OFF
@@ -115,22 +116,24 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-                ip = Inventory.instance.InventoryPanel;
-                ep = Inventory.instance.equipmentUI;
+                //playerInventory = Inventory.instance.InventoryPanel;
+                //equiptmentUI = Inventory.instance.equipmentUI;
 
-                if (!ip.activeSelf && !ep.activeSelf)
+                if (!playerInventory.activeSelf && !equiptmentUI.activeSelf)
                 {
-                    ip.SetActive(true);
-                    ep.SetActive(true);
+                    playerInventory.SetActive(true);
+                    equiptmentUI.SetActive(true);
                     InventoryOpen = true;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
                     Time.timeScale = 0;
                 }
-                else if (ip.activeSelf && ep.activeSelf)
+                else if (playerInventory.activeSelf && equiptmentUI.activeSelf)
                 {
-                    ip.SetActive(false);
-                    ep.SetActive(false);
+                    tooltipUI.SetActive(false);
+
+                    playerInventory.SetActive(false);
+                    equiptmentUI.SetActive(false);
                     InventoryOpen = false;
 
                     Cursor.lockState = CursorLockMode.Locked;

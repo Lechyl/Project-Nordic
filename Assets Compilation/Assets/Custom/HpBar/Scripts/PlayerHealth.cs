@@ -19,17 +19,17 @@ public class PlayerHealth : Health
         }
     }
 
-    public void HpRestore(Collider other, PlayerController player)
+    public void HpRestore(InventoryStackItems other, PlayerController player)
     {
 
-        if (other.CompareTag("Healing"))
-        {
-            player.getHp.Heal(other, player.playerHealth); 
 
-            player.healthBar.SetSize();
 
-        }
+        player.getHp.Heal(other, player.playerHealth);
+
+        player.healthBar.SetSize();
+
+
     }
-   
+
 }
 

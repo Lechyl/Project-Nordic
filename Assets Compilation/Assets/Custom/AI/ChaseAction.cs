@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "AI/Actions/Chase")]
+[CreateAssetMenu(menuName = "AI/Actions/Chase")]
 public class ChaseAction : Action
 {
 
@@ -11,14 +11,13 @@ public class ChaseAction : Action
         Chase(controller);
     }
 
-    private void Chase( EnemyController controller)
+    private void Chase(EnemyController controller)
     {
         //Call close Allies
         if (!controller.callCloseAllies)
         {
             controller.callCloseAllies = true;
 
-            Debug.Log("call firneds");
 
             //Get Layer 9
             int d = 1 << 9;

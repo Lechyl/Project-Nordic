@@ -8,20 +8,18 @@ using UnityEngine;
 public class PlayerStamina : ScriptableObject
 {
 
-    public void StaminaRestore(Collider other, PlayerController player)
+    public void StaminaRestore(InventoryStackItems other, PlayerController player)
     {
 
-        if (other.CompareTag("Stamina") )
-        {
 
-            player.getStamina.StaminaRegain(other, player.playerStats);
+        player.getStamina.StaminaRegain(other, player.playerStats);
 
-            player.staminaBar.SetSize();
+        player.staminaBar.SetSize();
 
-        }
+
 
     }
 
-   
+
 
 }

@@ -9,10 +9,9 @@ public class EquiptmentSlot : MonoBehaviour, IPointerClickHandler, IPointerDownH
 {
     public void OnPointerClick(PointerEventData eventData)
     {
-        Debug.Log("test test"); 
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (transform.parent.GetComponent<InventorySlotController>().stackItem.item.GetType() != typeof(NoItem))
+            if (transform.parent.GetComponent<EquipmentSlotController>().stackItem.item.GetType() != typeof(NoItem))
             {
 
                 NoItem noneitem = new NoItem();
@@ -23,8 +22,8 @@ public class EquiptmentSlot : MonoBehaviour, IPointerClickHandler, IPointerDownH
                 };
 
 
-                Inventory.instance.Add(transform.parent.GetComponent<InventorySlotController>().stackItem.item);
-                transform.parent.GetComponent<InventorySlotController>().stackItem = noitem;
+                Inventory.instance.Add(transform.parent.GetComponent<EquipmentSlotController>().stackItem.item);
+                transform.parent.GetComponent<EquipmentSlotController>().stackItem = noitem;
 
                 //eventData.pointerPress.transform.GetChild(0).GetComponent<Text>().text = "";
                 transform.GetChild(0).GetComponent<Text>().text = "";
