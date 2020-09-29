@@ -33,7 +33,7 @@ public class InventorySlotController : MonoBehaviour, IPointerEnterHandler,IPoin
     {
         Text displayText = transform.GetChild(0).GetChild(0).GetComponent<Text>();
         Image displayImage = transform.GetChild(0).GetChild(1).GetComponent<Image>();
-        TextMeshProUGUI displayStack = transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        TextMeshProUGUI displayStack = transform.GetComponentInChildren<TextMeshProUGUI>();
 
         //TextMeshPro displayStack = transform.GetChild(2).GetComponent<TextMeshPro>();
         // Text displayText = transform.Find("Text").GetComponent<Text>();
