@@ -11,6 +11,7 @@ public class Interactable : MonoBehaviour
     public GameObject PlayerInventoryUI;
     public GameObject NpcPanel;
     public GameObject Questpanel;
+    public GameObject QuestScrollpanel;
     public EnemyInventoryList enemyInventoryList;
     public Button interactUI;
     public GameObject TooltipUI;
@@ -154,7 +155,7 @@ public class Interactable : MonoBehaviour
     {
         NpcPanel.gameObject.SetActive(false);
         Questpanel.gameObject.SetActive(false);
-
+        QuestScrollpanel.gameObject.SetActive(false);
         //PlayerInventoryUI.SetActive(false);
         EnemyinventoryUI.SetActive(false);
         NpcState = false;
