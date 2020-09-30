@@ -38,6 +38,9 @@ public class InventorySlotController : MonoBehaviour, IPointerEnterHandler,IPoin
         //TextMeshPro displayStack = transform.GetChild(2).GetComponent<TextMeshPro>();
         // Text displayText = transform.Find("Text").GetComponent<Text>();
         // Image displayImage = transform.Find("Image").GetComponent<Image>();
+
+        Debug.Log("test: " + this.transform.parent.name); 
+
         if (!string.IsNullOrEmpty(stackItem.item.itemName))
         {
 
