@@ -67,21 +67,14 @@ public class PickUp : ScriptableObject
                 if(targetItem.GetComponent<PartOfQuest>() != null)
                 {
 
-                    int QuestItemsIninventorySum; 
-
-                    foreach (FindQuest quest in targetItem.GetComponent<PartOfQuest>().partOfQuest)
+                    InventoryStackItems inventoryStackItems = new InventoryStackItems()
                     {
-                        if (quest.IsActive == true && quest.Iscomplete == false)
-                        {
+                        //equiptment 
+                        item = targetItem,
+                        stack = 1
+                    };
 
-                            QuestItemsIninventorySum = Inventory.instance.QuestItemsIninventory(targetItem.itemName);
-                            quest.CurrentAmount = QuestItemsIninventorySum;
-                            quest.CheckIfDone(); 
-                        
-                        }
-
-
-                    }
+                    Inventory.instance.CheckInventoryForQuestItems(inventoryStackItems); 
 
                 }
 
@@ -137,6 +130,29 @@ public class PickUp : ScriptableObject
         //  UI.gameObject.SetActive(true);
 
     }
+
+    /*
+    public void testCheckInventoryForQuestItems(Items targetItem)
+    {
+
+        int QuestItemsIninventorySum;
+
+        foreach (FindQuest quest in targetItem.GetComponent<PartOfQuest>().partOfQuest)
+        {
+            if (quest.IsActive == true && quest.Iscomplete == false)
+            {
+
+                QuestItemsIninventorySum = Inventory.instance.QuestItemsIninventory(targetItem.itemName);
+                quest.CurrentAmount = QuestItemsIninventorySum;
+                quest.CheckIfDone();
+
+            }
+
+
+        }
+
+    }
+    */
 }
 
 

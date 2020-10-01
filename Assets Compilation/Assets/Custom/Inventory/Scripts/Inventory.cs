@@ -441,7 +441,28 @@ public class Inventory : MonoBehaviour
 
 
 
-public int QuestItemsIninventory(string ItemToFind)
+    public void CheckInventoryForQuestItems(InventoryStackItems targetItem)
+    {
+
+        int QuestItemsIninventorySum;
+
+        foreach (FindQuest quest in targetItem.item.GetComponent<PartOfQuest>().partOfQuest)
+        {
+            if (quest.IsActive == true && quest.Iscomplete == false)
+            {
+
+                QuestItemsIninventorySum = QuestItemsIninventory(targetItem.item.itemName);
+                quest.CurrentAmount = QuestItemsIninventorySum;
+                quest.CheckIfDone();
+
+            }
+
+        }
+
+    }
+
+
+    public int QuestItemsIninventory(string ItemToFind)
     {
         return inventoryList.CountSpecifikItemInInventory(ItemToFind); 
     }

@@ -22,7 +22,15 @@ public class Quest : MonoBehaviour
     {
         GameObject player =  this.transform.parent.GetComponent<QuestHandeler>().Player;
         Inventory.instance.gold += Gold;  
-        player.GetComponent<PlayerController>().playerStats.Exp += Exp; 
+        player.GetComponent<PlayerController>().playerStats.Exp += Exp;
+
+        Debug.Log("quest is complete"); 
 
     }
+
+    public void checkForItems()
+    {
+        
+    }
+
 }

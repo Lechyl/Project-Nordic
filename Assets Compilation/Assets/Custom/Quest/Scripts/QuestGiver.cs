@@ -21,9 +21,18 @@ public class QuestGiver : MonoBehaviour
         {
 
             player.quest.Add(questToGive);
-            questToGive.IsActive = true; 
+            questToGive.IsActive = true;
 
 
+
+
+            if (questToGive is FindQuest )
+            {
+
+                FindQuest test = (FindQuest)questToGive; 
+
+                Inventory.instance.CheckInventoryForQuestItems(test.ItemTofind); 
+            }
     
         }
     

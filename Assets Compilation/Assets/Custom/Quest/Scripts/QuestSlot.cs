@@ -31,7 +31,10 @@ public class QuestSlot : MonoBehaviour , IPointerClickHandler
             questpanel.Find("TextBoxContainer").Find("Description").GetChild(0).GetComponent<Text>().text = quest.Description;
             questpanel.Find("TextBoxContainer").Find("Reward").GetChild(0).GetComponent<Text>().text = "Reward: " + quest.Gold.ToString();
 
-            questpanel.Find("acceptBtn").GetComponent<Button>().onClick.AddListener(addquestToBtn); 
+            questpanel.Find("acceptBtn").GetComponent<Button>().onClick.AddListener(addquestToBtn);
+
+            questpanel.Find("CompleteBtn").GetComponent<Button>().onClick.AddListener(completeQuestBtn);
+
 
             questpanel.transform.gameObject.SetActive(true);
 
@@ -45,6 +48,11 @@ public class QuestSlot : MonoBehaviour , IPointerClickHandler
             {
                 questpanel.Find("acceptBtn").transform.gameObject.SetActive(false);
                 questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
+            }
+            else if (quest.IsActive == false && quest.Iscomplete == true)
+            {
+                questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
+                questpanel.Find("acceptBtn").transform.gameObject.SetActive(false);
             }
             else 
             {
@@ -68,4 +76,15 @@ public class QuestSlot : MonoBehaviour , IPointerClickHandler
         questpanel.Find("acceptBtn").transform.gameObject.SetActive(false); 
 
     }
+
+
+    private void completeQuestBtn()
+    {
+        quest.GiveReward();
+        quest.IsActive = false;
+        questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
+
+    }
+
+
 }

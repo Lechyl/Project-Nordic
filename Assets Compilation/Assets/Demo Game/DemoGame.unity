@@ -4526,6 +4526,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenuUI: {fileID: 660819402}
+  enemyInventoryUI: {fileID: 998242395}
+  playerInventoryUI: {fileID: 195405693}
+  equipmentUI: {fileID: 888342963}
+  npcPanelUI: {fileID: 1555471753}
+  questPanelUI: {fileID: 640954213}
+  questScrollPanelUI: {fileID: 644425006}
+  pickUpUI: {fileID: 1516577569}
+  interactUI: {fileID: 172976844}
 --- !u!1001 &233231844
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5723,7 +5731,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3e89402cd4eb8f478564912de6abeeb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player: {fileID: 0}
+  Player: {fileID: 560478282}
 --- !u!1 &433044206
 GameObject:
   m_ObjectHideFlags: 0
@@ -6278,6 +6286,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4e65c4026a4b3444998162cbe930c44a, type: 3}
+--- !u!1 &560478282 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2977120053971472568, guid: a7f98d99a2c7f9c498ead04ccf0901c3,
+    type: 3}
+  m_PrefabInstance: {fileID: 273642036}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &623532069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7508,7 +7522,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 273642036}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 560478282}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27f2bf7483e8532448229dcce1cc0249, type: 3}
