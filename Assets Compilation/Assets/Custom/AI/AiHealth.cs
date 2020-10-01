@@ -8,7 +8,7 @@ public class AiHealth : ScriptableObject
 {
     public void HpLostByWeapon(Collider other, EnemyController Ai)
     {
-        if (other.tag == "Weapon")
+        if (other.CompareTag("PlayerWeapon"))
         {
             Ai.takeDamage.CheckAiDamage(other, Ai);
 

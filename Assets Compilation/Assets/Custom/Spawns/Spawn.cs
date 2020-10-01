@@ -14,14 +14,19 @@ public class Spawn : MonoBehaviour
     public float spawnRadius;
     public bool spawnState = false;
     public float despawnTimer;
+    public int spawnHeight;
     public int unitsCounter = 0;
 
     public float stateTimeElapsed;
     public List<GameObject> spawnedUnits;
 
+
+    private float checkSpawnCollisionRadius;
+
     private void Awake()
     {
         spawnedUnits = new List<GameObject>();
+        checkSpawnCollisionRadius = spawnHeight - 1;
     }
     private void Update()
     {
@@ -33,7 +38,6 @@ public class Spawn : MonoBehaviour
             if (!spawnState)
             {
                 //spawn
-                Debug.Log("Spawning");
                 spawnState = true;
                 Spawning();
             }
@@ -54,13 +58,16 @@ public class Spawn : MonoBehaviour
                     //Destroy each Enemy if they can despawn. They can only despawn if they're not chasing Player or doing other things which require it dosn't despawn.
                     foreach (var item in spawnedUnits.ToList())
                     {
-                        if (item.gameObject.GetComponent<EnemyController>().canDespawn)
+
+
+                        if (item.gameObject == null || item.gameObject.GetComponent<EnemyController>().canDespawn || item.gameObject.GetComponent<EnemyController>().CurrentHp < 0)
                         {
                             Destroy(item.gameObject);
                             spawnedUnits.Remove(item);
                             unitsCounter--;
 
                         }
+
                     }
 
                 }
@@ -73,7 +80,7 @@ public class Spawn : MonoBehaviour
     }
     public bool CheckIfCountDownElapsed(float duration)
     {
-        if(stateTimeElapsed >= duration)
+        if (stateTimeElapsed >= duration)
         {
             stateTimeElapsed = 0;
             return true;
@@ -104,14 +111,21 @@ public class Spawn : MonoBehaviour
                     if (chance <= spawnUnits[i].spawnRate)
                     {
                         //Spawn units here
-                       
 
-                        var spawning = (Vector3)Random.insideUnitSphere * spawnRadius;
-                      
-                        spawning += transform.position;
-                        unitsCounter++;
 
-                        spawnedUnits.Add(Instantiate(spawnUnits[i].unit, spawning, transform.rotation));
+                        var spawnLocation = (Vector3)Random.insideUnitSphere * spawnRadius;
+
+                        spawnLocation += transform.position;
+                        spawnLocation.y = spawnHeight;
+
+                        LayerMask mask = LayerMask.GetMask("Default");
+
+                        if (!Physics.CheckSphere(spawnLocation, checkSpawnCollisionRadius, mask))
+                        {
+                            spawnedUnits.Add(Instantiate(spawnUnits[i].unit, spawnLocation, transform.rotation, transform));
+                            unitsCounter++;
+
+                        }
                     }
                 }
             }
@@ -120,9 +134,9 @@ public class Spawn : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, spawnRadius);
-    }
+    /*  private void OnDrawGizmos()
+      {
+          Gizmos.color = Color.red;
+          Gizmos.DrawWireSphere(transform.position, spawnRadius);
+      }*/
 }

@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Patrol Chaser
   m_EditorClassIdentifier: 
   actions:
+  - {fileID: 11400000, guid: 191f0d20ada79a64aa95da923a935f4e, type: 2}
   - {fileID: 11400000, guid: 71dfc15b08dbd2742aa88e6a6bad8d9c, type: 2}
   transitions:
   - decision: {fileID: 11400000, guid: a7df6610dc4c0854582027eca6d81737, type: 2}

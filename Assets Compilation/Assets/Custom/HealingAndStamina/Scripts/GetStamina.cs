@@ -7,10 +7,10 @@ using UnityEngine;
 public class GetStamina : ScriptableObject
 {
 
-    public void StaminaRegain(Collider StaminaRestore, PlayerStamina playerStamina)
+    public void StaminaRegain(InventoryStackItems StaminaRestore, PlayerStats playerStamina)
     {
 
-        Stamina stamina = StaminaRestore.GetComponent<Stamina>();
+        Stamina stamina = StaminaRestore.item.GetComponent<Stamina>();
 
         float StaminaRestoreAmount = stamina.RestoreStamina;
 

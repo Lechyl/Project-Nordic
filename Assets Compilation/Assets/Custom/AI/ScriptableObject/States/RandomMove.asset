@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0279bd8473cf46d4e8c9a1a49759f55c, type: 3}
+  m_Name: RandomMove
+  m_EditorClassIdentifier: 
+  actions:
+  - {fileID: 11400000, guid: 191f0d20ada79a64aa95da923a935f4e, type: 2}
+  - {fileID: 11400000, guid: 88cd3b3e38dcfa24b8b6f75a5af46928, type: 2}
+  transitions:
+  - decision: {fileID: 11400000, guid: a7df6610dc4c0854582027eca6d81737, type: 2}
+    trueState: {fileID: 11400000, guid: 94129a8d78ff89843ac8adbe6185a393, type: 2}
+    falseState: {fileID: 11400000, guid: 53915ef0ef200204bbda5e9ea2f651bd, type: 2}
+  sceneGizmoColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}

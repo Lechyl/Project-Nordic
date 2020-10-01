@@ -8,6 +8,12 @@ namespace Assets.Custom.items.scripts
 {
     class NoItem : Items
     {
-
+        public NoItem()
+        {
+            itemName = "";
+            stackLimit = 0;
+            
+        }
+        
     }
 }

@@ -18,9 +18,10 @@ public class PickUp : ScriptableObject
 
         if (pickUpController.targetItem != null)
         {
+            Items targetItem = pickUpController.targetItem.GetComponent<Items>();
 
             //I might waant to change GetComponent<Wepons>() to conparetag instead because It uses less ressources
-            if (pickUpController.targetItem.GetComponent<Wepons>())
+            if (targetItem is Wepons)
             {
 
 
@@ -31,10 +32,10 @@ public class PickUp : ScriptableObject
                     {
                         //Detatch item in Players right hand and reset items values to gamemode
                         pickUpController.rightHand.GetChild(0).position = new Vector3(pickUpController.rightHand.position.x,1, pickUpController.rightHand.position.z);
-                    pickUpController.rightHand.GetChild(0).tag = "Item";
+                        pickUpController.rightHand.GetChild(0).tag = "Item";
 
 
-                    pickUpController.rightHand.DetachChildren();
+                        pickUpController.rightHand.DetachChildren();
 
                     }
 
@@ -42,24 +43,48 @@ public class PickUp : ScriptableObject
 
                     //Attach Weapon on Players right hand
 
-                    pickUpController.targetItem.gameObject.tag = "Weapon";
+                    pickUpController.targetItem.gameObject.tag = "PlayerWeapon";
                     // Set Position for Item  to be equal to Righthand
-                     pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
+                    pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
                     // equip Weapon to Player righthand
                     pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
                     //Rotate Weapon
-                    pickUpController.targetItem.gameObject.transform.localRotation = Quaternion.identity;
+                    pickUpController.targetItem.gameObject.transform.localEulerAngles = new Vector3(90, 0, 0);
+                    pickUpController.targetItem.gameObject.transform.localPosition = new Vector3(0, 0, 1);
 
-       
+
 
             }
             else
             {
                
                 //Item is not an Weapon, Destroy and add to inventory
-                if(Inventory.instance.Add(pickUpController.targetItem))
+                if(Inventory.instance.Add(targetItem))
                     pickUpController.targetItem.gameObject.SetActive(false);
                 //Destroy(pickUpController.targetItem.gameObject);
+
+
+                if(targetItem.GetComponent<PartOfQuest>() != null)
+                {
+
+                    int QuestItemsIninventorySum; 
+
+                    foreach (FindQuest quest in targetItem.GetComponent<PartOfQuest>().partOfQuest)
+                    {
+                        if (quest.IsActive == true && quest.Iscomplete == false)
+                        {
+
+                            QuestItemsIninventorySum = Inventory.instance.QuestItemsIninventory(targetItem.itemName);
+                            quest.CurrentAmount = QuestItemsIninventorySum;
+                            quest.CheckIfDone(); 
+                        
+                        }
+
+
+                    }
+
+                }
+
             }
 
 
@@ -88,18 +113,16 @@ public class PickUp : ScriptableObject
     {
         //Activate Pick up UI if trigger an item from the ground
 
-        Debug.Log(other.tag);
         if (other.CompareTag("Item"))
         {
-            Debug.Log("item");
 
-            Items item = other.GetComponent<Items>();
+
 
             pickUpController.pickUpUIState = true;
-            pickUpController.targetItem = item;
+            pickUpController.targetItem = other.gameObject;
             pickUpController.pickUpUI.gameObject.SetActive(true);
 
-            Debug.Log(item.itemName);
+            //Debug.Log(item.itemName);
 
             //  Destroy(item);
             
@@ -115,3 +138,5 @@ public class PickUp : ScriptableObject
 
     }
 }
+
+

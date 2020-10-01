@@ -7,7 +7,8 @@ public class PatrolAction : Action
 {
     public override void Act(EnemyController controller)
     {
-        Patrol(controller);
+        if(controller.agent.enabled)
+            Patrol(controller);
     }
 
     private void Patrol(EnemyController controller)

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class StaminaBar : MonoBehaviour
 {
-    public PlayerStamina stamina;
+    public PlayerStats playerStats;
     public Image fillImage;
     private Slider slider;
 
@@ -29,7 +29,7 @@ public class StaminaBar : MonoBehaviour
 
         }
 
-        float fillvalue = stamina.CurrentStamina / stamina.MaxStamina;
+        float fillvalue = playerStats.CurrentStamina / playerStats.MaxStamina;
         slider.value = fillvalue;
 
 

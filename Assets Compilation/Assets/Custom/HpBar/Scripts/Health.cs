@@ -14,7 +14,9 @@ public class Health : ScriptableObject
     public void death()
     {
         CurrentHp = MaxHp;
-        SceneManager.LoadScene("DemoGame"); 
+        SceneManager.LoadScene("DemoGame");
+        
+
     }
 
 

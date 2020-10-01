@@ -20,7 +20,6 @@ public class State : ScriptableObject
         for (int i = 0; i < actions.Length; i++)
         {
             actions[i].Act(controller);
-            Debug.Log("next Action");
         }
     }
 

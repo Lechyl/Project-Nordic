@@ -1,25 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public GameObject ip;
+    public GameObject playerInventory;
 
+    public GameObject equiptmentUI;
+
+    public GameObject tooltipUI;
     public PlayerStats playerStats;
 
     public CharacterController controller;
-    
+
     public Transform feetIsOnGround;
 
     public LayerMask groundMask;
+
+    [SerializeField] public StaminaBar staminaBar;
 
 
     Vector3 velocity;
 
     public bool isGrounded;
+
+    private bool InventoryOpen = false;
 
     void Start()
     {
@@ -36,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         //Check if player is on ground
         isGrounded = Physics.CheckSphere(feetIsOnGround.position, playerStats.groundDistance, groundMask);
 
-        if(isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f;
         }
@@ -46,10 +52,30 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 move = transform.right * x + transform.forward * z;
 
-            //Sprinting
-        if(Input.GetKey(KeyCode.LeftShift) && isGrounded)
+        //Sprinting
+        if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
-            controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
+            if (playerStats.CurrentStamina > 1)
+            {
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
+                    playerStats.CurrentStamina = playerStats.CurrentStamina - 0.3f;
+                    staminaBar.SetSize();
+
+                }
+                else
+                {
+                    //Walking
+                    controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                //Walking
+                controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
+            }
         }
         else
         {
@@ -58,54 +84,65 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Jumping
-        if(Input.GetButtonDown("Jump") && isGrounded)
+        if (Input.GetButtonDown("Jump") && isGrounded)
         {
             velocity.y = Mathf.Sqrt(playerStats.jumpHeight * -1f * playerStats.gravity);
         }
 
-       /* //Crouching/Sneaking
-        if(Input.GetKey(KeyCode.LeftControl))
-        {
-            controller.Height = 5.0f;
-        }
-        */
+        /* //Crouching/Sneaking
+         if(Input.GetKey(KeyCode.LeftControl))
+         {
+             controller.Height = 5.0f;
+         }
+         */
 
         velocity.y += playerStats.gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
-        
+
 
         Menu();
-        
+
     }
-    
+
     //InventoryToggle ON/OFF
-      public void Menu()
-      {
+    public void Menu()
+    {
+
+        if (Cursor.lockState == CursorLockMode.Locked || InventoryOpen == true)
+        {
+
+
             if (Input.GetKeyDown(KeyCode.Tab))
             {
-              GameObject ip = Inventory.instance.InventoryPanel;
-              if (!ip.activeSelf)
-              {
-                ip.SetActive(true);
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                Time.timeScale = 0;
-            }
-                else
+                //playerInventory = Inventory.instance.InventoryPanel;
+                //equiptmentUI = Inventory.instance.equipmentUI;
+
+                if (!playerInventory.activeSelf && !equiptmentUI.activeSelf)
                 {
-                  ip.SetActive(false);
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-                Time.timeScale = 1;
+                    playerInventory.SetActive(true);
+                    equiptmentUI.SetActive(true);
+                    InventoryOpen = true;
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    Time.timeScale = 0;
+                }
+                else if (playerInventory.activeSelf && equiptmentUI.activeSelf)
+                {
+                    tooltipUI.SetActive(false);
+
+                    playerInventory.SetActive(false);
+                    equiptmentUI.SetActive(false);
+                    InventoryOpen = false;
+
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    Time.timeScale = 1;
+                }
             }
-          }
-
-      }
-      
-
-
+        }
+    }
 }
 
 
