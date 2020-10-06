@@ -5191,8 +5191,7 @@ PrefabInstance:
         type: 3}
       propertyPath: trashcan
       value: 
-      objectReference: {fileID: 5609346209730841659, guid: 1367291f8bb50ae49a49ac0825e9f206,
-        type: 3}
+      objectReference: {fileID: 695192529}
     - target: {fileID: 2977120053971472571, guid: a7f98d99a2c7f9c498ead04ccf0901c3,
         type: 3}
       propertyPath: healthBar
@@ -7202,6 +7201,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: -0.00000038335355, y: 0.30451405, z: 0.38197815}
   m_Center: {x: -0.00000019167678, y: -0.043544695, z: 0.00000032782555}
+--- !u!1 &695192529 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5609346209730841659, guid: 1367291f8bb50ae49a49ac0825e9f206,
+    type: 3}
+  m_PrefabInstance: {fileID: 471051387}
+  m_PrefabAsset: {fileID: 0}
 --- !u!144 &709450974
 CharacterJoint:
   m_ObjectHideFlags: 0
