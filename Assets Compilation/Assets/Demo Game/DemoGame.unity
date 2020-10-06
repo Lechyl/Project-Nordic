@@ -5559,7 +5559,7 @@ GameObject:
   - component: {fileID: 393366073}
   m_Layer: 0
   m_Name: Shiet Axe
-  m_TagString: Weapon
+  m_TagString: EnemyWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5944,6 +5944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partOfQuest:
   - {fileID: 1206781308}
+  - {fileID: 1782627322}
 --- !u!114 &460994084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8928,7 +8929,7 @@ MonoBehaviour:
   Iscomplete: 0
   Name: 'Quest part 1 '
   Description: 'This is the fist quest you will go on. '
-  Reward: '20 smekels '
+  items: []
   Exp: 420
   Gold: 69
   ItemTofind:
@@ -9833,7 +9834,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403997301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 54.56, y: 1, z: 47.05}
+  m_LocalPosition: {x: 45.41, y: 1, z: 28.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9852,7 +9853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 261689789}
-  spawnLimit: 1
+  spawnLimit: 7
   spawnPointDistance: 50
   spawnUnits:
   - unit: {fileID: 9207597442953289695, guid: 6497626615b6ccf449b78860ab47731f, type: 3}
@@ -11663,7 +11664,7 @@ MonoBehaviour:
   Iscomplete: 0
   Name: Quest part 2
   Description: 'This is the second quest you will go on. '
-  Reward: '20 smekels '
+  items: []
   Exp: 420
   Gold: 69
   ItemTofind:

@@ -12,7 +12,7 @@ public class Quest : MonoBehaviour
 
     public string Name;
     public string Description;
-    public string Reward;
+    public List<Items> items;
     public int Exp; 
     public int Gold;
 
@@ -26,11 +26,16 @@ public class Quest : MonoBehaviour
 
         Debug.Log("quest is complete"); 
 
+
+        if(items.Count > 0)
+        {
+            foreach(Items item in items)
+            {
+                Inventory.instance.Add(item); 
+            }
+        }
+
     }
 
-    public void checkForItems()
-    {
-        
-    }
 
 }

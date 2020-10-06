@@ -23,8 +23,8 @@ public class NpcmenuSlotControler : MonoBehaviour, IPointerClickHandler, IPointe
                 {
 
                     questpanel.gameObject.SetActive(false);
+                    questScrollPanel.gameObject.SetActive(false);
                     enemyInventory.gameObject.SetActive(true);
-
                 }
                 else
                 {
@@ -51,10 +51,14 @@ public class NpcmenuSlotControler : MonoBehaviour, IPointerClickHandler, IPointe
                     // Make a button for each quest, and give it quest data. 
                     foreach (Quest quest in Npc.GetComponent<QuestGiver>().quest)
                     {
-                        ButtonPrefab.GetComponent<QuestSlot>().quest = quest; 
-                        ButtonPrefab.GetComponent<QuestSlot>().Npc = Npc;
-                        ButtonPrefab.transform.GetChild(0).GetComponent<Text>().text = quest.name; 
-                        Instantiate(ButtonPrefab, questScrollPanel.GetChild(0).GetChild(0).GetChild(0));
+                        if (!(quest.IsActive == false && quest.Iscomplete == true))
+                        {
+
+                            ButtonPrefab.GetComponent<QuestSlot>().quest = quest; 
+                            ButtonPrefab.GetComponent<QuestSlot>().Npc = Npc;
+                            ButtonPrefab.transform.GetChild(0).GetComponent<Text>().text = quest.name; 
+                            Instantiate(ButtonPrefab, questScrollPanel.GetChild(0).GetChild(0).GetChild(0));
+                        }
                         
                     }
 

@@ -29,9 +29,9 @@ public class QuestGiver : MonoBehaviour
             if (questToGive is FindQuest )
             {
 
-                FindQuest test = (FindQuest)questToGive; 
+                FindQuest findQuest = (FindQuest)questToGive; 
 
-                Inventory.instance.CheckInventoryForQuestItems(test.ItemTofind); 
+                Inventory.instance.CheckInventoryForQuestItems(findQuest.ItemTofind); 
             }
     
         }

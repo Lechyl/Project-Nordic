@@ -83,7 +83,7 @@ public class QuestSlot : MonoBehaviour , IPointerClickHandler
         quest.GiveReward();
         quest.IsActive = false;
         questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
-
+        questpanel.gameObject.SetActive(false);
     }
 
 

@@ -12,9 +12,14 @@ public class KillQuest : Quest
     public int RequiredAmount;
     public int CurrentAmount;
 
-    public bool IsReached()
+
+    public void CheckIfDone()
     {
-        return (CurrentAmount >= RequiredAmount);
+        if (CurrentAmount >= RequiredAmount)
+        {
+            Iscomplete = true;
+        }
     }
+
 
 }
