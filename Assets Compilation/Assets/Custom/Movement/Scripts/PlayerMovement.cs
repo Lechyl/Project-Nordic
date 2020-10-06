@@ -168,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     craftPanel.SetActive(true);
                     playerInventory.SetActive(true);
+                    InventoryOpen = true;
 
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
@@ -178,6 +179,7 @@ public class PlayerMovement : MonoBehaviour
                     craftPanel.transform.Find("Craft1").GetComponent<CraftItemSlot>().ClearCrafting();
                     craftPanel.SetActive(false);
                     playerInventory.SetActive(false);
+                    InventoryOpen = false;
 
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;
