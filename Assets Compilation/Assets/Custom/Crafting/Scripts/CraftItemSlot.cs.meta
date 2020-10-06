@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 1d90f954604c0e44fa92bdbfda253783
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - healthPotion: {fileID: 2143744745665467708, guid: ce3fc623bf7a0ea4ebf918d3dc2be417,
+      type: 3}
+  - staminaPotion: {fileID: 7833938070210782497, guid: 2f28b66f3c2d8bd41a54e83281f8a998,
+      type: 3}
+  - healthFlower: {fileID: 8804987908366259535, guid: 73b10b83c3f6e1747af91a071116934a,
+      type: 3}
+  - healthMushroom: {fileID: 8047562178457545363, guid: de94fbccfe7a9924b94e584ce00c9180,
+      type: 3}
+  - staminaFlower: {fileID: 2564112461077729766, guid: 03583cbd05bc8f249b39fb6161a89acb,
+      type: 3}
+  - staminaMushroom: {fileID: 41886246912472023, guid: e2771ad03d096f1458c12d218f6b5d2e,
+      type: 3}
+  - potion: {fileID: 21300000, guid: d009dda40a840304cb08ef5e7869d208, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

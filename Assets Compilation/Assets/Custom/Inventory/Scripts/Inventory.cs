@@ -188,15 +188,36 @@ public class Inventory : MonoBehaviour
         }
         
     }
-    public void Remove(Items item)
+
+    public void Remove(InventoryStackItems inventoryStackItem)
     {
+        Items noItem = new NoItem();
+
+        if (inventoryStackItem.GetType() != typeof(NoItem))
+        {
+            if (inventoryList.inventoryItems.Exists(x => x.item.itemName == inventoryStackItem.item.itemName && x.stack > 1))
+            {
+                inventoryList.inventoryItems.Find(x => x.item.itemName == inventoryStackItem.item.itemName).stack--;
+            }
+            else if (inventoryList.inventoryItems.Exists(x => x.item.itemName == inventoryStackItem.item.itemName && x.stack == 1))
+            {
+                inventoryList.inventoryItems.Find(x => x.item.itemName == inventoryStackItem.item.itemName).stack = 0;
+                inventoryList.inventoryItems.Find(x => x.item.itemName == inventoryStackItem.item.itemName).item = noItem;
+            }
+            else
+            {
+                Debug.LogError("Error when removing item: " + inventoryStackItem.item.itemName);
+            }
+        }
+
         UpdatePanelSlots();
     }
+
 
     //################################################################################################### EQUIPMENT ####################################################################################
 
 
-        public void UpdateEquiptmentSlot(System.Type type)
+    public void UpdateEquiptmentSlot(System.Type type)
     {
 
 

@@ -10,6 +10,11 @@ public class PlayerMovement : MonoBehaviour
     public GameObject equiptmentUI;
 
     public GameObject tooltipUI;
+
+    public GameObject craftPanel;
+
+    public GameObject trashcan;
+
     public PlayerStats playerStats;
 
     public CharacterController controller;
@@ -135,6 +140,8 @@ public class PlayerMovement : MonoBehaviour
                 {
                     playerInventory.SetActive(true);
                     equiptmentUI.SetActive(true);
+                    trashcan.SetActive(true);
+
                     InventoryOpen = true;
                     Cursor.lockState = CursorLockMode.None;
                     Cursor.visible = true;
@@ -146,7 +153,31 @@ public class PlayerMovement : MonoBehaviour
 
                     playerInventory.SetActive(false);
                     equiptmentUI.SetActive(false);
+                    trashcan.SetActive(false);
                     InventoryOpen = false;
+
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
+                    Time.timeScale = 1;
+                }
+            }
+
+            if (Input.GetKeyDown(KeyCode.C))
+            {
+                if (!craftPanel.activeSelf && !playerInventory.activeSelf)
+                {
+                    craftPanel.SetActive(true);
+                    playerInventory.SetActive(true);
+
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    Time.timeScale = 0;
+                }
+                else if (craftPanel.activeSelf && playerInventory.activeSelf)
+                {
+                    craftPanel.transform.Find("Craft1").GetComponent<CraftItemSlot>().ClearCrafting();
+                    craftPanel.SetActive(false);
+                    playerInventory.SetActive(false);
 
                     Cursor.lockState = CursorLockMode.Locked;
                     Cursor.visible = false;

@@ -22,7 +22,6 @@ public class Play_Anim_Cont : MonoBehaviour
 
     void Attack()
     {
-
         if(Input.GetMouseButtonDown(0))
         {
             if(righthand.transform.childCount > 0)
