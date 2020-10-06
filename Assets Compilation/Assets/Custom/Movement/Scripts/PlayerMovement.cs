@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
 
     public LayerMask groundMask;
 
+    public AudioSource footsteps;
+
     [SerializeField] public StaminaBar staminaBar;
 
 
@@ -34,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+
+        footsteps = GetComponent<AudioSource>();
+
     }
 
     // Update is called once per frame
@@ -100,6 +105,13 @@ public class PlayerMovement : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
 
+
+        //SFX
+        if (move.x != 0 && !footsteps.isPlaying || move.z != 0 && !footsteps.isPlaying)
+        {
+            // AudioSource.PlayClipAtPoint(Footsteps, transform.position);
+            footsteps.Play();
+        }
 
 
         Menu();
