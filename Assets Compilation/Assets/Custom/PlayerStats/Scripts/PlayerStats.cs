@@ -11,7 +11,6 @@ public class PlayerStats : ScriptableObject
     public int exp;
     public int expToLevel;
 
-
     //Player stats
     public ScriptableObject playerHp; 
     public float currentStamina;
