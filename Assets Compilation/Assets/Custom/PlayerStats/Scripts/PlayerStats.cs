@@ -34,7 +34,7 @@ public class PlayerStats : ScriptableObject
     {
         exp += exp_amount;
 
-        while (exp > expToLevel)
+        while (exp >= expToLevel)
         {
             exp -= expToLevel;
 

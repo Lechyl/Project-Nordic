@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e88409087d07d43946f3531d41d0f5, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
-  Level: 1
-  Exp: 1
-  ExpToLevel: 1
-  CurrentStamina: 192.07079
-  MaxStamina: 1000
-  StaminaRegen: 4
-  WalkSpeed: 6
-  SprintSpeed: 12
+  level: 1
+  exp: 0
+  expToLevel: 100
+  playerHp: {fileID: 11400000, guid: 0d899391cd97e7540b2565f94da7e196, type: 2}
+  currentStamina: 0
+  maxStamina: 0
+  staminaRegen: 0
+  walkSpeed: 12
+  sprintSpeed: 20
   gravity: -9.81
   jumpHeight: 3
   groundDistance: 0.3
