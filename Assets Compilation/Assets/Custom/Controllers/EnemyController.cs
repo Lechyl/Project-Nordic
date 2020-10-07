@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,6 +11,7 @@ public class EnemyController : MonoBehaviour
     public State currentState;
     public EnemyStats enemyStats;
     public Transform eyes;
+    public GameObject rightHand;
     public List<Transform> wayPointList;
     public State remainState;
     public AiHealth aiHealth;
@@ -51,8 +53,7 @@ public class EnemyController : MonoBehaviour
     }
 
     public void SetupAI(bool aiActivationFromTankManager)
-    {
-        
+    {        
         aiActive = aiActivationFromTankManager;
         if (aiActive)
         {
@@ -60,8 +61,10 @@ public class EnemyController : MonoBehaviour
             SetRagdollColliderState(false);
             canDespawn = true;
             agent.enabled = true;
-            eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.Level;
-            eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.Level * 10;
+            rightHand.transform.GetChild(3).gameObject.GetComponent<Wepons>().lvl = playerStats.Level;
+            rightHand.transform.GetChild(3).gameObject.GetComponent<Wepons>().dmg = playerStats.Level * 10;
+            //eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.Level;
+            //eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.Level * 10;
             MaxHp = MaxHp * playerStats.Level / 2;
             CurrentHp = MaxHp;
         }

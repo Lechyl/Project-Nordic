@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31416190d00f2074f99906431ceee97a, type: 3}
   m_Name: repair
   m_EditorClassIdentifier: 
+  playerWepon: {fileID: 0}
+  equipmentList: {fileID: 0}

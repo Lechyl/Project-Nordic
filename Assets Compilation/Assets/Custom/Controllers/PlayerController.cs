@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public TakeDamage takeDamage;
     public GetHp getHp;
     public GetStamina getStamina;
+    public RepairWeapon weaponRepair;
     public PlayerStats playerStats;
     public List<Quest> quest;
 
@@ -24,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         healthBar.SetSize();
-       
+
 
     }
 
@@ -76,6 +77,11 @@ public class PlayerController : MonoBehaviour
                 playerStamina.StaminaRestore(stackItem, this);
 
             }
+            else if (stackItem.item.GetType() == typeof(Repair))
+            {
+                // Repair function
+                weaponRepair.DurabilityRegain(stackItem, this);
+            }
             else if (stackItem.item.GetType() == typeof(Stone))
             {
                 // stone function
@@ -96,8 +102,8 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         // For taking dmg 
-        playerHealth.HpLostByWeapon(other,this);
-      
+        playerHealth.HpLostByWeapon(other, this);
+
     }
 
 

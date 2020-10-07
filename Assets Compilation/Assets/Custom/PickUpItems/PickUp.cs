@@ -7,9 +7,6 @@ using UnityEngine.UI;
 [CreateAssetMenu]
 public class PickUp : ScriptableObject
 {
-
-
-
    public void PickUpItem(PickUpController pickUpController)
     {
         //Pick up item and add to inventory
