@@ -93,6 +93,7 @@ MonoBehaviour:
   stateTimeElapsed: 0
   CurrentHp: 10
   MaxHp: 10
+  deathExp: 50
 --- !u!195 &9207597442953289693
 NavMeshAgent:
   m_ObjectHideFlags: 0

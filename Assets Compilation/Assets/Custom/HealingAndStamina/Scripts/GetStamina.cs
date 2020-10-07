@@ -14,11 +14,11 @@ public class GetStamina : ScriptableObject
 
         float StaminaRestoreAmount = stamina.RestoreStamina;
 
-        float sum = playerStamina.CurrentStamina += StaminaRestoreAmount;
+        float sum = playerStamina.currentStamina += StaminaRestoreAmount;
 
-        if (sum > playerStamina.MaxStamina)
+        if (sum > playerStamina.maxStamina)
         {
-            playerStamina.CurrentStamina = playerStamina.MaxStamina;
+            playerStamina.currentStamina = playerStamina.maxStamina;
         }
 
 

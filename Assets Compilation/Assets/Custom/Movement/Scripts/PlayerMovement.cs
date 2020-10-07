@@ -65,32 +65,32 @@ public class PlayerMovement : MonoBehaviour
         //Sprinting
         if (Input.GetKey(KeyCode.LeftShift) && isGrounded)
         {
-            if (playerStats.CurrentStamina > 1)
+            if (playerStats.currentStamina > 1)
             {
 
                 if (Input.GetKey(KeyCode.W))
                 {
-                    controller.Move(move * playerStats.SprintSpeed * Time.deltaTime);
-                    playerStats.CurrentStamina = playerStats.CurrentStamina - 0.3f;
+                    controller.Move(move * playerStats.sprintSpeed * Time.deltaTime);
+                    playerStats.currentStamina = playerStats.currentStamina - 0.3f;
                     staminaBar.SetSize();
 
                 }
                 else
                 {
                     //Walking
-                    controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
+                    controller.Move(move * playerStats.walkSpeed * Time.deltaTime);
                 }
             }
             else
             {
                 //Walking
-                controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
+                controller.Move(move * playerStats.walkSpeed * Time.deltaTime);
             }
         }
         else
         {
             //Walking
-            controller.Move(move * playerStats.WalkSpeed * Time.deltaTime);
+            controller.Move(move * playerStats.walkSpeed * Time.deltaTime);
         }
 
         //Jumping

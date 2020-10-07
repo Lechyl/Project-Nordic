@@ -29,7 +29,7 @@ public class StaminaBar : MonoBehaviour
 
         }
 
-        float fillvalue = playerStats.CurrentStamina / playerStats.MaxStamina;
+        float fillvalue = playerStats.currentStamina / playerStats.maxStamina;
         slider.value = fillvalue;
 
 

@@ -11452,6 +11452,7 @@ MonoBehaviour:
   stateTimeElapsed: 0
   CurrentHp: 10
   MaxHp: 10
+  deathExp: 100
 --- !u!65 &1653489268
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13650,6 +13651,7 @@ MonoBehaviour:
   stateTimeElapsed: 0
   CurrentHp: 0
   MaxHp: 0
+  deathExp: 0
 --- !u!65 &2063498608
 BoxCollider:
   m_ObjectHideFlags: 0

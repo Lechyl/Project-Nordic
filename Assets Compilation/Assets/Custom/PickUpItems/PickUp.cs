@@ -57,14 +57,24 @@ public class PickUp : ScriptableObject
             }
             else
             {
-               
+
                 //Item is not an Weapon, Destroy and add to inventory
-                if(Inventory.instance.Add(targetItem))
-                    pickUpController.targetItem.gameObject.SetActive(false);
-                //Destroy(pickUpController.targetItem.gameObject);
+                if (Inventory.instance.Add(targetItem))
+                {
+
+                    //   pickUpController.targetItem.transform.gameObject.SetActive(false);
+                    pickUpController.targetItem.transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                    pickUpController.targetItem.transform.gameObject.GetComponent<Collider>().enabled = false;
+                    if (pickUpController.targetItem.transform.gameObject.HasComponent<RespawnItem>())
+                    {
+                        pickUpController.targetItem.transform.gameObject.GetComponent<RespawnItem>().Respawn();
+
+                    }
+
+                }
 
 
-                if(targetItem.GetComponent<PartOfQuest>() != null)
+                if (targetItem.GetComponent<PartOfQuest>() != null)
                 {
 
                     InventoryStackItems inventoryStackItems = new InventoryStackItems()

@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour
     private bool aiActive;
     public float CurrentHp;
     public float MaxHp;
+    public int deathExp = 0;
+
 
     void Awake()
     {
@@ -60,9 +62,9 @@ public class EnemyController : MonoBehaviour
             SetRagdollColliderState(false);
             canDespawn = true;
             agent.enabled = true;
-            eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.Level;
-            eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.Level * 10;
-            MaxHp = MaxHp * playerStats.Level / 2;
+            eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.level;
+            eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.level * 10;
+            MaxHp = MaxHp * playerStats.level / 2;
             CurrentHp = MaxHp;
         }
         else

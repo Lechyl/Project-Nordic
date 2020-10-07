@@ -16,10 +16,12 @@ public class DeadAction : Action
     
     private void Dead(EnemyController controller)
     {
-       
 
+        //Death Logic here
         if (controller.CurrentHp <= 0)
         {
+            controller.playerStats.GainExp(controller.deathExp);
+
             controller.currentState = deadState;
 
             controller.canDespawn = true;
