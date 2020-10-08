@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Demo Game/DemoGame.unity
+- path: Assets/Custom/World/worldMap.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
