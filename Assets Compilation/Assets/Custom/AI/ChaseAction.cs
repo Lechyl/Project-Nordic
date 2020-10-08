@@ -27,9 +27,23 @@ public class ChaseAction : Action
             {
                 foreach (var obj in collides)
                 {
-                    obj.gameObject.GetComponent<EnemyController>().chaseTarget = controller.chaseTarget;
 
-                    obj.gameObject.GetComponent<EnemyController>().currentState = controller.currentState;
+                    //&& obj.gameObject.GetComponent<EnemyController>().canDespawn == false &&
+                    
+                    if (obj.gameObject != null && controller.gameObject != null && obj.gameObject.GetComponent<EnemyController>().currentState != controller.currentState)
+                    {
+
+
+                            obj.gameObject.GetComponent<EnemyController>().chaseTarget = controller.chaseTarget;
+
+                            obj.gameObject.GetComponent<EnemyController>().currentState = controller.currentState;
+
+                    }
+                    else
+                    {
+                        Debug.Log("Enemy is null or can despawn");
+                    }
+
 
                 }
             }
@@ -42,16 +56,16 @@ public class ChaseAction : Action
         FaceTarget(controller);
     }
 
-    private void FaceTarget(EnemyController  controller)
+    private void FaceTarget(EnemyController controller)
     {
 
         if (controller.agent.velocity.sqrMagnitude > Mathf.Epsilon)
         {
             Debug.Log("rotate");
-            
-           // Quaternion chaseTargetQuaternion = Quaternion.LookRotation(controller.chaseTarget.position);
+
+            // Quaternion chaseTargetQuaternion = Quaternion.LookRotation(controller.chaseTarget.position);
             //controller.transform.rotation = Quaternion.RotateTowards(controller.transform.rotation, chaseTargetQuaternion, Time.deltaTime * 2);
-              controller.transform.rotation = Quaternion.LookRotation(controller.agent.velocity.normalized);
+            controller.transform.rotation = Quaternion.LookRotation(controller.agent.velocity.normalized);
         }
     }
 

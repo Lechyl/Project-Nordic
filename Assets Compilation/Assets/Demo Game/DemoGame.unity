@@ -12198,7 +12198,7 @@ MonoBehaviour:
   BackButton: {fileID: 1945022313}
   gameSettings: {fileID: 0}
   GraphicsMenu: {fileID: 1299986376}
-  SettingsMenu: {fileID: 0}
+  SettingsMenu: {fileID: 1205159558}
 --- !u!1 &930123350
 GameObject:
   m_ObjectHideFlags: 0
