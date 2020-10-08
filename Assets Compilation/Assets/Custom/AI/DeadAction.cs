@@ -55,7 +55,10 @@ public class DeadAction : Action
 
     private void DespawnAfterdeath(EnemyController controller)
     {
+        if (controller.gameObject)
+        {
+            Destroy(controller.gameObject, controller.DespawnAfterDeathTime);
 
-        Destroy(controller.gameObject, controller.DespawnAfterDeathTime);
+        }
     }
 }

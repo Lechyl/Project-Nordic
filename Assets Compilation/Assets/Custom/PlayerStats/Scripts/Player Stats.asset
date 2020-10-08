@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6e88409087d07d43946f3531d41d0f5, type: 3}
   m_Name: Player Stats
   m_EditorClassIdentifier: 
-  level: 1
-  exp: 0
-  expToLevel: 100
+  level: 6
+  exp: 40
+  expToLevel: 320
   playerHp: {fileID: 11400000, guid: 0d899391cd97e7540b2565f94da7e196, type: 2}
   currentStamina: 0
   maxStamina: 0

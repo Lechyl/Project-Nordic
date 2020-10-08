@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerStats : ScriptableObject
 {
     //public float height = 10.0f;
+
+
     //Player level
     public int level;
     public int exp;
