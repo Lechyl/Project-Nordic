@@ -15,10 +15,13 @@ public class PauseMenu : MonoBehaviour
     public GameObject questScrollPanelUI;
     public GameObject pickUpUI;
     public GameObject interactUI;
+    public GameObject settingsMenuUI;
+    public GameObject graphicMenuUI;
+    public GameObject audioMenuUI;
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -39,16 +42,17 @@ public class PauseMenu : MonoBehaviour
 
     public void Resume()
     {
-        Cursor.lockState = CursorLockMode.Locked;
 
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
 
         GameIsPaused = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
-    private void Pause()
+    public void Pause()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.lockState = CursorLockMode.None;
         playerInventoryUI.SetActive(false);
         enemyInventoryUI.SetActive(false);
         equipmentUI.SetActive(false);
@@ -58,7 +62,10 @@ public class PauseMenu : MonoBehaviour
         questScrollPanelUI.SetActive(false);
         pickUpUI.SetActive(false);
         interactUI.SetActive(false);
+        settingsMenuUI.SetActive(false);
 
+        graphicMenuUI.SetActive(false);
+        audioMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameIsPaused = true;
@@ -66,11 +73,25 @@ public class PauseMenu : MonoBehaviour
 
     public void Options()
     {
-
+        graphicMenuUI.SetActive(false);
+        audioMenuUI.SetActive(false);
+        pauseMenuUI.SetActive(false);
+        settingsMenuUI.SetActive(true);
     }
 
     public void QuitGame()
     {
 
+    }
+    public void GraphicsMenu()
+    {
+        settingsMenuUI.SetActive(false);
+        graphicMenuUI.SetActive(true);
+    }
+
+    public void AudioMenu()
+    {
+        settingsMenuUI.SetActive(false);
+        audioMenuUI.SetActive(true);
     }
 }

@@ -84,22 +84,28 @@ public class QuestSlot : MonoBehaviour , IPointerClickHandler
 
     private void completeQuestBtn()
     {
-        quest.GiveReward();
-        quest.isActive = false;
-
-
-        if (quest is FindQuest)
+        if (quest.items.Count <= (20 - Inventory.instance.inventoryList.CountItemsInInventory()))
         {
 
-            FindQuest findQuest = (FindQuest)quest;
 
-            findQuest.removeItems(); 
+            quest.GiveReward();
+            quest.isActive = false;
+
+
+            if (quest is FindQuest)
+            {
+
+                FindQuest findQuest = (FindQuest)quest;
+
+                findQuest.removeItems();
+
+            }
+
+
+            questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
+            questpanel.gameObject.SetActive(false);
 
         }
-
-
-        questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
-        questpanel.gameObject.SetActive(false);
     }
 
     public void backBtnClick()

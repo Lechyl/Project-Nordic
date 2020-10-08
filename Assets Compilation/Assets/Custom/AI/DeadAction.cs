@@ -28,7 +28,9 @@ public class DeadAction : Action
             controller.currentState = deadState;
 
             controller.canDespawn = true;
-
+            
+            // to do need new path for weapon
+            
             controller.eyes.GetChild(0).gameObject.SetActive(false);
             controller.gameObject.GetComponent<BoxCollider>().enabled = false;
             controller.SetRagdollRigidbodyState(false);
@@ -89,7 +91,10 @@ public class DeadAction : Action
 
     private void DespawnAfterdeath(EnemyController controller)
     {
+        if (controller.gameObject)
+        {
+            Destroy(controller.gameObject, controller.DespawnAfterDeathTime);
 
-        Destroy(controller.gameObject, controller.DespawnAfterDeathTime);
+        }
     }
 }

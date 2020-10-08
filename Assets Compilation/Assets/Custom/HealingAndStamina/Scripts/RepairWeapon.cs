@@ -5,7 +5,7 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RepairWeapon : ScriptableObject
 {
-    public void DurabilityRegain(Collider durabilityRestore, Wepons weponsDurability)
+    public void DurabilityRegain(Collider durabilityRestore, Weapons weponsDurability)
     {
         Repair repair = durabilityRestore.GetComponent<Repair>();
 

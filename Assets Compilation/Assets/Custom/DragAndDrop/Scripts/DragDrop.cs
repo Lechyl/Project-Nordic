@@ -137,7 +137,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
             }
 
-            else if (eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType() == typeof(Wepons))
+            else if (eventData.pointerDrag.transform.parent.gameObject.GetComponent<InventorySlotController>().stackItem.item.GetType() == typeof(Weapons))
             {
 
                 ReplaceEquiptment firstInventoryItem = new ReplaceEquiptment()

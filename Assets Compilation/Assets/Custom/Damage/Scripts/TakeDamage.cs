@@ -9,7 +9,7 @@ public class TakeDamage : ScriptableObject
 
     public void CheckDamage(Collider DamageTaken, Health health )
     {
-            Wepons weapon = DamageTaken.GetComponent<Wepons>();
+            Weapons weapon = DamageTaken.GetComponent<Weapons>();
 
             float damage = weapon.dmg;
 
@@ -23,7 +23,7 @@ public class TakeDamage : ScriptableObject
     }
     public void CheckAiDamage(Collider DamageTaken, EnemyController enemyController)
     {
-        Wepons weapon = DamageTaken.GetComponent<Wepons>();
+        Weapons weapon = DamageTaken.GetComponent<Weapons>();
 
         float damage = weapon.dmg;
 

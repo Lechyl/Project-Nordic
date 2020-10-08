@@ -261,10 +261,14 @@ public class Inventory : MonoBehaviour
             else if (slot.name == "BootsSlot" && type == typeof(Boots))
             {
 
-                slot.stackItem.item = equipmentList.boots;
-                slot.stackItem.stack = 1;
+                InventoryStackItems newItem = new InventoryStackItems()
+                {
+                    item = equipmentList.boots,
+                    stack = 1
+                };
+                slot.stackItem = newItem;
             }
-            else if (slot.name == "WeaponsSlot" && type == typeof(Wepons))
+            else if (slot.name == "WeaponsSlot" && type == typeof(Weapons))
             {
                 InventoryStackItems newItem = new InventoryStackItems()
                 {
@@ -341,7 +345,7 @@ public class Inventory : MonoBehaviour
             equipmentList.boots = from.item.item;
 
         }
-        else if (to.type == typeof(Wepons))
+        else if (to.type == typeof(Weapons))
         {
             equipmentList.Wepons = from.item.item;
 
@@ -430,9 +434,9 @@ public class Inventory : MonoBehaviour
             }
             slotType = "[Consumable]";
         }
-        else if (item.GetType() == typeof(Wepons))
+        else if (item.GetType() == typeof(Weapons))
         {
-            Wepons wepon = (Wepons)item;
+            Weapons wepon = (Weapons)item;
             builder.Append("Level: ").Append(wepon.lvl).AppendLine();
             builder.Append("Type: " + item.GetType().ToString()).AppendLine();
             builder.Append("Damage: ").Append(wepon.dmg).AppendLine();

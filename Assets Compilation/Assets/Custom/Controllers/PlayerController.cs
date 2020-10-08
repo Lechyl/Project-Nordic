@@ -1,6 +1,7 @@
 ﻿using Assets.Custom.items.scripts;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public GetStamina getStamina;
     public PlayerStats playerStats;
     public List<Quest> quest;
+    public TextMeshProUGUI levelTextUI;
 
 
     [SerializeField] public HealthBar healthBar;
@@ -30,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        
+        levelTextUI.text = "Lvl " + playerStats.level;
         // test for staminaBar
         if (playerStats.currentStamina <= playerStats.maxStamina)
         {

@@ -26,7 +26,7 @@ public class Quest : MonoBehaviour
 
         Debug.Log("quest is complete"); 
 
-
+        // give items if any 
         if(items.Count > 0)
         {
             foreach(Items item in items)

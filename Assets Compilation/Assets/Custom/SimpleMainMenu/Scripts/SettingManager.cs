@@ -19,9 +19,19 @@ public class SettingManager : MonoBehaviour
     public GameObject GraphicsMenu;
     public GameObject SettingsMenu;
 
-
+    private string path = "";
     void OnEnable()
     {
+        path = Application.dataPath;
+        if (Application.platform == RuntimePlatform.OSXPlayer)
+        {
+            path += "/../../";
+        }
+        else if (Application.platform == RuntimePlatform.WindowsPlayer)
+        {
+            path += "/../";
+        }
+
         gameSettings = new GameSettings();
 
         fullscreenToggle.onValueChanged.AddListener(delegate { OnFullscreenToggle(); });
@@ -74,12 +84,14 @@ public class SettingManager : MonoBehaviour
     public void SaveSettings()
     {
         string jsonData = JsonUtility.ToJson(gameSettings, true);
-        File.WriteAllText("C:/Users/Anders/Documents/GitHub/Project-Nordic/Assets Compilation/Assets/Custom/Savefiles/gamesettings.json", jsonData);
+        File.WriteAllText($"{path}/Custom/Savefiles/gamesettings.json", jsonData);
     }
 
     public void LoadSettings()
     {
-        gameSettings = JsonUtility.FromJson<GameSettings>("C:/Users/Anders/Documents/GitHub/Project-Nordic/Assets Compilation/Assets/Custom/Savefiles/gamesettings.json");
+        string jsonString = File.ReadAllText($"{path}/Custom/Savefiles/gamesettings.json");
+
+        gameSettings = JsonUtility.FromJson<GameSettings>(jsonString);
 
         antialiasingDropdown.value = gameSettings.antialiasing;
         vSyncDropdown.value = gameSettings.vSync;
