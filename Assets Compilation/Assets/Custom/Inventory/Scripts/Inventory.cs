@@ -249,8 +249,13 @@ public class Inventory : MonoBehaviour
             }
             else if (slot.name == "LegsSlot" && type == typeof(Legs))
             {
-
-                slot.stackItem.item = equipmentList.legs;
+                InventoryStackItems newItem = new InventoryStackItems()
+                {
+                    item = equipmentList.legs,
+                    stack = 1
+                };
+                slot.stackItem = newItem; 
+                //slot.stackItem.item = equipmentList.legs;
 
             }
             else if (slot.name == "BootsSlot" && type == typeof(Boots))
@@ -261,16 +266,21 @@ public class Inventory : MonoBehaviour
             }
             else if (slot.name == "WeaponsSlot" && type == typeof(Wepons))
             {
-
-                slot.stackItem.item = equipmentList.Wepons;
-                slot.stackItem.stack = 1;
+                InventoryStackItems newItem = new InventoryStackItems()
+                {
+                    item = equipmentList.Wepons,
+                    stack = 1
+                };
+                slot.stackItem = newItem; 
+                //slot.stackItem.item = equipmentList.Wepons;
+                //slot.stackItem.stack = 1;
             }
-            else if (slot.name == "SheldSlot" && type == typeof(Wepons))
+            /*else if (slot.name == "SheldSlot" && type == typeof(Wepons))
             {
 
                 slot.stackItem.item = equipmentList.Wepons;
                 slot.stackItem.stack = 1;
-            }
+            }*/
             else if (type == typeof(NoItem))
             {
                 Items item = new NoItem();
@@ -316,10 +326,6 @@ public class Inventory : MonoBehaviour
         if (to.type == typeof(Head))
         {
             equipmentList.head = from.item.item;
-
-
-
-
         }
         else if (to.type == typeof(Breastplate))
         {
@@ -469,7 +475,7 @@ public class Inventory : MonoBehaviour
 
         foreach (FindQuest quest in targetItem.item.GetComponent<PartOfQuest>().partOfQuest)
         {
-            if (quest.IsActive == true && quest.Iscomplete == false)
+            if (quest.isActive == true && quest.iscomplete == false)
             {
 
                 QuestItemsIninventorySum = QuestItemsIninventory(targetItem.item.itemName);

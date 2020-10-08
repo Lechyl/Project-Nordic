@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "AI/Actions/Dead")]
@@ -22,6 +23,8 @@ public class DeadAction : Action
         {
             controller.playerStats.GainExp(controller.deathExp);
 
+            isPartOfQuest(controller);
+
             controller.currentState = deadState;
 
             controller.canDespawn = true;
@@ -31,8 +34,8 @@ public class DeadAction : Action
             controller.SetRagdollRigidbodyState(false);
             controller.SetRagdollColliderState(true);
 
-            Coroutine.instance.StartCoroutine(Waiter(controller));
 
+            Coroutine.instance.StartCoroutine(Waiter(controller));
 
 
         }
@@ -52,6 +55,37 @@ public class DeadAction : Action
         DespawnAfterdeath(controller);
     }
 
+    private void isPartOfQuest(EnemyController controller) 
+    {
+        if (controller.partOfQuest.Count >= 1)
+        {
+                    QuestHandeler.instance.questLog.quests.GetType();
+
+            
+
+            
+            foreach (KillQuest quest in controller.partOfQuest)
+            {
+                Debug.Log("!!!!2!!!");
+
+                var dd = controller.questlog.quests.Find(x => x.id == quest.id).GetComponent<KillQuest>();
+                if (dd.isActive == true && dd.iscomplete == false)
+                {
+                    Debug.Log("!!!!3!!!");
+                    controller.questlog.quests.Find(x => x.id == quest.id).GetComponent<KillQuest>().CurrentAmount += 1;
+                    controller.questlog.quests.Find(x => x.id == quest.id).GetComponent<KillQuest>().CheckIfDone();
+
+                    //quest.CurrentAmount += 1; 
+                    //quest.CheckIfDone();
+
+                }
+            }
+
+
+        }
+
+
+    }
 
     private void DespawnAfterdeath(EnemyController controller)
     {

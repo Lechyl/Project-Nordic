@@ -10,7 +10,6 @@ public class PickUpController : MonoBehaviour
     public PickUp pickUp;
     public Button pickUpUI;
     public DummyInventory inventory;
-    public Transform rightHand;
 
     public GameObject targetItem;
     public int counter = 0;

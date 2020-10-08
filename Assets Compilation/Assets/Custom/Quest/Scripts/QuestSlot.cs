@@ -27,29 +27,33 @@ public class QuestSlot : MonoBehaviour , IPointerClickHandler
             QuestScrollPanel.transform.gameObject.SetActive(false);
 
 
-            questpanel.Find("TextBoxContainer").Find("Name").GetChild(0).GetComponent<Text>().text = quest.name;
-            questpanel.Find("TextBoxContainer").Find("Description").GetChild(0).GetComponent<Text>().text = quest.Description;
-            questpanel.Find("TextBoxContainer").Find("Reward").GetChild(0).GetComponent<Text>().text = "Reward: " + quest.Gold.ToString();
+            questpanel.Find("TextBoxContainer").Find("Name").GetChild(0).GetComponent<Text>().text = quest.questName;
+            questpanel.Find("TextBoxContainer").Find("Description").GetChild(0).GetComponent<Text>().text = quest.description;
+            questpanel.Find("TextBoxContainer").Find("Reward").GetChild(0).GetComponent<Text>().text = "Reward: " + quest.gold.ToString();
 
             questpanel.Find("acceptBtn").GetComponent<Button>().onClick.AddListener(addquestToBtn);
 
+            questpanel.Find("backBtn").GetComponent<Button>().onClick.AddListener(backBtnClick);
+
             questpanel.Find("CompleteBtn").GetComponent<Button>().onClick.AddListener(completeQuestBtn);
+
+
 
 
             questpanel.transform.gameObject.SetActive(true);
 
             // set accept button if the quest is not taken and complere button if the quest is completet and ready to turn in. 
-            if (quest.IsActive == true && quest.Iscomplete == true)
+            if (quest.isActive == true && quest.iscomplete == true)
             {
                 questpanel.Find("CompleteBtn").transform.gameObject.SetActive(true);
                 questpanel.Find("acceptBtn").transform.gameObject.SetActive(false);
             }
-            else if(quest.IsActive == true)
+            else if(quest.isActive == true)
             {
                 questpanel.Find("acceptBtn").transform.gameObject.SetActive(false);
                 questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
             }
-            else if (quest.IsActive == false && quest.Iscomplete == true)
+            else if (quest.isActive == false && quest.iscomplete == true)
             {
                 questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
                 questpanel.Find("acceptBtn").transform.gameObject.SetActive(false);
@@ -81,10 +85,29 @@ public class QuestSlot : MonoBehaviour , IPointerClickHandler
     private void completeQuestBtn()
     {
         quest.GiveReward();
-        quest.IsActive = false;
+        quest.isActive = false;
+
+
+        if (quest is FindQuest)
+        {
+
+            FindQuest findQuest = (FindQuest)quest;
+
+            findQuest.removeItems(); 
+
+        }
+
+
         questpanel.Find("CompleteBtn").transform.gameObject.SetActive(false);
         questpanel.gameObject.SetActive(false);
     }
 
+    public void backBtnClick()
+    {
+        Debug.Log("back back"); 
+        questpanel.gameObject.SetActive(false);
+        QuestScrollPanel.gameObject.SetActive(true); 
+
+    }
 
 }

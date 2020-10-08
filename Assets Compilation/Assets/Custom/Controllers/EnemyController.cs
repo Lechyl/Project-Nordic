@@ -20,6 +20,10 @@ public class EnemyController : MonoBehaviour
     public float timeForNewPath;
     public bool inCoRoutine = false;
     public float callAlliesRadius;
+
+    public List<Quest> partOfQuest;
+    public QuestLog questlog; 
+
     [HideInInspector] public bool callCloseAllies = false;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public int nextWayPoint;
@@ -62,8 +66,10 @@ public class EnemyController : MonoBehaviour
             SetRagdollColliderState(false);
             canDespawn = true;
             agent.enabled = true;
-            eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.level;
-            eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.level * 10;
+
+            // skal rettes til player weapons nye sted
+            //eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.level;
+            //eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.level * 10;
             MaxHp = MaxHp * playerStats.level / 2;
             CurrentHp = MaxHp;
         }

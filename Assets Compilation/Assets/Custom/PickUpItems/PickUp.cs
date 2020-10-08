@@ -10,7 +10,7 @@ public class PickUp : ScriptableObject
 
 
 
-   public void PickUpItem(PickUpController pickUpController)
+    public void PickUpItem(PickUpController pickUpController)
     {
         //Pick up item and add to inventory
         // pickUpController.inventory.addItem(targetItem);
@@ -20,84 +20,45 @@ public class PickUp : ScriptableObject
         {
             Items targetItem = pickUpController.targetItem.GetComponent<Items>();
 
-            //I might waant to change GetComponent<Wepons>() to conparetag instead because It uses less ressources
-            if (targetItem is Wepons)
+           
+
+            //Item is not an Weapon, Destroy and add to inventory
+            if (Inventory.instance.Add(targetItem))
             {
 
-
-                //set trigger of weapon to true and false
-
-
-                if (pickUpController.rightHand.childCount > 0)
-                    {
-                        //Detatch item in Players right hand and reset items values to gamemode
-                        pickUpController.rightHand.GetChild(0).position = new Vector3(pickUpController.rightHand.position.x,1, pickUpController.rightHand.position.z);
-                        pickUpController.rightHand.GetChild(0).tag = "Item";
-
-
-                        pickUpController.rightHand.DetachChildren();
-
-                    }
-
-
-
-                    //Attach Weapon on Players right hand
-
-                    pickUpController.targetItem.gameObject.tag = "PlayerWeapon";
-                    // Set Position for Item  to be equal to Righthand
-                    pickUpController.targetItem.gameObject.transform.position = pickUpController.rightHand.transform.position;
-                    // equip Weapon to Player righthand
-                    pickUpController.targetItem.gameObject.transform.SetParent(pickUpController.rightHand.transform);
-                    //Rotate Weapon
-                    pickUpController.targetItem.gameObject.transform.localEulerAngles = new Vector3(90, 0, 0);
-                    pickUpController.targetItem.gameObject.transform.localPosition = new Vector3(0, 0, 1);
-
-
-
-            }
-            else
-            {
-
-                //Item is not an Weapon, Destroy and add to inventory
-                if (Inventory.instance.Add(targetItem))
+                //   pickUpController.targetItem.transform.gameObject.SetActive(false);
+                pickUpController.targetItem.transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
+                pickUpController.targetItem.transform.gameObject.GetComponent<Collider>().enabled = false;
+                if (pickUpController.targetItem.transform.gameObject.HasComponent<RespawnItem>())
                 {
-
-                    //   pickUpController.targetItem.transform.gameObject.SetActive(false);
-                    pickUpController.targetItem.transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
-                    pickUpController.targetItem.transform.gameObject.GetComponent<Collider>().enabled = false;
-                    if (pickUpController.targetItem.transform.gameObject.HasComponent<RespawnItem>())
-                    {
-                        pickUpController.targetItem.transform.gameObject.GetComponent<RespawnItem>().Respawn();
-
-                    }
-
-                }
-
-
-                if (targetItem.GetComponent<PartOfQuest>() != null)
-                {
-
-                    InventoryStackItems inventoryStackItems = new InventoryStackItems()
-                    {
-                        //equiptment 
-                        item = targetItem,
-                        stack = 1
-                    };
-
-                    Inventory.instance.CheckInventoryForQuestItems(inventoryStackItems); 
+                    pickUpController.targetItem.transform.gameObject.GetComponent<RespawnItem>().Respawn();
 
                 }
 
             }
+
+
+            if (targetItem.GetComponent<PartOfQuest>() != null)
+            {
+
+                InventoryStackItems inventoryStackItems = new InventoryStackItems()
+                {
+                    //equiptment 
+                    item = targetItem,
+                    stack = 1
+                };
+
+                Inventory.instance.CheckInventoryForQuestItems(inventoryStackItems);
+
+            }
+
+
 
 
             DeactivatePickUpUI(pickUpController);
 
         }
-        else
-        {
 
-        }
 
     }
 
@@ -106,7 +67,7 @@ public class PickUp : ScriptableObject
         pickUpController.pickUpUIState = false;
         pickUpController.targetItem = null;
         pickUpController.pickUpUI.gameObject.SetActive(false);
-        
+
 
         //    UI.gameObject.par(false);
 
@@ -128,7 +89,7 @@ public class PickUp : ScriptableObject
             //Debug.Log(item.itemName);
 
             //  Destroy(item);
-            
+
 
         }
         else

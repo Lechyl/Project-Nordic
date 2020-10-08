@@ -7,22 +7,22 @@ using UnityEngine;
 public class Quest : MonoBehaviour
 {
 
-    public bool IsActive;
-    public bool Iscomplete;
-
-    public string Name;
-    public string Description;
+    public bool isActive;
+    public bool iscomplete;
+    public int id; 
+    public string questName;
+    public string description;
     public List<Items> items;
-    public int Exp; 
-    public int Gold;
+    public int exp; 
+    public int gold;
 
 
 
     public void GiveReward()
     {
         GameObject player =  this.transform.parent.GetComponent<QuestHandeler>().Player;
-        Inventory.instance.gold += Gold;  
-        player.GetComponent<PlayerController>().playerStats.exp += Exp;
+        Inventory.instance.gold += gold;  
+        player.GetComponent<PlayerController>().playerStats.GainExp(exp);
 
         Debug.Log("quest is complete"); 
 

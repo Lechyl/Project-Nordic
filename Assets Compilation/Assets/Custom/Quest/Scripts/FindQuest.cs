@@ -17,10 +17,17 @@ public class FindQuest : Quest
     {
         if (CurrentAmount >= RequiredAmount)
         {
-            Iscomplete = true;
+            iscomplete = true;
         }
     }
 
+    public void removeItems()
+    {
+        for (int i = 1; i <= RequiredAmount; i++)
+        {
+            Inventory.instance.Remove(ItemTofind); 
+        }
+    }
 
 
 }

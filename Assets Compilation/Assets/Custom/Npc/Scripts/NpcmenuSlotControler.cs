@@ -51,7 +51,7 @@ public class NpcmenuSlotControler : MonoBehaviour, IPointerClickHandler, IPointe
                     // Make a button for each quest, and give it quest data. 
                     foreach (Quest quest in Npc.GetComponent<QuestGiver>().quest)
                     {
-                        if (!(quest.IsActive == false && quest.Iscomplete == true))
+                        if (!(quest.isActive == false && quest.iscomplete == true))
                         {
 
                             ButtonPrefab.GetComponent<QuestSlot>().quest = quest; 

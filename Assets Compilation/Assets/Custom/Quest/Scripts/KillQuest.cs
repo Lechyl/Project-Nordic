@@ -5,7 +5,6 @@ using UnityEngine;
 public class KillQuest : Quest
 {
 
-    public Transform location;
 
     //public InventoryStackItems ItemTofind;
      
@@ -17,7 +16,7 @@ public class KillQuest : Quest
     {
         if (CurrentAmount >= RequiredAmount)
         {
-            Iscomplete = true;
+            iscomplete = true;
         }
     }
 
