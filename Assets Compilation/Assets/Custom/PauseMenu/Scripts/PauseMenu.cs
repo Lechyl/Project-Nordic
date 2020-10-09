@@ -48,11 +48,15 @@ public class PauseMenu : MonoBehaviour
 
         GameIsPaused = false;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
 
     }
     public void Pause()
     {
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         playerInventoryUI.SetActive(false);
         enemyInventoryUI.SetActive(false);
         equipmentUI.SetActive(false);

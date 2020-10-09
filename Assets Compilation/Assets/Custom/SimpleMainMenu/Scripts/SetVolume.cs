@@ -52,4 +52,11 @@ public class SetVolume : MonoBehaviour
         mixer.SetFloat("SFXVol", Mathf.Log10(sliderValue) * 20);
     }
 
+    public void VolumePrefsSave()
+    {
+        PlayerPrefs.SetFloat("masterVol", VolSlider.value);
+        PlayerPrefs.SetFloat("MusicVol", MusicSlider.value);
+        PlayerPrefs.SetFloat("SFXVol", SFXSlider.value);
+    }
+
 }
