@@ -84,12 +84,14 @@ public class SettingManager : MonoBehaviour
     public void SaveSettings()
     {
         string jsonData = JsonUtility.ToJson(gameSettings, true);
-        File.WriteAllText($"{path}/Custom/Savefiles/gamesettings.json", jsonData);
+        //File.WriteAllText($"{path}/Custom/Savefiles/gamesettings.json", jsonData);
+        File.WriteAllText($"{path}/gamesettings.json", jsonData);
     }
 
     public void LoadSettings()
     {
-        string jsonString = File.ReadAllText($"{path}/Custom/Savefiles/gamesettings.json");
+        //string jsonString = File.ReadAllText($"{path}/Custom/Savefiles/gamesettings.json");
+        string jsonString = File.ReadAllText($"{path}/gamesettings.json");
 
         gameSettings = JsonUtility.FromJson<GameSettings>(jsonString);
 
