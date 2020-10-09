@@ -134,9 +134,9 @@ public class Spawn : MonoBehaviour
 
     }
 
-    /*  private void OnDrawGizmos()
+       private void OnDrawGizmos()
       {
           Gizmos.color = Color.red;
           Gizmos.DrawWireSphere(transform.position, spawnRadius);
-      }*/
+      }
 }

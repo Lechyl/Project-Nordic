@@ -5,17 +5,35 @@ using UnityEngine;
 [CreateAssetMenu]
 public class RepairWeapon : ScriptableObject
 {
-    public void DurabilityRegain(Collider durabilityRestore, Weapons weponsDurability)
+    public Weapons playerWeapon;
+    public EquipmentList equipmentList;
+
+    public void DurabilityRegain(InventoryStackItems repairItem)
     {
-        Repair repair = durabilityRestore.GetComponent<Repair>();
 
-        float DurabilityRestoreAmount = repair.RepairWeapon;
-
-        float sum = weponsDurability.durability += DurabilityRestoreAmount;
-
-        if(sum > weponsDurability.maxDurability)
+        Repair repair = repairItem.item.GetComponent<Repair>();
+        if (equipmentList.Wepons != null)
         {
-            weponsDurability.durability = weponsDurability.maxDurability;
+            playerWeapon = (Weapons)equipmentList.Wepons;
+            Debug.Log(playerWeapon);
+
+            if (playerWeapon.durability != playerWeapon.maxDurability)
+            {
+                float DurabilityRestoreAmount = repair.RepairWeapon;
+
+                float sum = playerWeapon.durability += DurabilityRestoreAmount;
+
+                if (sum > playerWeapon.maxDurability)
+                {
+                    playerWeapon.durability = playerWeapon.maxDurability;
+                }
+                else
+                {
+                    playerWeapon.durability = sum;
+                }
+            }
+
         }
+
     }
 }

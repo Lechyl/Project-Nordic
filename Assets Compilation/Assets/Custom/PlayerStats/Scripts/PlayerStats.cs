@@ -13,7 +13,7 @@ public class PlayerStats : ScriptableObject
 
 
     //Player stats
-    public ScriptableObject playerHp; 
+    public PlayerHealth playerHp; 
     public float currentStamina;
     public float maxStamina;
     public float staminaRegen;
@@ -49,6 +49,8 @@ public class PlayerStats : ScriptableObject
         //Level up Logic here.
         level++;
         expToLevel *= 2;
+        playerHp.MaxHp += 10; 
+        playerHp.CurrentHp += 10;
 
     }
 }

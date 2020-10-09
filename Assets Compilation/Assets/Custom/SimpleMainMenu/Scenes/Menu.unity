@@ -8283,6 +8283,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88b026d9c13c8d49a7267ffd1a149d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: e3864703910c74b4fa0874965af908bb, type: 2}
   sounds:
   - Name: 
     clip: {fileID: 8300000, guid: 2c4aa161cbb176d489540c311a6bd993, type: 3}
@@ -8294,7 +8295,9 @@ MonoBehaviour:
     volume: 1
     pitch: 0
     source: {fileID: 0}
-  mixer: {fileID: 24100000, guid: e3864703910c74b4fa0874965af908bb, type: 2}
+  VolSlider: {fileID: 0}
+  MusicSlider: {fileID: 0}
+  SFXSlider: {fileID: 0}
 --- !u!1 &1289368110
 GameObject:
   m_ObjectHideFlags: 0
@@ -8623,7 +8626,12 @@ MonoBehaviour:
   vSyncDropdown: {fileID: 831324036}
   applyButton: {fileID: 1411846781}
   BackButton: {fileID: 205884004}
-  gameSettings: {fileID: 0}
+  gameSettings:
+    fullscreen: 0
+    textureQuality: 0
+    antialiasing: 0
+    vSync: 0
+    resolutionIndex: 0
   GraphicsMenu: {fileID: 200928453}
   SettingsMenu: {fileID: 1449165880}
 --- !u!1 &1402853246
@@ -11657,10 +11665,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6093c8b45b60e7e41a3a722e97f5f785, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixer: {fileID: 0}
-  VolSlider: {fileID: 0}
-  MusicSlider: {fileID: 0}
-  SFXSlider: {fileID: 0}
+  mixer: {fileID: 24100000, guid: e3864703910c74b4fa0874965af908bb, type: 2}
+  VolSlider: {fileID: 1119741245}
+  MusicSlider: {fileID: 196442120}
+  SFXSlider: {fileID: 1452002236}
 --- !u!4 &1893802269
 Transform:
   m_ObjectHideFlags: 0
@@ -11687,13 +11695,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88b026d9c13c8d49a7267ffd1a149d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: e3864703910c74b4fa0874965af908bb, type: 2}
   sounds:
   - Name: MenuMusic
     clip: {fileID: 8300000, guid: 2c4aa161cbb176d489540c311a6bd993, type: 3}
     volume: 0
     pitch: 0
     source: {fileID: 0}
-  mixer: {fileID: 0}
+  VolSlider: {fileID: 1119741245}
+  MusicSlider: {fileID: 196442120}
+  SFXSlider: {fileID: 1452002236}
 --- !u!1 &1900530539
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class EnemyController : MonoBehaviour
     public State currentState;
     public EnemyStats enemyStats;
     public Transform eyes;
+    public GameObject rightHand;
     public List<Transform> wayPointList;
     public State remainState;
     public AiHealth aiHealth;
@@ -62,15 +63,19 @@ public class EnemyController : MonoBehaviour
         aiActive = aiActivationFromTankManager;
         if (aiActive)
         {
+            System.Random random = new System.Random(); 
+
             SetRagdollRigidbodyState(true);
             SetRagdollColliderState(false);
             canDespawn = true;
             agent.enabled = true;
-
+            rightHand.transform.GetChild(0).gameObject.GetComponent<Weapons>().lvl = playerStats.level;
+            rightHand.transform.GetChild(0).gameObject.GetComponent<Weapons>().dmg = (playerStats.level * 5) + random.Next(1, 9) ;
+            
             // skal rettes til player weapons nye sted
             //eyes.GetChild(0).gameObject.GetComponent<Wepons>().lvl = playerStats.level;
             //eyes.GetChild(0).gameObject.GetComponent<Wepons>().dmg = playerStats.level * 10;
-            MaxHp = MaxHp * playerStats.level / 2;
+            MaxHp = (MaxHp * playerStats.level / 2) + 10 ;
             CurrentHp = MaxHp;
         }
         else

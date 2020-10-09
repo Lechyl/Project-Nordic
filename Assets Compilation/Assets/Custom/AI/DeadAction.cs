@@ -31,7 +31,8 @@ public class DeadAction : Action
             
             // to do need new path for weapon
             
-            controller.eyes.GetChild(0).gameObject.SetActive(false);
+            controller.rightHand.transform.GetChild(3).gameObject.SetActive(false);
+            controller.eyes.parent.Find("Graphic").GetChild(6).gameObject.GetComponent<Animator>().enabled = false;
             controller.gameObject.GetComponent<BoxCollider>().enabled = false;
             controller.SetRagdollRigidbodyState(false);
             controller.SetRagdollColliderState(true);

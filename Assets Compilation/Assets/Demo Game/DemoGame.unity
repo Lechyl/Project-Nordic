@@ -5127,7 +5127,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   quest:
   - {fileID: 1206781308}
-  - {fileID: 1782627322}
   - {fileID: 1884186109}
   player: {fileID: 954244591}
 --- !u!1001 &195266855
@@ -7187,10 +7186,10 @@ MonoBehaviour:
   hotbariable: 1
   stackLimit: 0
   equiptable: 1
-  lvl: 1
+  lvl: 5
   durability: 1
   maxDurability: 1
-  dmg: 0
+  dmg: 10
 --- !u!135 &393366074
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7211,13 +7210,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 393235034}
-  m_LocalRotation: {x: -1, y: 0.000000045763223, z: 0.000000026077027, w: -0.000000033559072}
-  m_LocalPosition: {x: -0.79963136, y: 0.2909401, z: -0.92617285}
+  m_LocalRotation: {x: -0.5, y: 0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -0, y: 0, z: -0.162}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 128925187}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -180, y: -90, z: 90}
 --- !u!1 &409219777
 GameObject:
   m_ObjectHideFlags: 0
@@ -7395,7 +7394,7 @@ PrefabInstance:
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.431322
+      value: 42.07
       objectReference: {fileID: 0}
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}
@@ -7405,7 +7404,7 @@ PrefabInstance:
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.68039
+      value: 43.47
       objectReference: {fileID: 0}
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}
@@ -7478,7 +7477,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1206781307}
-  - {fileID: 1782627321}
   - {fileID: 1884186108}
   m_Father: {fileID: 0}
   m_RootOrder: 9
@@ -8195,7 +8193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   partOfQuest:
   - {fileID: 1206781308}
-  - {fileID: 1782627322}
+  - {fileID: 0}
 --- !u!114 &460994084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15983,11 +15981,11 @@ MonoBehaviour:
   iscomplete: 0
   id: 0
   questName: 'find part 1 '
-  description: 'this is find quest part 1 '
+  description: 'Go pickup the 2 healing orbs behind me '
   items:
   - {fileID: 2004088628}
   exp: 420
-  gold: 69
+  gold: 1337
   ItemTofind:
     item: {fileID: 1062628436}
     stack: 1
@@ -17539,7 +17537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &1403997302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17569,7 +17567,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403997301}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.708435, y: 0, z: -25.774576}
+  m_LocalPosition: {x: 2.5, y: 0, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 462894534}
@@ -17588,12 +17586,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 261689789}
-  spawnLimit: 7
+  spawnLimit: 12
   spawnPointDistance: 50
   spawnUnits:
-  - unit: {fileID: 9207597442953289695, guid: 6497626615b6ccf449b78860ab47731f, type: 3}
+  - unit: {fileID: 573361304701230561, guid: 695e9a8b7ab45854998fc037be00b8cd, type: 3}
     spawnRate: 100
-  spawnRadius: 5
+  spawnRadius: 42
   spawnState: 0
   despawnTimer: 5
   spawnHeight: 2
@@ -20178,6 +20176,7 @@ MonoBehaviour:
   currentState: {fileID: 11400000, guid: 2b846756bc409cd45af8665c7c52c370, type: 2}
   enemyStats: {fileID: 11400000, guid: 191aa461c0101254197fc3f546910b0e, type: 2}
   eyes: {fileID: 856614700}
+  rightHand: {fileID: 128632945}
   wayPointList:
   - {fileID: 1900913618}
   remainState: {fileID: 11400000, guid: 53915ef0ef200204bbda5e9ea2f651bd, type: 2}
@@ -20268,17 +20267,38 @@ PrefabInstance:
         type: 3}
       propertyPath: VolSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 573700797}
     - target: {fileID: 5347418576610638940, guid: c92de3fa4a01ac3498e35f215db7ecf9,
         type: 3}
       propertyPath: MusicSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 687039912}
     - target: {fileID: 5347418576610638940, guid: c92de3fa4a01ac3498e35f215db7ecf9,
         type: 3}
       propertyPath: SFXSlider
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 285361031}
+    - target: {fileID: 5347418576610638941, guid: c92de3fa4a01ac3498e35f215db7ecf9,
+        type: 3}
+      propertyPath: mixer
+      value: 
+      objectReference: {fileID: 24100000, guid: e3864703910c74b4fa0874965af908bb,
+        type: 2}
+    - target: {fileID: 5347418576610638941, guid: c92de3fa4a01ac3498e35f215db7ecf9,
+        type: 3}
+      propertyPath: VolSlider
+      value: 
+      objectReference: {fileID: 573700797}
+    - target: {fileID: 5347418576610638941, guid: c92de3fa4a01ac3498e35f215db7ecf9,
+        type: 3}
+      propertyPath: MusicSlider
+      value: 
+      objectReference: {fileID: 687039912}
+    - target: {fileID: 5347418576610638941, guid: c92de3fa4a01ac3498e35f215db7ecf9,
+        type: 3}
+      propertyPath: SFXSlider
+      value: 
+      objectReference: {fileID: 285361031}
     - target: {fileID: 5347418576610638942, guid: c92de3fa4a01ac3498e35f215db7ecf9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -21264,6 +21284,7 @@ MonoBehaviour:
   takeDamage: {fileID: 11400000, guid: afdef3825fe7b7047bedbdf4d0ab8ec8, type: 2}
   getHp: {fileID: 11400000, guid: dbace0530711846498a10d3b36917741, type: 2}
   getStamina: {fileID: 11400000, guid: 63b6133214d262b469908725a9aace75, type: 2}
+  weaponRepair: {fileID: 0}
   playerStats: {fileID: 11400000, guid: d88287f66da6d824c8899462bf02e90e, type: 2}
   quest: []
   levelTextUI: {fileID: 0}
@@ -21596,62 +21617,6 @@ CapsuleCollider:
   m_Height: 0.33947498
   m_Direction: 0
   m_Center: {x: -0.16973749, y: 0, z: 0}
---- !u!1 &1782627320
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1782627321}
-  - component: {fileID: 1782627322}
-  m_Layer: 0
-  m_Name: Quest2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1782627321
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782627320}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 422353137}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1782627322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1782627320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f3b0b89654a0ba49b7965aca938aa5f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isActive: 0
-  iscomplete: 0
-  id: 1
-  questName: 'find quest part 2 '
-  description: 'this is find quest part 2 '
-  items: []
-  exp: 900
-  gold: 10
-  ItemTofind:
-    item: {fileID: 1062628436}
-    stack: 1
-  RequiredAmount: 1
-  CurrentAmount: 0
 --- !u!1 &1785375576 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6941903844365673739, guid: 0ad72615b7671b64785b8d5a0d7dd14d,
@@ -23911,6 +23876,7 @@ MonoBehaviour:
   currentState: {fileID: 11400000, guid: 2b846756bc409cd45af8665c7c52c370, type: 2}
   enemyStats: {fileID: 11400000, guid: 191aa461c0101254197fc3f546910b0e, type: 2}
   eyes: {fileID: 0}
+  rightHand: {fileID: 0}
   wayPointList:
   - {fileID: 1900913618}
   - {fileID: 693787969}
@@ -24872,6 +24838,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1031107377662425171, guid: 723b5807c9d68f347ab0a741be62e4c9,
+        type: 3}
+      propertyPath: RequiredAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1031107377662425171, guid: 723b5807c9d68f347ab0a741be62e4c9,
+        type: 3}
+      propertyPath: description
+      value: 'Go slay 3 walking bandits '
+      objectReference: {fileID: 0}
     - target: {fileID: 1031107377662425173, guid: 723b5807c9d68f347ab0a741be62e4c9,
         type: 3}
       propertyPath: m_Name
@@ -25047,7 +25023,7 @@ PrefabInstance:
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.24132
+      value: 6.5
       objectReference: {fileID: 0}
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}
@@ -25057,7 +25033,7 @@ PrefabInstance:
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 43.24039
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 7117930679488604750, guid: 207f537f99598ab41a8cb627d4048fe8,
         type: 3}

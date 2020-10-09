@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public TakeDamage takeDamage;
     public GetHp getHp;
     public GetStamina getStamina;
+    public RepairWeapon weaponRepair;
     public PlayerStats playerStats;
     public List<Quest> quest;
     public TextMeshProUGUI levelTextUI;
@@ -80,6 +81,11 @@ public class PlayerController : MonoBehaviour
                 playerStamina.StaminaRestore(stackItem, this);
 
             }
+            /* else if (stackItem.item.GetType() == typeof(Repair))
+            {
+                // Repair function
+                weaponRepair.DurabilityRegain(stackItem);
+            }*/ 
             else if (stackItem.item.GetType() == typeof(Stone))
             {
                 // stone function
