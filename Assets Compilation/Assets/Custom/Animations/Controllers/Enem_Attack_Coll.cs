@@ -11,7 +11,7 @@ public class Enem_Attack_Coll : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (other.gameObject.CompareTag("Player"))
         {
             gameObject.GetComponentInParent<Enem_Anim_Cont>().AttackPlayer();
         }

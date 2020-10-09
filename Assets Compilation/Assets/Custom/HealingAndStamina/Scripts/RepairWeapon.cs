@@ -8,7 +8,7 @@ public class RepairWeapon : ScriptableObject
     public Wepons playerWepon;
     public EquipmentList equipmentList;
 
-    public void DurabilityRegain(InventoryStackItems repairItem, PlayerController playerController)
+    public void DurabilityRegain(InventoryStackItems repairItem)
     {
 
         Repair repair = repairItem.item.GetComponent<Repair>();

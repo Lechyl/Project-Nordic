@@ -26,13 +26,7 @@ public class Play_Anim_Cont : MonoBehaviour
         {
             if(righthand.transform.childCount > 0)
             {
-                weapon = righthand.transform.GetChild(0).gameObject;
-                string weapontype = weapon.name;
-
-                if (weapontype == "Axe")
-                {
-                    animator.Play("1H_Axe_UR2BL");
-                }
+                animator.Play("1H_Axe_UR2BL");
             } else
             {
                 // Play Unarmed attack

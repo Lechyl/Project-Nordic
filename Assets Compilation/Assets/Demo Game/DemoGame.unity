@@ -7,7 +7,7 @@ OcclusionCullingSettings:
   m_OcclusionBakeSettings:
     smallestOccluder: 1
     smallestHole: 0.25
-    backfaceThreshold: 100
+    backfaceThreshold: 50.8
   m_SceneGUID: 89d2753d9487641448b098c85b51c4dc
   m_OcclusionCullingData: {fileID: 36300000, guid: 6b80fd2571344ef4ea0e961e71604470,
     type: 2}
@@ -3180,7 +3180,7 @@ SphereCollider:
   m_GameObject: {fileID: 1067861902}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: -0.00000022910535, y: 0.095227316, z: 0.10751802}

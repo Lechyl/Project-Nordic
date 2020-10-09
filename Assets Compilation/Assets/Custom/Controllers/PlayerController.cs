@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             else if (stackItem.item.GetType() == typeof(Repair))
             {
                 // Repair function
-                weaponRepair.DurabilityRegain(stackItem, this);
+                weaponRepair.DurabilityRegain(stackItem);
             }
             else if (stackItem.item.GetType() == typeof(Stone))
             {
